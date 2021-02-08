@@ -69,7 +69,7 @@ export default class OptionsContainer extends React.Component {
               color: "#fff",
             }}
           >
-            Text bin
+            Code editor
           </NavLink>
 
           <NavLink
@@ -88,7 +88,7 @@ export default class OptionsContainer extends React.Component {
               color: "#fff",
             }}
           >
-            JSON editor/bin
+            JSON editor
           </NavLink>
 
           {/* <Col style={{ padding: 0 }}>

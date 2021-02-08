@@ -1,5 +1,5 @@
 import React from "react";
-
+import { useLoading, Audio, SpinningCircles, Grid } from "@agney/react-loading";
 import { Alert, Form, Button, Card, Row, Col } from "react-bootstrap";
 // import { JsonEditor as Editor } from "jsoneditor-react";
 import "jsoneditor-react/es/editor.min.css";
@@ -47,18 +47,36 @@ const modes = ["tree", "form", "view", "code", "text"];
 
 export default class JSONtab extends React.Component {
   setJsonEditorRef = (instance) => (this.editor = instance);
-  state = {
-    schema,
-    text: JSON.stringify(json, null, 2),
-    mode: "tree",
-    title: "",
-    password: "",
-    burn: -1,
-    expiry: 3600,
-    isPassword: false,
-    link: "",
-    errors: [],
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      schema,
+      text: JSON.stringify(json, null, 2),
+      mode: "tree",
+      title: "",
+      password: "",
+      burn: -1,
+      editable:false,
+      expiry: 3600,
+      isPassword: false,
+      link: "",
+      errors: [],
+    };
+
+    this.onCheckBoxClicked = this.onCheckBoxClicked.bind(this);
+    this.onTitleChanged = this.onTitleChanged.bind(this);
+    this.onTextChanged = this.onTextChanged.bind(this);
+    this.onBurnChanged = this.onBurnChanged.bind(this);
+    this.onPasswordChanged = this.onPasswordChanged.bind(this);
+    this.onExpiryChanged = this.onExpiryChanged.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.onLinkRecieved = this.onLinkRecieved.bind(this);
+    this.onEditableChanged = this.onEditableChanged.bind(this);
+    // this.handleChange = this.handleChange.bind(this);
+    // this.handleSubmit = this.handleSubmit.bind(this);
+    // this.handleProcess = this.handleProcess.bind(this);
+  }
+  
   componentDidMount() {
     if (this.editor) {
       this.transformEditorOnTreeView();
@@ -79,6 +97,12 @@ export default class JSONtab extends React.Component {
 
     // Your manipulations with dom
   }
+  onEditableChanged = (e) => {
+    this.setState({
+      editable: !this.state.editable,
+    });
+    console.log(this.state.editable);
+  };
   onCheckBoxClicked = () => {
     this.setState({ isPassword: !this.state.isPassword });
   };
@@ -106,6 +130,7 @@ export default class JSONtab extends React.Component {
   handleSubmit = (event) => {
     var self = this;
     var errors = [];
+    console.log(window.location.href);
     if (this.state.text === "") {
       errors.push("text");
     }
@@ -125,37 +150,46 @@ export default class JSONtab extends React.Component {
       // return false;
       event.preventDefault();
     } else {
-      alert("everything good. submit form!");
-      // const postObject = {
-      //   text: this.state.text,
-      //   expiry: parseInt(this.state.expiry),
-      //   isPassword: this.state.isPassword,
-      //   password: this.state.password,
-      // };
+      this.setState({
+        submitted: true,
+      });
+      // alert("everything good. submit form!");
+      const postObject = {
+        text: this.state.text,
+        expiry: parseInt(this.state.expiry),
+        isPassword: this.state.isPassword,
+        password: this.state.password,
+        editable:this.state.editable,
+      };
 
-      // axios({
-      //   method: "post",
-      //   headers: { "Content-Type": "application/json" },
-      //   url: "https://copybinback.herokuapp.com/api/public/generateLink",
-      //   data: postObject,
-      // })
-      //   .then(function (response) {
-      //     console.log(response.data.url);
-      //     self.setState({
-      //       link: response.data.url,
-      //     });
-      //   })
-      //   .catch(function (error) {
-      //     console.log(error);
-      //   });
+      axios({
+        method: "post",
+        headers: { "Content-Type": "application/json" },
+        url: "https://copybinback.herokuapp.com/api/public/generateLink",
+        data: postObject,
+      })
+        .then(function (response) {
+          console.log(response.data.url);
+          self.setState({
+            link: response.data.url,
+            submitted: false,
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
 
-      // console.log("text submitted");
-      // console.log(postObject);
-      // event.preventDefault();
+      console.log("text submitted");
+      console.log(postObject);
+      event.preventDefault();
     }
   };
   hasError(key) {
     return this.state.errors.indexOf(key) !== -1;
+  }
+  componentDidMount() {
+    console.log("json tab mounted");
+    // window.addEventListener("load", this.handleLoad);
   }
   render() {
     return (
@@ -163,9 +197,9 @@ export default class JSONtab extends React.Component {
         border="none"
         style={{ height: "550px", margin: 0, borderRadius: 0, padding: 0 }}
       >
-        <Row style={{ margin: 0, height: "100%" }}>
-          <Col sm={9} style={{ padding: 0 }}>
-            <div style={{ width: "100%", height: "100%" }}>
+        <Row style={{ padding: 0, margin: 0, height: "100%" }}>
+          <Col sm={9} style={{ padding: 4, margin: 0, height: "100%" }}>
+            <div style={{ padding: 0, margin: 0, height: "100%" }}>
               <div style={{ backgroundColor: "white", height: "100%" }}>
                 <JSONEditorReact
                   schema={this.state.schema}
@@ -197,6 +231,7 @@ export default class JSONtab extends React.Component {
                         ? "1px solid red"
                         : "1px solid rgb(153, 153, 153)",
                     }}
+                    onChange={this.onTitleChanged}
                   />
                 </Col>
               </Row>
@@ -210,11 +245,11 @@ export default class JSONtab extends React.Component {
                       color: "rgb(153, 153, 153)",
                     }}
                   >
-                    <option>10 minutes</option>
-                    <option>1 hour</option>
-                    <option>1 day</option>
-                    <option>1 weak</option>
-                    <option>2 weaks</option>
+                    <option value="600">10 minutes</option>
+                    <option value="3600">1 hour</option>
+                    <option value="86400">1 day</option>
+                    <option value="604800">1 weak</option>
+                    <option value="1209600">2 weaks</option>
                   </Form.Control>
                 </Col>
               </Row>
@@ -227,6 +262,22 @@ export default class JSONtab extends React.Component {
                       fontSize: "small",
                       border: "1px solid rgb(153, 153, 153)",
                       color: "rgb(153, 153, 153)",
+                    }}
+                  />
+                </Col>
+              </Row>
+              <Row style={{ padding: 4 }}>
+                <Col>
+                  <Form.Check
+                    type="checkbox"
+                    //   checked={this.state.editable}
+                    onChange={this.onEditableChanged}
+                    label="Editable"
+                    style={{
+                      fontSize: "small",
+                      float: "left",
+                      color: "rgb(153, 153, 153)",
+                      fontWeight: "600",
                     }}
                   />
                 </Col>
@@ -283,17 +334,34 @@ export default class JSONtab extends React.Component {
                   <Button
                     variant="success"
                     type="submit"
-                    size="lg"
+                    className="mr-1"
                     style={{
-                      fontSize: "small",
                       width: "100%",
+                      fontSize: "small",
+                      float: "left",
                       border: "none",
                       fontWeight: "600",
                       backgroundColor: "rgb(116, 147, 168)",
                     }}
                     onClick={this.handleSubmit}
                   >
-                    Generate Link
+                    <Row>
+                      <Col sm={10}>
+                        {this.state.submitted
+                          ? "Generating Link..."
+                          : "Generate Link"}
+                      </Col>
+                      <Col sm={2}>
+                        <Grid
+                          style={{
+                            visibility: this.state.submitted
+                              ? "visible"
+                              : "hidden",
+                          }}
+                          width="12"
+                        />
+                      </Col>
+                    </Row>
                   </Button>
                 </Col>
               </Row>
@@ -323,6 +391,21 @@ export default class JSONtab extends React.Component {
                       // onChange={this.handleChange}
                     />
                   </Form.Group>
+                </Col>
+              </Row>
+              <Row>
+                <Col>
+                  <a
+                    href="https://github.com/josdejong/jsoneditor"
+                    style={{
+                      textDecoration: "none",
+                      fontSize: 10,
+                      fontWeight: "400",
+                      textAlign: "start",
+                    }}
+                  >
+                    This json editor is project by Josdejong on github
+                  </a>
                 </Col>
               </Row>
             </Form>

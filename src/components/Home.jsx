@@ -5,6 +5,8 @@ import WordCounter from "../helpers/wordCounter";
 import { Row, Col, Container } from "react-bootstrap";
 import OptionsContainer from "./options";
 import JSONtab from "./JSONtab";
+import TextTab from "./TEXTtab";
+import LinkViewer from "./LinkViewer";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default class Home extends React.Component {
@@ -61,10 +63,14 @@ export default class Home extends React.Component {
             <Col sm={10} style={{ padding: 0 }}>
               <Switch>
                 <Route exact path="/">
-                  <MainForm processText={this.processText}></MainForm>
+                  <TextTab></TextTab>
+                  {/* <MainForm processText={this.processText}></MainForm> */}
                 </Route>
                 <Route path="/json_editor">
                   <JSONtab></JSONtab>
+                </Route>
+                <Route path="/link_viewer/:tid">
+                  <LinkViewer></LinkViewer>
                 </Route>
               </Switch>
             </Col>

@@ -81,7 +81,7 @@ export default class MainForm extends React.Component {
       this.setState({
         submitted: true,
       });
-      alert("everything good. submit form!");
+      // alert("everything good. submit form!");
       const postObject = {
         text: this.state.text,
         expiry: parseInt(this.state.expiry),
