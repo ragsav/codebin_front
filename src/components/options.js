@@ -1,7 +1,7 @@
 /* eslint-disable arrow-body-style */
 
 import React from "react";
-import WordTableRow from "./WordTableRow";
+// import WordTableRow from "./WordTableRow";
 import {
   Alert,
   Form,

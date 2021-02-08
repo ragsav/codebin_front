@@ -1,7 +1,6 @@
 import React from "react";
-import ResultsContainer from "./ResultsContainer";
-import MainForm from "../components/mainForm";
-import WordCounter from "../helpers/wordCounter";
+
+
 import { Row, Col, Container } from "react-bootstrap";
 import OptionsContainer from "./options";
 import JSONtab from "./JSONtab";
@@ -43,8 +42,8 @@ export default class Home extends React.Component {
       text: t,
       loading: true,
     });
-    const wordCounter = new WordCounter(t, this.setCountedWords);
-    wordCounter.returnWordCountArray();
+    // const wordCounter = new WordCounter(t, this.setCountedWords);
+    // wordCounter.returnWordCountArray();
   }
 
   render() {

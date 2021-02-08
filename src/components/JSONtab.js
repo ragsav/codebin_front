@@ -2,7 +2,7 @@ import React from "react";
 import { useLoading, Audio, SpinningCircles, Grid } from "@agney/react-loading";
 import { Alert, Form, Button, Card, Row, Col } from "react-bootstrap";
 // import { JsonEditor as Editor } from "jsoneditor-react";
-import "jsoneditor-react/es/editor.min.css";
+// import "jsoneditor-react/es/editor.min.css";
 
 // import "brace";
 // import "brace/mode/json";
@@ -12,7 +12,7 @@ import "jsoneditor-react/es/editor.min.css";
 
 import { JsonEditor } from "jsoneditor-react";
 import JSONEditorReact from "./JSONEditorReact";
-import JSONform from "./JSONform";
+
 const axios = require("axios");
 const schema = {
   title: "Example Schema",
