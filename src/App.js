@@ -3,13 +3,13 @@ import MainNavBar from "./components/navBar";
 
 import './App.css';
 import { Row, Col, Container } from "react-bootstrap";
-import TextTab from "./components/EditorTab";
+import EditorTab from "./components/EditorTab";
 import LinkViewer from "./components/LinkViewer";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App" style={{   overflow:   "scroll"   }}>
+    <div className="App" style={{ overflow: "scroll" }}>
       <Container style={{ padding: 0, height: "100%" }} fluid>
         <Row style={{ padding: 0, margin: 0, width: "100%" }}>
           <Col style={{ padding: 0, margin: 0 }}>
@@ -23,7 +23,7 @@ function App() {
             <Router>
               <Switch>
                 <Route exact path="/">
-                  <TextTab></TextTab>
+                  <EditorTab></EditorTab>
                 </Route>
 
                 <Route path="/:tid">

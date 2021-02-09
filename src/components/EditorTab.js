@@ -48,7 +48,7 @@ languages.forEach((lang) => {
 
 themes.forEach((theme) => require(`ace-builds/src-noconflict/theme-${theme}`));
 
-export default class TextForm extends React.Component {
+export default class EditorTab extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -196,7 +196,7 @@ export default class TextForm extends React.Component {
             <Row style={{ padding: 0, margin: 0 }}>
               <Col
                 sm={9}
-                style={{ padding: 0, margin: 0, width: "100%", height: "100%" }}
+                style={{ padding: 4, margin: 0, width: "100%", height: "100%" }}
               >
                 <AceEditor
                   style={{ width: "100%", height: "550px" }}
