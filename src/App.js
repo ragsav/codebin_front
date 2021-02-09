@@ -1,27 +1,43 @@
-import logo from './logo.svg';
-// import MainForm from "./components/mainForm";
+
 import MainNavBar from "./components/navBar";
-import Home from "./components/Home";
+
 import './App.css';
-// import Footer from './components/footer';
+import { Row, Col, Container } from "react-bootstrap";
+import TextTab from "./components/EditorTab";
+import LinkViewer from "./components/LinkViewer";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
   return (
-    <div
-      className="App"
-      style={{
-        
-         height:  "100vh",
-      
-         overflow: "hidden",
-      
-         backgroundColor: "rgb(116, 147, 168)",
-     
-      }}
-    >
-      <MainNavBar></MainNavBar>
-      <Home></Home>
-      
+    <div className="App" style={{   overflow:   "scroll"   }}>
+      <Container style={{ padding: 0, height: "100%" }} fluid>
+        <Row style={{ padding: 0, margin: 0, width: "100%" }}>
+          <Col style={{ padding: 0, margin: 0 }}>
+            <MainNavBar></MainNavBar>
+          </Col>
+        </Row>
+        <Row
+          style={{ padding: 4, margin: 0, width: "100%", maxHeight: "100%" }}
+        >
+          <Col style={{ padding: 0, margin: 0 }}>
+            <Router>
+              <Switch>
+                <Route exact path="/">
+                  <TextTab></TextTab>
+                </Route>
+
+                <Route path="/:tid">
+                  <LinkViewer></LinkViewer>
+                </Route>
+              </Switch>
+
+              {/* <Col sm={2} style={{ padding: 0 }}>
+              <OptionsContainer tabCallback={this.setTab} />
+            </Col> */}
+            </Router>
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import cloneDeep from "lodash/cloneDeep";
 import JSONEditor from "jsoneditor";
 import "jsoneditor/dist/jsoneditor.css";
 
-import "./JSONEditorReact.css";
+
 
 export default class JSONEditorReact extends Component {
   componentDidMount() {
@@ -60,7 +60,7 @@ export default class JSONEditorReact extends Component {
   render() {
     return (
       <div
-        className="jsoneditor-react-container"
+        style={{ height: "100%", width: "100%" }}
         ref={(elem) => (this.container = elem)}
       />
     );

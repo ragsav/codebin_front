@@ -78,6 +78,7 @@ export default class JSONtab extends React.Component {
   }
   
   componentDidMount() {
+    console.log("mounted json tab");
     if (this.editor) {
       this.transformEditorOnTreeView();
     }
@@ -404,7 +405,7 @@ export default class JSONtab extends React.Component {
                       textAlign: "start",
                     }}
                   >
-                    This json editor is project by Josdejong on github
+                    This editor is project by Josdejong on github
                   </a>
                 </Col>
               </Row>

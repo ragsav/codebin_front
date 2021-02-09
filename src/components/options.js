@@ -90,6 +90,24 @@ export default class OptionsContainer extends React.Component {
           >
             JSON editor
           </NavLink>
+          <NavLink
+            to="/diff_viewer"
+            style={{
+              backgroundColor: "white",
+              color: "#858585",
+              textDecoration: "none",
+              fontSize: "small",
+              padding: 2,
+              display: "inline-block",
+            }}
+            activeClassName="activeRoute"
+            activeStyle={{
+              backgroundColor: "#363636",
+              color: "#fff",
+            }}
+          >
+            Difference viewer
+          </NavLink>
 
           {/* <Col style={{ padding: 0 }}>
             <Button

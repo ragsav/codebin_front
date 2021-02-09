@@ -1,5 +1,5 @@
 import React from "react";
-import { Alert, Form, Button, Card, Row, Col } from "react-bootstrap";
+import { Alert, Form, Button, Card, Row, Col, Container } from "react-bootstrap";
 import { useLoading, Audio, SpinningCircles, Grid } from "@agney/react-loading";
 import AceEditor from "react-ace";
 import "ace-builds/src-min-noconflict/ext-searchbox";
@@ -68,7 +68,7 @@ export default class LinkViewer extends React.Component {
     this.onTextChanged = this.onTextChanged.bind(this);
 
     this.handleSubmit = this.handleSubmit.bind(this);
-
+    // this.getInitData = this.getInitData.bind(this)
     this.setMode = this.setMode.bind(this);
     this.setTheme = this.setTheme.bind(this);
     this.onPasswordChanged = this.onPasswordChanged.bind(this);
@@ -77,34 +77,40 @@ export default class LinkViewer extends React.Component {
     // this.handleProcess = this.handleProcess.bind(this);
   }
 
+ 
   componentDidMount() {
     // window.addEventListener("load", this.handleLoad);
+    console.log("mounted");
     var url_comp = window.location.href.split("/");
-    var currentUrlToken = url_comp[url_comp.length - 1];
-    var self = this;
-    axios({
-      method: "get",
-      headers: { "Content-Type": "application/json" },
-      url:
-        "https://copybinback.herokuapp.com/api/public/tapLink/" +
-        currentUrlToken,
-    })
-      .then(function (response) {
-        console.log(response.data.url);
-        if (response.data.message === "please enter password") {
-          self.setState({
-            isPassword: true,
-          });
-        } else {
-          self.setState({
-            text: response.data.message,
-            editable: response.data.editable,
-          });
-        }
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+          var currentUrlToken = url_comp[url_comp.length - 1];
+          var self = this;
+          axios({
+            method: "get",
+            headers: { "Content-Type": "application/json" },
+            url:
+              "https://copybinback.herokuapp.com/api/public/tapLink/" +
+
+                 currentUrlToken,
+          })
+            .then(function (response) {
+              console.log(response.data);
+              console.log("response recieved");
+              if (response.data.message === "please enter password") {
+                self.setState({
+                  isPassword: true,
+                });
+              } else {
+                self.setState({
+                  text: response.data.message,
+                  editedText: response.data.message,
+                  editable: response.data.editable,
+                });
+              }
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+    // this.getInitData();
   }
 
   componentWillUnmount() {
@@ -237,201 +243,202 @@ export default class LinkViewer extends React.Component {
     return (
       <div>
         <Card
-          border="none"
-          style={{ height: "550px", margin: 0, borderRadius: 0, width: "100%" }}
+          style={{ height: "100%", margin: 0, borderRadius: 0, width: "100%" }}
         >
-          <Row style={{ padding: 0, margin: 0, height: "100%" }}>
-            <Col sm={9} style={{ padding: 4, width: "100%", height: "100%" }}>
-              <AceEditor
-                style={{ width: "100%", height: "100%" }}
-                //   placeholder={this.state.placeholder}
-                mode={this.state.mode}
-                theme={this.state.theme}
-                name="editor"
-                //   onLoad={this.onLoad}
-                onChange={this.onTextChanged}
-                //   onSelectionChange={this.onSelectionChange}
-                //   onCursorChange={this.onCursorChange}
-                //   onValidate={this.onValidate}
-                value={this.state.editedText}
-                //   fontSize={this.state.fontSize}
-                //   showPrintMargin={this.state.showPrintMargin}
-                //   showGutter={this.state.showGutter}
-                //   highlightActiveLine={this.state.highlightActiveLine}
-                setOptions={{
-                  useWorker: false,
-                  enableBasicAutocompletion: false,
-                  enableLiveAutocompletion: false,
-                  enableSnippets: false,
-                  showLineNumbers: true,
-                  tabSize: 2,
-                }}
-              />
-            </Col>
-            <Col sm={3} style={{ padding: 0 }}>
-              <Form style={{ width: "100%" }}>
-                <div style={{ padding: 4 }}></div>
+          <Container fluid style={{ padding: 4 }}>
+            <Row style={{ padding: 0, margin: 0, height: "100%" }}>
+              <Col sm={9} style={{ padding: 4, width: "100%", height: "100%" }}>
+                <AceEditor
+                  style={{ width: "100%", height: "550px" }}
+                  //   placeholder={this.state.placeholder}
+                  mode={this.state.mode}
+                  theme={this.state.theme}
+                  name="editor"
+                  //   onLoad={this.onLoad}
+                  onChange={this.onTextChanged}
+                  //   onSelectionChange={this.onSelectionChange}
+                  //   onCursorChange={this.onCursorChange}
+                  //   onValidate={this.onValidate}
+                  value={this.state.editedText}
+                  //   fontSize={this.state.fontSize}
+                  //   showPrintMargin={this.state.showPrintMargin}
+                  //   showGutter={this.state.showGutter}
+                  //   highlightActiveLine={this.state.highlightActiveLine}
+                  setOptions={{
+                    useWorker: false,
+                    enableBasicAutocompletion: false,
+                    enableLiveAutocompletion: false,
+                    enableSnippets: false,
+                    showLineNumbers: true,
+                    tabSize: 2,
+                  }}
+                />
+              </Col>
+              <Col sm={3} style={{ padding: 0 }}>
+                <Form style={{ width: "100%" }}>
+                  <div style={{ padding: 4 }}></div>
 
-                <Row style={{ padding: 4 }}>
-                  <Col>
-                    {this.state.isPassword ? (
+                  <Row style={{ padding: 4 }}>
+                    <Col>
+                      {this.state.isPassword ? (
+                        <Form.Control
+                          size="sm"
+                          type="password"
+                          placeholder="Password"
+                          onChange={this.onPasswordChanged}
+                          style={{
+                            fontSize: "small",
+                            float: "right",
+                            color: "rgb(153, 153, 153)",
+                            backgroundColor: this.hasError("title")
+                              ? "rgb(255, 236, 235)"
+                              : "white",
+                            border: this.hasError("title")
+                              ? "1px solid red"
+                              : "1px solid rgb(153, 153, 153)",
+                          }}
+                        />
+                      ) : (
+                        <Form.Control
+                          size="sm"
+                          type="password"
+                          placeholder="Password"
+                          readOnly
+                          style={{ fontSize: "small", float: "right" }}
+                        />
+                      )}
+                    </Col>
+                  </Row>
+                  <Row style={{ padding: 4 }}>
+                    <Col style={{}}>
+                      {this.state.text === "" ? (
+                        <Button
+                          variant="success"
+                          type="submit"
+                          className="mr-1"
+                          style={{
+                            width: "100%",
+                            fontSize: "small",
+                            float: "left",
+                            border: "none",
+                            fontWeight: "600",
+                            backgroundColor: "rgb(116, 147, 168)",
+                          }}
+                          onClick={this.handleGetText}
+                        >
+                          <Row>
+                            <Col sm={10}>
+                              {this.state.submitted
+                                ? "Getting text..."
+                                : "Get text"}
+                            </Col>
+                            <Col sm={2}>
+                              <Grid
+                                style={{
+                                  visibility: this.state.submitted
+                                    ? "visible"
+                                    : "hidden",
+                                }}
+                                width="12"
+                              />
+                            </Col>
+                          </Row>
+                        </Button>
+                      ) : (
+                        <Button
+                          variant="success"
+                          type="submit"
+                          className="mr-1"
+                          disabled={!this.state.editable}
+                          style={{
+                            width: "100%",
+                            fontSize: "small",
+                            float: "left",
+                            border: "none",
+                            fontWeight: "600",
+                            backgroundColor: "rgb(116, 147, 168)",
+                          }}
+                          onClick={this.handleSubmit}
+                        >
+                          <Row>
+                            <Col sm={10}>
+                              {this.state.submitted
+                                ? "Updating text..."
+                                : "Update text"}
+                            </Col>
+                            <Col sm={2}>
+                              <Grid
+                                style={{
+                                  visibility: this.state.submitted
+                                    ? "visible"
+                                    : "hidden",
+                                }}
+                                width="12"
+                              />
+                            </Col>
+                          </Row>
+                        </Button>
+                      )}
+                    </Col>
+                  </Row>
+
+                  <Row style={{ padding: 4 }}>
+                    <Col>
                       <Form.Control
-                        size="sm"
-                        type="password"
-                        placeholder="Password"
-                        onChange={this.onPasswordChanged}
+                        as="select"
                         style={{
                           fontSize: "small",
-                          float: "right",
+                          border: "1px solid rgb(153, 153, 153)",
                           color: "rgb(153, 153, 153)",
-                          backgroundColor: this.hasError("title")
-                            ? "rgb(255, 236, 235)"
-                            : "white",
-                          border: this.hasError("title")
-                            ? "1px solid red"
-                            : "1px solid rgb(153, 153, 153)",
                         }}
-                      />
-                    ) : (
+                        onChange={this.setMode}
+                      >
+                        {languages.map((lang) => (
+                          <option key={lang} value={lang}>
+                            {lang}
+                          </option>
+                        ))}
+                      </Form.Control>
+                    </Col>
+                  </Row>
+                  <Row style={{ padding: 4 }}>
+                    <Col>
                       <Form.Control
-                        size="sm"
-                        type="password"
-                        placeholder="Password"
-                        readOnly
-                        style={{ fontSize: "small", float: "right" }}
-                      />
-                    )}
-                  </Col>
-                </Row>
-                <Row style={{ padding: 4 }}>
-                  <Col style={{}}>
-                    {this.state.text === "" ? (
-                      <Button
-                        variant="success"
-                        type="submit"
-                        className="mr-1"
+                        as="select"
                         style={{
-                          width: "100%",
                           fontSize: "small",
-                          float: "left",
-                          border: "none",
-                          fontWeight: "600",
-                          backgroundColor: "rgb(116, 147, 168)",
+                          border: "1px solid rgb(153, 153, 153)",
+                          color: "rgb(153, 153, 153)",
                         }}
-                        onClick={this.handleGetText}
+                        onChange={this.setTheme}
                       >
-                        <Row>
-                          <Col sm={10}>
-                            {this.state.submitted
-                              ? "Getting text..."
-                              : "Get text"}
-                          </Col>
-                          <Col sm={2}>
-                            <Grid
-                              style={{
-                                visibility: this.state.submitted
-                                  ? "visible"
-                                  : "hidden",
-                              }}
-                              width="12"
-                            />
-                          </Col>
-                        </Row>
-                      </Button>
-                    ) : (
-                      <Button
-                        variant="success"
-                        type="submit"
-                        className="mr-1"
-                        disabled={!this.state.editable}
+                        {themes.map((lang) => (
+                          <option key={lang} value={lang}>
+                            {lang}
+                          </option>
+                        ))}
+                      </Form.Control>
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col>
+                      <a
+                        href="https://github.com/josdejong/jsoneditor"
                         style={{
-                          width: "100%",
-                          fontSize: "small",
-                          float: "left",
-                          border: "none",
-                          fontWeight: "600",
-                          backgroundColor: "rgb(116, 147, 168)",
+                          textDecoration: "none",
+                          fontSize: 10,
+                          fontWeight: "400",
+                          textAlign: "start",
                         }}
-                        onClick={this.handleSubmit}
                       >
-                        <Row>
-                          <Col sm={10}>
-                            {this.state.submitted
-                              ? "Updating text..."
-                              : "Update text"}
-                          </Col>
-                          <Col sm={2}>
-                            <Grid
-                              style={{
-                                visibility: this.state.submitted
-                                  ? "visible"
-                                  : "hidden",
-                              }}
-                              width="12"
-                            />
-                          </Col>
-                        </Row>
-                      </Button>
-                    )}
-                  </Col>
-                </Row>
-
-                <Row style={{ padding: 4 }}>
-                  <Col>
-                    <Form.Control
-                      as="select"
-                      style={{
-                        fontSize: "small",
-                        border: "1px solid rgb(153, 153, 153)",
-                        color: "rgb(153, 153, 153)",
-                      }}
-                      onChange={this.setMode}
-                    >
-                      {languages.map((lang) => (
-                        <option key={lang} value={lang}>
-                          {lang}
-                        </option>
-                      ))}
-                    </Form.Control>
-                  </Col>
-                </Row>
-                <Row style={{ padding: 4 }}>
-                  <Col>
-                    <Form.Control
-                      as="select"
-                      style={{
-                        fontSize: "small",
-                        border: "1px solid rgb(153, 153, 153)",
-                        color: "rgb(153, 153, 153)",
-                      }}
-                      onChange={this.setTheme}
-                    >
-                      {themes.map((lang) => (
-                        <option key={lang} value={lang}>
-                          {lang}
-                        </option>
-                      ))}
-                    </Form.Control>
-                  </Col>
-                </Row>
-                <Row>
-                  <Col>
-                    <a
-                      href="https://github.com/josdejong/jsoneditor"
-                      style={{
-                        textDecoration: "none",
-                        fontSize: 10,
-                        fontWeight: "400",
-                        textAlign: "start",
-                      }}
-                    >
-                      This json editor is project by Josdejong on github
-                    </a>
-                  </Col>
-                </Row>
-              </Form>
-            </Col>
-          </Row>
+                        This editor is project by Josdejong on github
+                      </a>
+                    </Col>
+                  </Row>
+                </Form>
+              </Col>
+            </Row>
+          </Container>
         </Card>
       </div>
     );

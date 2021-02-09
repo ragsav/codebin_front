@@ -1,11 +1,10 @@
 import React from "react";
 
-
 import { Row, Col, Container } from "react-bootstrap";
-import OptionsContainer from "./options";
-import JSONtab from "./JSONtab";
+// import OptionsContainer from "./options";
+// import JSONtab from "./JSONtab";
 import TextTab from "./TEXTtab";
-import LinkViewer from "./LinkViewer";
+import LinkViewer from "../LinkViewer";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 export default class Home extends React.Component {
@@ -59,23 +58,23 @@ export default class Home extends React.Component {
       >
         <Row style={{ width: "90%", position: "absolute" }}>
           <Router>
-            <Col sm={10} style={{ padding: 0 }}>
+            <Col style={{ padding: 0 }}>
               <Switch>
                 <Route exact path="/">
                   <TextTab></TextTab>
                   {/* <MainForm processText={this.processText}></MainForm> */}
                 </Route>
-                <Route path="/json_editor">
+                {/* <Route path="/json_editor">
                   <JSONtab></JSONtab>
-                </Route>
-                <Route path="/link_viewer/:tid">
+                </Route> */}
+                <Route path="/:tid">
                   <LinkViewer></LinkViewer>
                 </Route>
               </Switch>
             </Col>
-            <Col sm={2} style={{ padding: 0 }}>
+            {/* <Col sm={2} style={{ padding: 0 }}>
               <OptionsContainer tabCallback={this.setTab} />
-            </Col>
+            </Col> */}
           </Router>
         </Row>
       </div>
