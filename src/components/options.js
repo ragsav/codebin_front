@@ -106,7 +106,7 @@ export default class OptionsContainer extends React.Component {
               color: "#fff",
             }}
           >
-            Difference viewer
+            JSON editor
           </NavLink>
 
           {/* <Col style={{ padding: 0 }}>

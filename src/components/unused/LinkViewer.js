@@ -152,7 +152,7 @@ export default class LinkViewer extends React.Component {
       data: postObject,
     })
       .then(function (response) {
-        console.log(response.data.url);
+        console.log(response);
 
         if (response.data.success === true) {
           self.setState({

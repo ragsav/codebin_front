@@ -4,24 +4,23 @@ import { Alert, Form, Button, Card, Row, Col, Navbar } from "react-bootstrap";
 
 const MainNavBar = () => (
   <div>
-    <Navbar
-      sticky="top"
-      className="textStylePangolin"
-      style={{ backgroundColor: "#363636" }}
-    >
-      <Navbar.Brand
-        href="#home"
-        style={{ marginLeft: "100px", color: "white" }}
-      >
-        <img
-          alt=""
-          src={logo}
-          width="30"
-          height="30"
-          className="d-inline-block align-center m-1"
-        />{" "}
-        Copy bin
-      </Navbar.Brand>
+    <Navbar sticky="top" style={{ backgroundColor: "#272822" }}>
+      <div style={{ paddingLeft: "10%" }}>
+        <Navbar.Brand href="#home" style={{ color: "white", fontSize: "20px" }}>
+          <div
+            style={{ color: "#04e000", fontSize: "20px" }}
+            className="textStyleCode"
+          >
+            Code>Bin
+          </div>
+          <div
+            style={{ color: "white", fontSize: "15px" }}
+            className="textStyleBarcode"
+          >
+            Code>Bin
+          </div>
+        </Navbar.Brand>
+      </div>
     </Navbar>
   </div>
 );
