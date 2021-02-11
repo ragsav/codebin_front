@@ -3,62 +3,24 @@ import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
 import { Grid } from "@agney/react-loading";
 import AceEditor from "react-ace";
 import Footer from "./footer";
-import PostTab from "./PostTab";
+import Constants from "../constants/constants";
 import "ace-builds/src-min-noconflict/ext-searchbox";
 import "ace-builds/src-min-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/theme-github";
-// import Ipfs from "ipfs";
-// import useIpfs from "../IPFC hooks/use-ipfs";
-// import useIpfsFactory from "../IPFC hooks/use-ipfs-factory";
-// import Tooltip from "@cypress/react-tooltip";
+
 
 const axios = require("axios");
 
-const languages = [
-  "javascript",
-  "java",
-  "python",
-  "xml",
-  "ruby",
-  "sass",
-  "markdown",
-  "mysql",
-  "json",
-  "html",
-  "handlebars",
-  "golang",
-  "csharp",
-  "elixir",
-  "typescript",
-  "css",
-];
-
-const themes = [
-  "monokai",
-  "github",
-  "tomorrow",
-  "kuroir",
-  "twilight",
-  "xcode",
-  "textmate",
-  "solarized_dark",
-  "solarized_light",
-  "terminal",
-];
-
-languages.forEach((lang) => {
+Constants.MODES.forEach((lang) => {
   require(`ace-builds/src-noconflict/mode-${lang}`);
   require(`ace-builds/src-noconflict/snippets/${lang}`);
 });
 
-themes.forEach((theme) => require(`ace-builds/src-noconflict/theme-${theme}`));
+Constants.THEMES.forEach((theme) =>
+  require(`ace-builds/src-noconflict/theme-${theme}`)
+);
 
-// hookhelper = () =>{
-// const { ipfs, ipfsInitError } = useIpfsFactory({ commands: ["id"] });
-// const id = useIpfs(ipfs, "id");
-// ["id", "agentVersion"].map((key) => console.log(id[key]));
-// }
 export default class CodeViewer extends React.Component {
   constructor(props) {
     super(props);
@@ -69,8 +31,8 @@ export default class CodeViewer extends React.Component {
       isPassword: false,
       editable: false,
       password: "",
-      textEditortheme: "monokai",
-      textEditorMode: "javascript",
+      textEditortheme: Constants.DEFAULTTHEME,
+      textEditorMode: Constants.DEFAULTMODE,
       errors: [],
     };
 
@@ -92,12 +54,11 @@ export default class CodeViewer extends React.Component {
       method: "get",
       headers: { "Content-Type": "application/json" },
       url:
-        "https://copybinback.herokuapp.com/api/public/tapLink/" +
+        Constants.TAPLINK +
         currentUrlToken,
     })
       .then(function (response) {
-        console.log(response.data);
-        console.log("response recieved");
+        
         if (response.data.message === "please enter password") {
           self.setState({
             isPassword: true,
@@ -151,7 +112,7 @@ export default class CodeViewer extends React.Component {
     axios({
       method: "post",
       headers: { "Content-Type": "application/json" },
-      url: "https://copybinback.herokuapp.com/api/public/openLink/",
+      url: Constants.OPENLINK,
       data: postObject,
     })
       .then(function (response) {
@@ -293,19 +254,12 @@ export default class CodeViewer extends React.Component {
                         placeholder="Your text here"
                         mode={this.state.textEditorMode}
                         theme={this.state.textEditortheme}
-                        name="editor"
-                        //   onLoad={this.onLoad}
+                       
+                        
 
                         value={this.state.editedText}
                         onChange={this.onTextChanged}
-                        //   onSelectionChange={this.onSelectionChange}
-                        //   onCursorChange={this.onCursorChange}
-                        //   onValidate={this.onValidate}
-                        // value={this.state.text}
-                        //   fontSize={this.state.fontSize}
-                        //   showPrintMargin={this.state.showPrintMargin}
-                        //   showGutter={this.state.showGutter}
-                        //   highlightActiveLine={this.state.highlightActiveLine}
+                        
                         setOptions={{
                           useWorker: false,
                           enableBasicAutocompletion: false,
@@ -324,9 +278,7 @@ export default class CodeViewer extends React.Component {
                       }}
                     >
                       <Form style={{ width: "100%" }}>
-                        <div style={{ padding: 4 }}>
-                        
-                        </div>
+                        <div style={{ padding: 4 }}></div>
 
                         <Row style={{ padding: 4 }}>
                           <Col id="password">
@@ -445,7 +397,7 @@ export default class CodeViewer extends React.Component {
                               }}
                               onChange={this.setTextEditorMode}
                             >
-                              {languages.map((lang) => (
+                              {Constants.MODES.map((lang) => (
                                 <option key={lang} value={lang}>
                                   {lang}
                                 </option>
@@ -464,7 +416,7 @@ export default class CodeViewer extends React.Component {
                               }}
                               onChange={this.setTextEditorTheme}
                             >
-                              {themes.map((lang) => (
+                              {Constants.THEMES.map((lang) => (
                                 <option key={lang} value={lang}>
                                   {lang}
                                 </option>

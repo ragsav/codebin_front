@@ -1,7 +1,7 @@
 import React from "react";
 import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
 import { Grid } from "@agney/react-loading";
-
+import Constants from "../constants/constants";
 import Footer from "./footer";
 
 const axios = require("axios");
@@ -100,7 +100,7 @@ export default class NumberThoeryTab extends React.Component {
                 >
                   <Row style={{ padding: 0, margin: 0 }}>
                     <Col style={{ padding: 0, margin: 0, textAlign: "start" }}>
-                      Number>Theory
+                      {Constants.NUMBERTHEORY}
                     </Col>
                   </Row>
                 </Card>
@@ -134,7 +134,7 @@ export default class NumberThoeryTab extends React.Component {
                       }}
                     >
                       <a
-                        href={`http://localhost:3000/nt/${co.key}`}
+                        href={Constants.HOST + "nt/" + co.key}
                         target="_blank"
                         // className="textStyleCode"
                         style={{

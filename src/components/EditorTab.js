@@ -8,51 +8,20 @@ import "ace-builds/src-min-noconflict/ext-searchbox";
 import "ace-builds/src-min-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/theme-github";
-// import Ipfs from "ipfs";
-// import useIpfs from "../IPFC hooks/use-ipfs";
-// import useIpfsFactory from "../IPFC hooks/use-ipfs-factory";
+import Constants from "../constants/constants";
+
 
 
 const axios = require("axios");
 
-const languages = [
-  "javascript",
-  "java",
-  "python",
-  "xml",
-  "ruby",
-  "sass",
-  "markdown",
-  "mysql",
-  "json",
-  "html",
-  "handlebars",
-  "golang",
-  "csharp",
-  "elixir",
-  "typescript",
-  "css",
-];
 
-const themes = [
-  "monokai",
-  "github",
-  "tomorrow",
-  "kuroir",
-  "twilight",
-  "xcode",
-  "textmate",
-  "solarized_dark",
-  "solarized_light",
-  "terminal",
-];
 
-languages.forEach((lang) => {
+Constants.MODES.forEach((lang) => {
   require(`ace-builds/src-noconflict/mode-${lang}`);
   require(`ace-builds/src-noconflict/snippets/${lang}`);
 });
 
-themes.forEach((theme) => require(`ace-builds/src-noconflict/theme-${theme}`));
+Constants.THEMES.forEach((theme) => require(`ace-builds/src-noconflict/theme-${theme}`));
 
 // hookhelper = () =>{
 // const { ipfs, ipfsInitError } = useIpfsFactory({ commands: ["id"] });
@@ -73,9 +42,9 @@ export default class EditorTab extends React.Component {
       isPassword: false,
       link: "",
       submitted: false,
-      textEditortheme: "monokai",
+      textEditortheme: Constants.DEFAULTTHEME,
       public: false,
-      textEditorMode: "javascript",
+      textEditorMode: Constants.DEFAULTMODE,
 
       errors: [],
     };
@@ -158,67 +127,7 @@ export default class EditorTab extends React.Component {
     });
   };
 
-  // handleIPFCSubmit = async (event) => {
-  //   var self = this;
-  //   var errors = [];
-  //   if (this.state.text === "") {
-  //     errors.push("text");
-  //   }
-  //   if (this.state.title === "") {
-  //     errors.push("title");
-  //   }
-  //   if (this.state.isPassword && this.state.password === "") {
-  //     errors.push("password");
-  //   }
 
-  //   this.setState({
-  //     errors: errors,
-  //   });
-
-  //   console.log(errors);
-  //   event.preventDefault();
-  //   if (errors.length > 0) {
-  //     // return false;
-  //   } else {
-  //     // hookhelper()
-  //     if (this.state.ipfs) {
-  //       console.log("IPFS already started");
-  //     } else if (window.ipfs && window.ipfs.enable) {
-  //       console.log("Found window.ipfs");
-  //       this.setState({
-  //         ipfs: await window.ipfs.enable({ commands: ["id"] }),
-  //       });
-  //     } else {
-  //       try {
-  //         console.time("IPFS Started");
-  //         this.setState({
-  //           ipfs: await Ipfs.create(),
-  //         });
-
-  //         console.timeEnd("IPFS Started");
-  //       } catch (error) {
-  //         console.error("IPFS init error:", error);
-  //         this.state.ipfs = null;
-  //       }
-  //     }
-  //     try {
-  //       if (this.state.ipfs) {
-  //         var results = this.state.ipfs.add(this.state.text);
-  //         console.log(results);
-  //       }
-  //     } catch (e) {
-  //       console.error(e);
-  //     }
-
-  //     // const node = await Ipfs.create()
-  //     // const data = 'Hello, <YOURAME HERE>'
-  //     // const results = node.add(data)
-  //     // for await (const { cid } of results) {
-  //     //   console.log(cid.toString())
-  //     // }
-  //     // node.stop
-  //   }
-  // };
   handleAppServerSubmit = (event) => {
     event.preventDefault();
 
@@ -344,17 +253,7 @@ export default class EditorTab extends React.Component {
                         placeholder="Your text here"
                         mode={this.state.textEditorMode}
                         theme={this.state.textEditortheme}
-                        name="editor"
-                        //   onLoad={this.onLoad}
                         onChange={this.onTextChanged}
-                        //   onSelectionChange={this.onSelectionChange}
-                        //   onCursorChange={this.onCursorChange}
-                        //   onValidate={this.onValidate}
-                        // value={this.state.text}
-                        //   fontSize={this.state.fontSize}
-                        //   showPrintMargin={this.state.showPrintMargin}
-                        //   showGutter={this.state.showGutter}
-                        //   highlightActiveLine={this.state.highlightActiveLine}
                         setOptions={{
                           useWorker: false,
                           enableBasicAutocompletion: false,
@@ -525,20 +424,19 @@ export default class EditorTab extends React.Component {
                                 <Row>
                                   <Col>
                                     <Grid width="20" height="20" />
-                                    
                                   </Col>
                                 </Row>
                               ) : (
                                 <Row>
                                   <Col className="textStyleCode">
-                                    Generate link
+                                    {Constants.GENERATELINK}
                                   </Col>
                                 </Row>
                               )}
                             </Button>
                           </Col>
                         </Row>
-                        
+
                         <Row style={{ padding: 4, width: "100%", margin: 0 }}>
                           <Col style={{ padding: 0, margin: 0 }}>
                             <Form.Group>
@@ -576,7 +474,7 @@ export default class EditorTab extends React.Component {
                               }}
                               onChange={this.setTextEditorMode}
                             >
-                              {languages.map((lang) => (
+                              {Constants.MODES.map((lang) => (
                                 <option key={lang} value={lang}>
                                   {lang}
                                 </option>
@@ -595,7 +493,7 @@ export default class EditorTab extends React.Component {
                               }}
                               onChange={this.setTextEditorTheme}
                             >
-                              {themes.map((lang) => (
+                              {Constants.THEMES.map((lang) => (
                                 <option key={lang} value={lang}>
                                   {lang}
                                 </option>
@@ -607,14 +505,17 @@ export default class EditorTab extends React.Component {
                         <Row style={{ padding: 4, width: "100%", margin: 0 }}>
                           <Col style={{ padding: 0 }}>
                             <a
-                              href="https://github.com/josdejong/jsoneditor"
+                            className="textStyleCode"
+                              href={Constants.HOST +    "nt"}
                               style={{
+
                                 textDecoration: "none",
-                                fontSize: 10,
+
+                                fontSize: 12,
                                 fontWeight: "400",
                               }}
                             >
-                              This json editor is project by Josdejong on github
+                              {Constants.NUMBERTHEORY}
                             </a>
                           </Col>
                         </Row>
