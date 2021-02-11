@@ -523,19 +523,9 @@ export default class EditorTab extends React.Component {
                             >
                               {this.state.submitted ? (
                                 <Row>
-                                  <Col
-                                    sm={10}
-                                    className="textStyleCode"
-                                    style={{
-                                      
-                                      fontSize: "10px",
-                                      
-                                    }}
-                                  >
-                                    Generating link...
-                                  </Col>
-                                  <Col sm={2}>
-                                    <Grid width="12" />
+                                  <Col>
+                                    <Grid width="20" height="20" />
+                                    
                                   </Col>
                                 </Row>
                               ) : (
@@ -548,39 +538,7 @@ export default class EditorTab extends React.Component {
                             </Button>
                           </Col>
                         </Row>
-                        {/* <Row style={{ padding: 4, width: "100%", margin: 0 }}>
-                    <Col style={{ padding: 0 }}>
-                      <Button
-                        variant="success"
-                        type="submit"
-                        className="mr-1"
-                        style={{
-                          width: "100%",
-                          fontSize: "small",
-                          float: "left",
-                          border: "none",
-                          fontWeight: "600",
-                          backgroundColor: "rgb(116, 147, 168)",
-                        }}
-                        onClick={this.handleIPFCSubmit}
-                      >
-                        {this.state.submitted ? (
-                          <Row>
-                            <Col sm={10}>Generating link...</Col>
-                            <Col sm={2}>
-                              <Grid width="12" />
-                            </Col>
-                          </Row>
-                        ) : (
-                          <Row>
-                            <Col>
-                              Generate link on IPFC distributed file systems
-                            </Col>
-                          </Row>
-                        )}
-                      </Button>
-                    </Col>
-                  </Row> */}
+                        
                         <Row style={{ padding: 4, width: "100%", margin: 0 }}>
                           <Col style={{ padding: 0, margin: 0 }}>
                             <Form.Group>

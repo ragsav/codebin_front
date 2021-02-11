@@ -11,6 +11,7 @@ import "ace-builds/src-noconflict/theme-github";
 // import Ipfs from "ipfs";
 // import useIpfs from "../IPFC hooks/use-ipfs";
 // import useIpfsFactory from "../IPFC hooks/use-ipfs-factory";
+// import Tooltip from "@cypress/react-tooltip";
 
 const axios = require("axios");
 
@@ -323,10 +324,12 @@ export default class CodeViewer extends React.Component {
                       }}
                     >
                       <Form style={{ width: "100%" }}>
-                        <div style={{ padding: 4 }}></div>
+                        <div style={{ padding: 4 }}>
+                        
+                        </div>
 
                         <Row style={{ padding: 4 }}>
-                          <Col>
+                          <Col id="password">
                             {this.state.isPassword ? (
                               <Form.Control
                                 size="sm"

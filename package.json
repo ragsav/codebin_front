@@ -10,6 +10,7 @@
     "ace-builds": "^1.4.12",
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
+    "formik": "^2.2.6",
     "ipfs": "^0.54.2",
     "jsoneditor": "^9.1.9",
     "jsoneditor-react": "^3.1.0",

@@ -34,7 +34,7 @@ function PostsList(props) {
         padding: "0% 0% 0% 0%",
         border: "none",
         borderRadius: 0,
-        fontSize: "12px",
+        fontSize: "13px",
         color: "#616161",
         fontWeight: "100",
         margin: 1,
@@ -53,7 +53,7 @@ function PostsList(props) {
             textAlign: "center",
           }}
         >
-          <a href={`http://localhost:3000/${post._id}`} target="_blank">
+          <a href={`http://localhost:3000/viewer/${post._id}`} target="_blank">
             {post.title}
           </a>
         </Col>
@@ -189,36 +189,12 @@ export default class PostTab extends React.Component {
             >
               <Row style={{ padding: 0, margin: 0 }}>
                 <Col
-                  sm={10}
+                  
                   style={{ padding: 0, margin: 0, textAlign: "start" }}
                 >
                   Public>Codes
                 </Col>
-                <Col
-                  sm={2}
-                  style={{ padding: 0, margin: 0, alignItems: "end" }}
-                >
-                  <Button
-                    variant="success"
-                    type="submit"
-                    className="mr-1"
-                    style={{
-                      width: "100%",
-                      //   padding: 0,
-                      textAlign: "center",
-                      fontSize: "9px",
-                      float: "center",
-                      border: "none",
-                      fontWeight: "400",
-                      color: "#04e000",
-                      boxShadow: "none",
-                      backgroundColor: "#272822",
-                    }}
-                    onClick={this.handleRefresh}
-                  >
-                    Refresh
-                  </Button>
-                </Col>
+                
               </Row>
             </Card>
           </Row>
