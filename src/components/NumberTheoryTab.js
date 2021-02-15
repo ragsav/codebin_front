@@ -20,12 +20,44 @@ const companyList = [
     key: "jacobi_symbol",
   },
   {
+    name: "Euler Criterion",
+    key: "euler_criterion",
+  },
+  {
     name: "Euler Psuedoprime",
     key: "euler_psuedoprime",
   },
   {
     name: "Jacobi-Euler Psuedoprime",
     key: "jacobi_euler_psuedoprime",
+  },
+  {
+    name: "Fermat's little theorum",
+    key: "fermat_little_theorum",
+  },
+  {
+    name: "Fermats mod",
+    key: "fermat_mod",
+  },
+  {
+    name: "Fermat's Psuedoprime",
+    key: "fermat_psuedoprime",
+  },
+  {
+    name: "Euler's Totient",
+    key: "euler_totient",
+  },
+  {
+    name: "Euler Fermat Theorum",
+    key: "euler_fermat_theorum",
+  },
+  {
+    name: "Pollard Rho",
+    key: "pollard_rho",
+  },
+  {
+    name: "Fermat's Factorization",
+    key: "fermat_factorization",
   },
 ];
 export default class NumberThoeryTab extends React.Component {
@@ -58,15 +90,14 @@ export default class NumberThoeryTab extends React.Component {
             // left:"50px",
             // right:"50px",
             // padding: "30px",
-            margin: "auto",
+            margin: "10px auto",
 
             // marginLeft:"5%",
             // marginRight:"5%",
             backgroundColor: "white",
             borderRadius: 0,
-            maxWidth: "80%",
-            minWidth: "450px",
-            padding: 0,
+            width: "1024px",
+            padding: 4,
             // margin: 0,
           }}
         >
@@ -116,21 +147,23 @@ export default class NumberThoeryTab extends React.Component {
                 {companyList.map((co) => (
                   <Col
                     style={{
-                      padding: 4,
+                      padding: 0,
+                      paddingTop:       4,
+                      paddingBottom:4,
                       margin: 0,
                     }}
-                    xs={{ span: 6 }}
+                    xs={{ span: 12 }}
                     sm={{ span: 6 }}
                     md={{ span: 4 }}
-                    lg={{ span: 3 }}
-                    xl={{ span: 2 }}
+                    lg={{ span: 4 }}
+                    xl={{ span: 3 }}
                   >
                     <Card
                       style={{
                         height: "100%",
                         padding: 4,
                         margin: 4,
-                        backgroundColor: "rgb( 211, 229, 242)",
+                        backgroundColor: "#51b82a",
                       }}
                     >
                       <a
@@ -139,7 +172,7 @@ export default class NumberThoeryTab extends React.Component {
                         // className="textStyleCode"
                         style={{
                           textDecoration: "none",
-                          color: "#272822",
+                          color: "white",
                           fontSize: "14px",
                           fontWeight: "600",
                         }}

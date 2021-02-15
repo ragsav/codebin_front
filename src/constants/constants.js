@@ -38,4 +38,9 @@ module.exports = Object.freeze({
     "typescript",
     "css",
   ],
+  CALCULATEBUTTONBG: "#51b82a",
+  CALCULATEBUTTONTEXTCOLOR: "#fff",
+  APPBG: "#d8ffc9",
+  HEADINGCOLOR: "#04e000",
+  MONOKAI: "#272822",
 });

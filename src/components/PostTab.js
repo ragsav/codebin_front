@@ -11,6 +11,7 @@ import {
 } from "react-bootstrap";
 import { Grid } from "@agney/react-loading";
 import CodeViewer from "./CodeViewer";
+import Constants from "../constants/constants"
 import {
   BrowserRouter as Router,
   Switch,
@@ -50,10 +51,11 @@ function PostsList(props) {
           style={{
             padding: 4,
             margin: 0,
+            
             textAlign: "center",
           }}
         >
-          <a href={`http://localhost:3000/viewer/${post._id}`} target="_blank">
+          <a href={`http://localhost:3000/viewer/${post._id}`} style={{textDecoration:"none"}} target="_blank">
             {post.title}
           </a>
         </Col>
@@ -176,14 +178,14 @@ export default class PostTab extends React.Component {
               className="textStyleCode"
               style={{
                 width: "100%",
-                backgroundColor: "#272822",
+                backgroundColor: Constants.MONOKAI,
 
                 border: "none",
                 borderRadius: 4,
                 padding: "1%",
                 fontSize: "13px",
                 fontWeight: "500",
-                color: "#04e000",
+                color: Constants.HEADINGCOLOR,
                 margin: 4,
               }}
             >
@@ -192,7 +194,7 @@ export default class PostTab extends React.Component {
                   
                   style={{ padding: 0, margin: 0, textAlign: "start" }}
                 >
-                  Public>Codes
+                  {Constants.PUBLICCODES}
                 </Col>
                 
               </Row>
@@ -204,7 +206,8 @@ export default class PostTab extends React.Component {
               margin: 0,
               padding: 0,
               fontSize: "14px",
-              fontWeight: "400",
+              fontWeight: "600",
+              color:Constants.CALCULATEBUTTONBG
             }}
           >
             <Col
@@ -212,7 +215,7 @@ export default class PostTab extends React.Component {
               style={{
                 padding: "5px",
 
-                color: "rgb(116, 147, 168)",
+                
                 margin: 0,
                 textAlign: "center",
               }}
@@ -224,7 +227,7 @@ export default class PostTab extends React.Component {
               style={{
                 padding: "5px",
 
-                color: "rgb(116, 147, 168)",
+                
                 margin: 0,
                 textAlign: "end",
               }}
@@ -236,7 +239,7 @@ export default class PostTab extends React.Component {
               style={{
                 padding: "5px",
 
-                color: "rgb(116, 147, 168)",
+                
                 margin: 0,
                 textAlign: "end",
               }}
@@ -248,7 +251,7 @@ export default class PostTab extends React.Component {
               style={{
                 padding: "5px",
 
-                color: "rgb(116, 147, 168)",
+                
                 margin: 0,
                 textAlign: "end",
               }}
@@ -258,7 +261,7 @@ export default class PostTab extends React.Component {
           </Row>
           <Row
             style={{
-              backgroundColor: "#272822",
+              backgroundColor: Constants.CALCULATEBUTTONBG,
               //   width: "100%",
               height: "1px",
               padding: "0% 1% 0% 1%",

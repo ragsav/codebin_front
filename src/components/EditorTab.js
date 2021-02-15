@@ -202,21 +202,20 @@ export default class EditorTab extends React.Component {
             // left:"50px",
             // right:"50px",
             // padding: "30px",
-            margin: "auto",
+            margin: "10px auto",
 
             // marginLeft:"5%",
             // marginRight:"5%",
             backgroundColor: "white",
             borderRadius: 0,
-            maxWidth: "80%",
-            minWidth: "450px",
-            padding: 0,
+            width: "1024px",
+            padding: 4,
             // margin: 0,
           }}
         >
           <Row
             style={{
-              padding: "2% 0% 2% 0%",
+              padding: "0",
               margin: "0% 0% 0% 0%",
             }}
           >
@@ -301,7 +300,7 @@ export default class EditorTab extends React.Component {
                                   : "white",
                                 border: this.hasError("title")
                                   ? "1px solid red"
-                                  : "1px solid #272822",
+                                  : `1px solid ${Constants.CALCULATEBUTTONBG}`,
                               }}
                               onChange={this.onTitleChanged}
                             />
@@ -313,7 +312,7 @@ export default class EditorTab extends React.Component {
                               as="select"
                               style={{
                                 fontSize: "small",
-                                border: "1px solid #272822",
+                                border: `1px solid ${Constants.CALCULATEBUTTONBG}`,
                                 color: "rgb(153, 153, 153)",
                               }}
                               onChange={this.onExpiryChanged}
@@ -333,7 +332,7 @@ export default class EditorTab extends React.Component {
                               placeholder="Enter reads to burn"
                               style={{
                                 fontSize: "small",
-                                border: "1px solid #272822",
+                                border: `1px solid ${Constants.CALCULATEBUTTONBG}`,
                                 color: "#272822",
                               }}
                             />
@@ -387,7 +386,7 @@ export default class EditorTab extends React.Component {
                                     : "white",
                                   border: this.hasError("title")
                                     ? "1px solid red"
-                                    : "1px solid #272822",
+                                    : `2px solid ${Constants.CALCULATEBUTTONBG}`,
                                 }}
                               />
                             ) : (
@@ -414,9 +413,9 @@ export default class EditorTab extends React.Component {
                                 float: "left",
                                 border: "none",
                                 fontWeight: "500",
-                                color: "#04e000",
+                                color: Constants.CALCULATEBUTTONTEXTCOLOR,
                                 // boxShadow: "1px 3px 1px #9E9E9E",
-                                backgroundColor: "#272822",
+                                backgroundColor: Constants.CALCULATEBUTTONBG,
                               }}
                               onClick={this.handleAppServerSubmit}
                             >
@@ -448,12 +447,12 @@ export default class EditorTab extends React.Component {
                                   border:
                                     this.state.link === ""
                                       ? "1px solid white"
-                                      : "1px solid rgb(191, 212, 227)",
+                                      : `2px solid ${Constants.CALCULATEBUTTONBG}`,
                                   boxShadow:
                                     this.state.link === ""
                                       ? "null"
                                       : "0 0 10px rgb(191, 212, 227)",
-                                  backgroundColor: "rgb( 211, 229, 242)",
+                                  backgroundColor: Constants.APPBG,
                                 }}
                                 as="textarea"
                                 rows={4}
@@ -469,7 +468,7 @@ export default class EditorTab extends React.Component {
                               as="select"
                               style={{
                                 fontSize: "small",
-                                border: "1px solid #272822",
+                                border: `1px solid ${Constants.CALCULATEBUTTONBG}`,
                                 color: "#272822",
                               }}
                               onChange={this.setTextEditorMode}
@@ -488,7 +487,7 @@ export default class EditorTab extends React.Component {
                               as="select"
                               style={{
                                 fontSize: "small",
-                                border: "1px solid #272822",
+                                border: `1px solid ${Constants.CALCULATEBUTTONBG}`,
                                 color: "#272822",
                               }}
                               onChange={this.setTextEditorTheme}
@@ -505,13 +504,14 @@ export default class EditorTab extends React.Component {
                         <Row style={{ padding: 4, width: "100%", margin: 0 }}>
                           <Col style={{ padding: 0 }}>
                             <a
-                            className="textStyleCode"
-                              href={Constants.HOST +    "nt"}
+                              className="textStyleCode"
+                              href={Constants.HOST + "nt"}
                               style={{
-
                                 textDecoration: "none",
 
                                 fontSize: 12,
+                                color: Constants.CALCULATEBUTTONBG,
+
                                 fontWeight: "400",
                               }}
                             >
