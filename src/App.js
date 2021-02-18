@@ -3,35 +3,42 @@ import MainNavBar from "./components/navBar";
 
 import './App.css';
 import { Row, Col, Container } from "react-bootstrap";
-import EditorTab from "./components/EditorTab";
+import EditorTab from "./components/link_generator/EditorTab";
 // import LinkViewer from "./components/unused/LinkViewer";
-import CodeViewer from "./components/CodeViewer";
+import CodeViewer from "./components/link_generator/CodeViewer";
 import Constants from "./constants/constants";
-import EncryptDecrypt from "./components/encrypt_decrypt";
-import NumberTheoryTab from "./components/NumberTheoryTab";
+import EncryptDecrypt from "./components/encrypt decrypt/encrypt_decrypt";
+import NumberTheoryTab from "./components/number theory/NumberTheoryTab";
+import LinearAlgebraTab from "./components/linear algebra/linear_algebra";
 // import CodeViewerInt from "./components/CodeViewerInt";
-import ExponentialMod from "./components/number theory/functions/exponential_mod";
+import ExponentialMod from "./components/number theory/exponential_mod";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import JacobiSymbol from "./components/number theory/functions/jacobi_symbol";
-import EulerPsuedoprime from "./components/number theory/functions/euler_psuedoprime";
-import JacobiEulerPsuedoprime from "./components/number theory/functions/euler_jacobi_psuedoprime";
-import FermatLittleTheorum from "./components/number theory/functions/fermat_little_theorum";
-import PrimeFactors from "./components/number theory/functions/factors";
-import FermatPsuedoprime from "./components/number theory/functions/fermat_psuedoprime";
-import FermatMod from "./components/number theory/functions/fermat_mod";
-import EulerCriterion from "./components/number theory/functions/euler_criterion";
-import EulerTotient from "./components/number theory/functions/euler_totient";
-import EulerFermatTheorum from "./components/number theory/functions/euler_fermat_theory";
-import PollardRho from "./components/number theory/functions/pollard_rho";
-import FermatFactorization from "./components/number theory/functions/fermat_factorization";
+import JacobiSymbol from "./components/number theory/jacobi_symbol";
+import EulerPsuedoprime from "./components/number theory/euler_psuedoprime";
+import JacobiEulerPsuedoprime from "./components/number theory/euler_jacobi_psuedoprime";
+import FermatLittleTheorum from "./components/number theory/fermat_little_theorum";
+import PrimeFactors from "./components/number theory/factors";
+import FermatPsuedoprime from "./components/number theory/fermat_psuedoprime";
+import FermatMod from "./components/number theory/fermat_mod";
+import EulerCriterion from "./components/number theory/euler_criterion";
+import EulerTotient from "./components/number theory/euler_totient";
+import EulerFermatTheorum from "./components/number theory/euler_fermat_theory";
+import PollardRho from "./components/number theory/pollard_rho";
+import FermatFactorization from "./components/number theory/fermat_factorization";
 function App() {
   return (
     <div
       className="App"
-      style={{ overflow: "scroll", backgroundColor: Constants.PRIMARY }}
+      style={{
+        overflow: "scroll",
+        backgroundColor: Constants.PRIMARY,
+        padding: 10,
+      }}
     >
       <Container style={{ padding: 0, height: "100%" }} fluid>
-        <Row style={{ padding: 0, margin: 0, width: "100%" }}>
+        <Row
+          style={{ padding: 0, margin: 0, width: "100%", maxHeight: "100%" }}
+        >
           <Col style={{ padding: 0, margin: 0 }}>
             <MainNavBar></MainNavBar>
           </Col>
@@ -47,6 +54,9 @@ function App() {
                 </Route>
                 <Route exact path="/encrypt_decrypt">
                   <EncryptDecrypt></EncryptDecrypt>
+                </Route>
+                <Route exact path="/linear_algebra">
+                  <LinearAlgebraTab></LinearAlgebraTab>
                 </Route>
                 <Route exact path="/viewer/:tid">
                   <CodeViewer></CodeViewer>

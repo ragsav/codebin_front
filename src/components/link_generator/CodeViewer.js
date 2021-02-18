@@ -2,13 +2,12 @@ import React from "react";
 import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
 import { Grid } from "@agney/react-loading";
 import AceEditor from "react-ace";
-import Footer from "./footer";
-import Constants from "../constants/constants";
+import Footer from "../footer";
+import Constants from "../../constants/constants";
 import "ace-builds/src-min-noconflict/ext-searchbox";
 import "ace-builds/src-min-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/theme-github";
-
 
 const axios = require("axios");
 
@@ -200,7 +199,7 @@ export default class CodeViewer extends React.Component {
             // left:"50px",
             // right:"50px",
             // padding: "30px",
-            margin: "10px auto",
+            margin: "auto",
 
             // marginLeft:"5%",
             // marginRight:"5%",
@@ -213,8 +212,8 @@ export default class CodeViewer extends React.Component {
         >
           <Row
             style={{
-              padding: "0",
-              margin: "0% 0% 0% 0%",
+              padding: 4,
+              margin: 0,
             }}
           >
             <Col
@@ -229,6 +228,31 @@ export default class CodeViewer extends React.Component {
                 }}
               >
                 <Container fluid style={{ padding: 4, margin: 0 }}>
+                  <Row style={{ padding: 0, margin: 0 }}>
+                    <Card
+                      className="textStyleCode"
+                      style={{
+                        width: "100%",
+                        backgroundColor: Constants.PRIMARY,
+
+                        // border: "none",
+                        borderRadius: 4,
+                        padding: "1%",
+                        fontSize: "13px",
+                        fontWeight: "500",
+                        color: Constants.SECONDARY,
+                        margin: 4,
+                      }}
+                    >
+                      <Row style={{ padding: 0, margin: 0 }}>
+                        <Col
+                          style={{ padding: 0, margin: 0, textAlign: "start" }}
+                        >
+                          {Constants.PASTE}
+                        </Col>
+                      </Row>
+                    </Card>
+                  </Row>
                   <Row style={{ padding: 0, margin: 0 }}>
                     <Col
                       xs={{ span: 12 }}
@@ -246,14 +270,14 @@ export default class CodeViewer extends React.Component {
                     >
                       <AceEditor
                         style={{
-                          height: "550px",
+                          height: "450px",
                           width: "100%",
                           borderRadius: 4,
-                          border: "1px solid #272822",
+                          border: `1px solid ${Constants.SECONDARY}`,
                         }}
                         placeholder="Your text here"
                         mode={this.state.textEditorMode}
-                        theme={this.state.textEditortheme}
+                        theme="xcode"
                         value={this.state.editedText}
                         onChange={this.onTextChanged}
                         setOptions={{
@@ -324,8 +348,8 @@ export default class CodeViewer extends React.Component {
                                   float: "left",
                                   border: "none",
                                   fontWeight: "500",
-                                  color: "#04e000",
-                                  backgroundColor: Constants.MONOKAI,
+                                  color: Constants.TERTIARY,
+                                  backgroundColor: Constants.SECONDARY,
                                 }}
                                 onClick={this.handleGetText}
                               >
@@ -405,7 +429,7 @@ export default class CodeViewer extends React.Component {
                             </Form.Control>
                           </Col>
                         </Row>
-                        <Row style={{ padding: 4 }}>
+                        {/* <Row style={{ padding: 4 }}>
                           <Col>
                             <Form.Control
                               as="select"
@@ -423,22 +447,7 @@ export default class CodeViewer extends React.Component {
                               ))}
                             </Form.Control>
                           </Col>
-                        </Row>
-                        <Row>
-                          <Col>
-                            <a
-                              href="https://github.com/josdejong/jsoneditor"
-                              style={{
-                                textDecoration: "none",
-                                fontSize: 10,
-                                fontWeight: "400",
-                                textAlign: "start",
-                              }}
-                            >
-                              This editor is project by Josdejong on github
-                            </a>
-                          </Col>
-                        </Row>
+                        </Row> */}
                       </Form>
                     </Col>
                   </Row>

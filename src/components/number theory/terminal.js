@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "@agney/react-loading";
 import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
-import Constants from "../../../constants/constants";
+import Constants from "../../constants/constants";
 import { useEffect, useState } from "react";
 
 export default function Terminal(props) {
@@ -26,13 +26,13 @@ export default function Terminal(props) {
               readOnly
               style={{
                 fontSize: "small",
-                color: "#04e000",
+                color: Constants.SECONDARY,
                 padding: 8,
                 height: props.height,
                 width: "100%",
-                backgroundColor: Constants.MONOKAI,
+                backgroundColor: Constants.TERTIARY,
                 borderRadius: 4,
-                border: "1px solid #272822",
+                border: `1px solid ${Constants.MONOKAI}`,
               }}
             ></textarea>
           </Col>

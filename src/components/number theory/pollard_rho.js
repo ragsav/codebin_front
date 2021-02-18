@@ -3,17 +3,18 @@ import { Grid } from "@agney/react-loading";
 import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Terminal from "./terminal";
-import { powerMod } from "../algorithms/algorithms";
-import Constants from "../../../constants/constants";
+import { RHOfactorNumber } from "./nt_algorithms";
+import Constants from "../../constants/constants";
+// import Footer from "../../footer";
 var res_string = [];
 
-export default function ExponentialMod() {
+export default function PollardRho() {
   const [error, setError] = useState([]);
-  const [submitting, setSubmitting] = useState(false);
+
   const [text, setText] = useState([]);
-  const [base, setBase] = useState(0);
-  const [mod, setMod] = useState(0);
-  const [exponent, setExponent] = useState(0);
+  const [a, setA] = useState(0);
+
+  //   const [exponent, setExponent] = useState(0);
 
   return (
     <div>
@@ -23,14 +24,14 @@ export default function ExponentialMod() {
           // left:"50px",
           // right:"50px",
           // padding: "30px",
-          margin: "10px auto",
+          margin: "auto",
 
           // marginLeft:"5%",
           // marginRight:"5%",
           backgroundColor: "white",
           borderRadius: 0,
           width: "1024px",
-          padding: 4,
+          padding: 8,
           // margin: 0,
         }}
       >
@@ -73,20 +74,20 @@ export default function ExponentialMod() {
                     }}
                   >
                     <Form style={{ width: "100%" }}>
-                      <div
+                      <Card
                         className="textStyleCode"
                         style={{
                           margin: 4,
                           paddingTop: 8,
                           paddingBottom: 8,
                           borderRadius: 4,
-                          backgroundColor: Constants.MONOKAI,
+                          backgroundColor: Constants.PRIMARY,
                           color: Constants.SECONDARY,
                           fontSize: 10,
                         }}
                       >
-                        Fermat's Mod
-                      </div>
+                        Pollard Rho method
+                      </Card>
 
                       <Row style={{ padding: 4, width: "100%", margin: 0 }}>
                         <Col style={{ padding: 0 }}>
@@ -100,41 +101,7 @@ export default function ExponentialMod() {
                               border: `1px solid ${Constants.SECONDARY}`,
                             }}
                             onChange={(v) => {
-                              setBase(v.target.value);
-                            }}
-                          />
-                        </Col>
-                      </Row>
-                      <Row style={{ padding: 4, width: "100%", margin: 0 }}>
-                        <Col style={{ padding: 0 }}>
-                          <Form.Control
-                            type="text"
-                            placeholder="Exponent"
-                            style={{
-                              fontSize: "small",
-                              color: Constants.MONOKAI,
-                              backgroundColor: "white",
-                              border: `1px solid ${Constants.SECONDARY}`,
-                            }}
-                            onChange={(v) => {
-                              setExponent(v.target.value);
-                            }}
-                          />
-                        </Col>
-                      </Row>
-                      <Row style={{ padding: 4, width: "100%", margin: 0 }}>
-                        <Col style={{ padding: 0 }}>
-                          <Form.Control
-                            type="text"
-                            placeholder="Modulo"
-                            style={{
-                              fontSize: "small",
-                              color: Constants.MONOKAI,
-                              backgroundColor: "white",
-                              border: `1px solid ${Constants.SECONDARY}`,
-                            }}
-                            onChange={(v) => {
-                              setMod(v.target.value);
+                              setA(v.target.value);
                             }}
                           />
                         </Col>
@@ -159,7 +126,7 @@ export default function ExponentialMod() {
                             onClick={(e) => {
                               e.preventDefault();
 
-                              powerMod(base, exponent, mod, res_string);
+                              RHOfactorNumber(a, res_string);
                               setText(res_string);
                               res_string = [];
                               //   console.log(text);

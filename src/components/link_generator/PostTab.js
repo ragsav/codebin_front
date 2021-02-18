@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../public.png";
+// import logo from "public.png";
 import {
   Alert,
   Form,
@@ -9,9 +9,9 @@ import {
   Col,
   Container,
 } from "react-bootstrap";
-import { Grid } from "@agney/react-loading";
-import CodeViewer from "./CodeViewer";
-import Constants from "../constants/constants"
+// import { Grid } from "@agney/react-loading";
+// import CodeViewer from "./CodeViewer";
+import Constants from "../../constants/constants";
 import {
   BrowserRouter as Router,
   Switch,
@@ -112,7 +112,7 @@ function PostsList(props) {
       </Row>
       <Row
         style={{
-          backgroundColor: Constants.MONOKAILIGHT,
+          backgroundColor: Constants.PRIMARY,
           //   width: "100%",
           height: "1px",
           padding: "0% 1% 0% 1%",
@@ -189,22 +189,22 @@ export default class PostTab extends React.Component {
       <div
         style={{
           padding: 0,
-          paddingTop:50,
-          paddingBottom:50,
+          paddingTop: 50,
+          paddingBottom: 50,
           margin: 0,
         }}
       >
-        <Card style={{ padding: 2, margin: 0 }}>
+        <Card style={{ padding: 4, margin: 0 }}>
           <Row style={{ padding: 0, margin: 0 }}>
             <Card
               className="textStyleCode"
               style={{
                 width: "100%",
-                backgroundColor: Constants.MONOKAI,
+                backgroundColor: Constants.PRIMARY,
 
-                border: "none",
+                // border: "none",
                 borderRadius: 4,
-                padding: "1%",
+                padding: 4,
                 fontSize: "13px",
                 fontWeight: "500",
                 color: Constants.SECONDARY,
@@ -212,7 +212,7 @@ export default class PostTab extends React.Component {
               }}
             >
               <Row style={{ padding: 0, margin: 0 }}>
-                <Col style={{ padding: 0, margin: 0, textAlign: "start" }}>
+                <Col style={{ padding: 4, margin: 0, textAlign: "start" }}>
                   {Constants.PUBLICCODES}
                 </Col>
               </Row>
@@ -244,7 +244,6 @@ export default class PostTab extends React.Component {
             </Col>
             <Col
               className="d-none d-sm-block"
-              
               sm={{ span: 6 }}
               md={{ span: 4 }}
               lg={{ span: 6 }}
@@ -260,7 +259,6 @@ export default class PostTab extends React.Component {
             </Col>
             <Col
               className="d-none d-md-block"
-              
               md={{ span: 2 }}
               lg={{ span: 2 }}
               xl={{ span: 2 }}
@@ -275,7 +273,6 @@ export default class PostTab extends React.Component {
             </Col>
             <Col
               className="d-none d-md-block"
-              
               md={{ span: 2 }}
               lg={{ span: 2 }}
               xl={{ span: 2 }}
@@ -291,7 +288,7 @@ export default class PostTab extends React.Component {
           </Row>
           <Row
             style={{
-              backgroundColor: Constants.SECONDARY,
+              backgroundColor: Constants.PRIMARY,
               //   width: "100%",
               height: "1px",
               padding: "0% 1% 0% 1%",

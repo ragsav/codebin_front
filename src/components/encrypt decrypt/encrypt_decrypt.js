@@ -2,8 +2,8 @@ import React from "react";
 import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
 import { Grid } from "@agney/react-loading";
 import AceEditor from "react-ace";
-import Footer from "./footer";
-import Constants from "../constants/constants";
+import Footer from "../footer";
+import Constants from "../../constants/constants";
 import "ace-builds/src-min-noconflict/ext-searchbox";
 import "ace-builds/src-min-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-java";
@@ -188,7 +188,7 @@ export default class EncryptDecrypt extends React.Component {
       <div>
         <Col
           style={{
-            margin: "10px auto",
+            margin: "auto",
             backgroundColor: "white",
             borderRadius: 0,
             width: "1024px",
@@ -197,7 +197,7 @@ export default class EncryptDecrypt extends React.Component {
         >
           <Row
             style={{
-              padding: "0",
+              padding: 4,
               margin: "0% 0% 0% 0%",
             }}
           >
@@ -213,6 +213,31 @@ export default class EncryptDecrypt extends React.Component {
                 }}
               >
                 <Container fluid style={{ padding: 4, margin: 0 }}>
+                  <Row style={{ padding: 0, margin: 0 }}>
+                    <Card
+                      className="textStyleCode"
+                      style={{
+                        width: "100%",
+                        backgroundColor: Constants.PRIMARY,
+
+                        // border: "none",
+                        borderRadius: 4,
+                        padding: 4,
+                        fontSize: "13px",
+                        fontWeight: "500",
+                        color: Constants.SECONDARY,
+                        margin: 4,
+                      }}
+                    >
+                      <Row style={{ padding: 0, margin: 0 }}>
+                        <Col
+                          style={{ padding: 4, margin: 0, textAlign: "start" }}
+                        >
+                          {Constants.ENCRYPTDECRYPTHEADING}
+                        </Col>
+                      </Row>
+                    </Card>
+                  </Row>
                   <Row style={{ padding: 0, margin: 0 }}>
                     <Col
                       xs={{ span: 12 }}
@@ -231,9 +256,9 @@ export default class EncryptDecrypt extends React.Component {
                       {this.state.type === "file" ? (
                         <StyledDropZone
                           style={{
-                            height: "440px",
+                            height: "450px",
                             width: "100%",
-                            backgroundColor: Constants.MONOKAI,
+                            backgroundColor: Constants.TERTIARY,
                           }}
                           onDrop={(file, text) =>
                             this.onFileDropped(file, text)
@@ -249,7 +274,7 @@ export default class EncryptDecrypt extends React.Component {
                           }}
                           placeholder="Your text here"
                           mode={this.state.textEditorMode}
-                          theme={this.state.textEditortheme}
+                          theme="xcode"
                           value={this.state.text}
                           onChange={this.onTextChanged}
                           setOptions={{
@@ -278,7 +303,7 @@ export default class EncryptDecrypt extends React.Component {
                         <div style={{ padding: 4 }}>
                           {this.state.type === "file" ? (
                             <a href={this.state.fileLink} download>
-                              download file
+                              Download file
                             </a>
                           ) : null}
                         </div>
@@ -410,26 +435,6 @@ export default class EncryptDecrypt extends React.Component {
                               onChange={this.setTextEditorMode}
                             >
                               {Constants.MODES.map((lang) => (
-                                <option key={lang} value={lang}>
-                                  {lang}
-                                </option>
-                              ))}
-                            </Form.Control>
-                          </Col>
-                        </Row>
-                        <Row style={{ padding: 4, width: "100%", margin: 0 }}>
-                          <Col style={{ padding: 0 }}>
-                            <Form.Control
-                              as="select"
-                              disabled={this.state.type === "file"}
-                              style={{
-                                fontSize: "small",
-                                border: `1px solid ${Constants.SECONDARY}`,
-                                color: Constants.MONOKAI,
-                              }}
-                              onChange={this.setTextEditorTheme}
-                            >
-                              {Constants.THEMES.map((lang) => (
                                 <option key={lang} value={lang}>
                                   {lang}
                                 </option>

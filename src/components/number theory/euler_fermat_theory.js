@@ -3,11 +3,11 @@ import { Grid } from "@agney/react-loading";
 import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Terminal from "./terminal";
-import { fermat_little_theorum } from "../algorithms/algorithms";
-import Constants from "../../../constants/constants";
+import { euler_fermat_theorum } from "./nt_algorithms";
+import Constants from "../../constants/constants";
 var res_string = [];
 
-export default function FermatLittleTheorum() {
+export default function EulerFermatTheorum() {
   const [error, setError] = useState([]);
 
   const [text, setText] = useState([]);
@@ -23,14 +23,14 @@ export default function FermatLittleTheorum() {
           // left:"50px",
           // right:"50px",
           // padding: "30px",
-          margin: "10px auto",
+          margin: "auto",
 
           // marginLeft:"5%",
           // marginRight:"5%",
           backgroundColor: "white",
           borderRadius: 0,
           width: "1024px",
-          padding: 4,
+          padding: 8,
           // margin: 0,
         }}
       >
@@ -73,20 +73,20 @@ export default function FermatLittleTheorum() {
                     }}
                   >
                     <Form style={{ width: "100%" }}>
-                      <div
+                      <Card
                         className="textStyleCode"
                         style={{
                           margin: 4,
                           paddingTop: 8,
                           paddingBottom: 8,
                           borderRadius: 4,
-                          backgroundColor: Constants.MONOKAI,
+                          backgroundColor: Constants.PRIMARY,
                           color: Constants.SECONDARY,
                           fontSize: 10,
                         }}
                       >
-                        Fermat's Little Theorum
-                      </div>
+                        Euler-Fermat Theorum
+                      </Card>
 
                       <Row style={{ padding: 4, width: "100%", margin: 0 }}>
                         <Col style={{ padding: 0 }}>
@@ -135,14 +135,14 @@ export default function FermatLittleTheorum() {
                               float: "left",
                               border: "none",
                               fontWeight: "500",
-                              color: Constants.CALCULATEBUTTONTEXTCOLOR,
+                              color: Constants.TERTIARY,
                               // boxShadow: "1px 3px 1px #9E9E9E",
                               backgroundColor: Constants.SECONDARY,
                             }}
                             onClick={(e) => {
                               e.preventDefault();
 
-                              fermat_little_theorum(a, n, res_string);
+                              euler_fermat_theorum(a, n, res_string);
                               setText(res_string);
                               res_string = [];
                               //   console.log(text);

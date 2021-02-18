@@ -3,17 +3,17 @@ import { Grid } from "@agney/react-loading";
 import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Terminal from "./terminal";
-// var jacobiSymbol = require("number-theory").jacobiSymbol;
-import { jacobi_symbol } from "../algorithms/algorithms";
-import Constants from "../../../constants/constants";
+import { factor } from "./nt_algorithms";
+import Constants from "../../constants/constants";
+// import Footer from "../";
 var res_string = [];
 
-export default function JacobiSymbol() {
+export default function PrimeFactors() {
   const [error, setError] = useState([]);
 
   const [text, setText] = useState([]);
   const [a, setA] = useState(0);
-  const [n, setN] = useState(0);
+
   //   const [exponent, setExponent] = useState(0);
 
   return (
@@ -24,14 +24,14 @@ export default function JacobiSymbol() {
           // left:"50px",
           // right:"50px",
           // padding: "30px",
-          margin: "10px auto",
+          margin: "auto",
 
           // marginLeft:"5%",
           // marginRight:"5%",
           backgroundColor: "white",
           borderRadius: 0,
           width: "1024px",
-          padding: 4,
+          padding: 8,
           // margin: 0,
         }}
       >
@@ -74,26 +74,26 @@ export default function JacobiSymbol() {
                     }}
                   >
                     <Form style={{ width: "100%" }}>
-                      <div
+                      <Card
                         className="textStyleCode"
                         style={{
                           margin: 4,
                           paddingTop: 8,
                           paddingBottom: 8,
                           borderRadius: 4,
-                          backgroundColor: Constants.MONOKAI,
+                          backgroundColor: Constants.PRIMARY,
                           color: Constants.SECONDARY,
                           fontSize: 10,
                         }}
                       >
-                        Jacobi Symbol
-                      </div>
+                        Prime Factors
+                      </Card>
 
                       <Row style={{ padding: 4, width: "100%", margin: 0 }}>
                         <Col style={{ padding: 0 }}>
                           <Form.Control
                             type="text"
-                            placeholder="A"
+                            placeholder="Base"
                             style={{
                               fontSize: "small",
                               color: Constants.MONOKAI,
@@ -102,23 +102,6 @@ export default function JacobiSymbol() {
                             }}
                             onChange={(v) => {
                               setA(v.target.value);
-                            }}
-                          />
-                        </Col>
-                      </Row>
-                      <Row style={{ padding: 4, width: "100%", margin: 0 }}>
-                        <Col style={{ padding: 0 }}>
-                          <Form.Control
-                            type="text"
-                            placeholder="N"
-                            style={{
-                              fontSize: "small",
-                              color: Constants.MONOKAI,
-                              backgroundColor: "white",
-                              border: `1px solid ${Constants.SECONDARY}`,
-                            }}
-                            onChange={(v) => {
-                              setN(v.target.value);
                             }}
                           />
                         </Col>
@@ -143,7 +126,7 @@ export default function JacobiSymbol() {
                             onClick={(e) => {
                               e.preventDefault();
 
-                              jacobi_symbol(a, n, res_string);
+                              factor(a, res_string);
                               setText(res_string);
                               res_string = [];
                               //   console.log(text);

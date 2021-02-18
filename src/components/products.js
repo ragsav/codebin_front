@@ -11,11 +11,11 @@ import Constants from "../constants/constants";
 export default function Products(props) {
   return (
     <div style={{ width: "100%" }}>
-      <Card style={{ padding: 0, margin: 2 }}>
+      <Card style={{ padding: 0, margin: 0   }}>
         <Row
           style={{
-            padding: "2% 0% 2% 0%",
-            margin: "0% 0% 0% 0%",
+            padding: "0%",
+            margin: "0%",
           }}
         >
           <Col
@@ -29,11 +29,11 @@ export default function Products(props) {
                 className="textStyleCode"
                 style={{
                   width: "100%",
-                  backgroundColor: Constants.MONOKAI,
+                  backgroundColor: Constants.PRIMARY,
 
-                  border: "none",
+                  // border: "none",
                   borderRadius: 4,
-                  padding: "1%",
+                  padding: 4,
                   fontSize: "13px",
                   fontWeight: "500",
                   color: Constants.SECONDARY,
@@ -41,7 +41,7 @@ export default function Products(props) {
                 }}
               >
                 <Row style={{ padding: 0, margin: 0 }}>
-                  <Col style={{ padding: 0, margin: 0, textAlign: "start" }}>
+                  <Col style={{ padding: 4, margin: 0, textAlign: "start" }}>
                     {Constants.MOREPRODUCTS}
                   </Col>
                 </Row>
@@ -63,11 +63,11 @@ export default function Products(props) {
                     paddingBottom: 4,
                     margin: 0,
                   }}
-                  xs={{ span: 12 }}
-                  sm={{ span: 6 }}
+                  xs={{ span: 6 }}
+                  sm={{ span: 4 }}
                   md={{ span: 4 }}
-                  lg={{ span: 4 }}
-                  xl={{ span: 3 }}
+                  lg={{ span: 3 }}
+                  xl={{ span: 2 }}
                 >
                   <Card
                     style={{

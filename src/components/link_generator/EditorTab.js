@@ -2,29 +2,28 @@ import React from "react";
 import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
 import { Grid } from "@agney/react-loading";
 import AceEditor from "react-ace";
-import Footer from "./footer";
-import Products from "./products";
+import Footer from "../footer";
+import Products from "../products";
 import PostTab from "./PostTab";
 import "ace-builds/src-min-noconflict/ext-searchbox";
 import "ace-builds/src-min-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/theme-github";
-import Constants from "../constants/constants";
-import ReCAPTCHA from "react-google-recaptcha";
-import FileHandler from "./encrypt_decrypt";
+import Constants from "../../constants/constants";
+// import ReCAPTCHA from "react-google-recaptcha";
+// import FileHandler from "./encrypt_decrypt";
 import Captcha from "captcha-image";
 
-
 const axios = require("axios");
-
-
 
 Constants.MODES.forEach((lang) => {
   require(`ace-builds/src-noconflict/mode-${lang}`);
   require(`ace-builds/src-noconflict/snippets/${lang}`);
 });
 
-Constants.THEMES.forEach((theme) => require(`ace-builds/src-noconflict/theme-${theme}`));
+Constants.THEMES.forEach((theme) =>
+  require(`ace-builds/src-noconflict/theme-${theme}`)
+);
 
 // hookhelper = () =>{
 // const { ipfs, ipfsInitError } = useIpfsFactory({ commands: ["id"] });
@@ -49,7 +48,7 @@ export default class EditorTab extends React.Component {
   constructor(props) {
     super(props);
     this.canvasRef = React.createRef();
-    
+
     this.state = {
       // ipfs: null,
       text: "",
@@ -77,7 +76,7 @@ export default class EditorTab extends React.Component {
     this.handleAppServerSubmit = this.handleAppServerSubmit.bind(this);
     this.onLinkRecieved = this.onLinkRecieved.bind(this);
     this.setTextEditorMode = this.setTextEditorMode.bind(this);
-    this.onPublicChanged = this.onPublicChanged.bind(this);;;;;
+    this.onPublicChanged = this.onPublicChanged.bind(this);
     this.setTextEditorTheme = this.setTextEditorTheme.bind(this);
     this.onEditableChanged = this.onEditableChanged.bind(this);
   }
@@ -173,7 +172,6 @@ export default class EditorTab extends React.Component {
     });
   };
 
-
   handleAppServerSubmit = (event) => {
     event.preventDefault();
 
@@ -181,7 +179,7 @@ export default class EditorTab extends React.Component {
     var errors = [];
     if (this.state.text === "") {
       errors.push("text");
-      alert("Enter some text")
+      alert("Enter some text");
     }
     if (this.state.title === "") {
       errors.push("title");
@@ -203,13 +201,13 @@ export default class EditorTab extends React.Component {
       });
       // alert("everything good. submit form!");
       const postObject = {
-        title:this.state.title,
-        public:this.state.public,
+        title: this.state.title,
+        public: this.state.public,
         text: this.state.text.toString(),
-        burn:this.state.burn,
+        burn: this.state.burn,
         expiry: parseInt(this.state.expiry),
         isPassword: this.state.isPassword,
-        password: this.state.isPassword?this.state.password:"",
+        password: this.state.isPassword ? this.state.password : "",
         editable: this.state.editable,
       };
 
@@ -232,7 +230,6 @@ export default class EditorTab extends React.Component {
 
       console.log("text submitted");
       console.log(postObject);
-      
     }
   };
 
@@ -241,14 +238,14 @@ export default class EditorTab extends React.Component {
   }
   render() {
     return (
-      <div>
+      <div style={{}}>
         <Col
           style={{
             // maxWidth:"100%",
             // left:"50px",
             // right:"50px",
             // padding: "30px",
-            margin: "10px auto",
+            margin: "auto",
 
             // marginLeft:"5%",
             // marginRight:"5%",
@@ -261,7 +258,7 @@ export default class EditorTab extends React.Component {
         >
           <Row
             style={{
-              padding: "0",
+              padding: 4,
               margin: "0% 0% 0% 0%",
             }}
           >
@@ -278,10 +275,35 @@ export default class EditorTab extends React.Component {
               >
                 <Container fluid style={{ padding: 4, margin: 0 }}>
                   <Row style={{ padding: 0, margin: 0 }}>
+                    <Card
+                      className="textStyleCode"
+                      style={{
+                        width: "100%",
+                        backgroundColor: Constants.PRIMARY,
+
+                        // border: "none",
+                        borderRadius: 4,
+                        padding: 4,
+                        fontSize: "13px",
+                        fontWeight: "500",
+                        color: Constants.SECONDARY,
+                        margin: 4,
+                      }}
+                    >
+                      <Row style={{ padding: 0, margin: 0 }}>
+                        <Col
+                          style={{ padding: 4, margin: 0, textAlign: "start" }}
+                        >
+                          {Constants.PASTE}
+                        </Col>
+                      </Row>
+                    </Card>
+                  </Row>
+                  <Row style={{ padding: 0, margin: 0 }}>
                     <Col
                       xs={{ span: 12 }}
                       sm={{ span: 12 }}
-                      md={{ span: 12 }}
+                      md={{ span: 9 }}
                       lg={{ span: 9 }}
                       xl={{ span: 9 }}
                       style={{
@@ -294,14 +316,14 @@ export default class EditorTab extends React.Component {
                     >
                       <AceEditor
                         style={{
-                          height: "550px",
+                          height: "450px",
                           width: "100%",
                           borderRadius: 4,
                           border: `1px solid ${Constants.MONOKAI}`,
                         }}
                         placeholder="Your text here"
                         mode={this.state.textEditorMode}
-                        theme={this.state.textEditortheme}
+                        theme="xcode"
                         onChange={this.onTextChanged}
                         setOptions={{
                           useWorker: false,
@@ -316,7 +338,7 @@ export default class EditorTab extends React.Component {
                     <Col
                       xs={{ span: 12 }}
                       sm={{ span: 12 }}
-                      md={{ span: 12 }}
+                      md={{ span: 3 }}
                       lg={{ span: 3 }}
                       xl={{ span: 3 }}
                       style={{
@@ -535,7 +557,7 @@ export default class EditorTab extends React.Component {
                             </Form.Control>
                           </Col>
                         </Row>
-                        <Row style={{ padding: 4, width: "100%", margin: 0 }}>
+                        {/* <Row style={{ padding: 4, width: "100%", margin: 0 }}>
                           <Col style={{ padding: 0 }}>
                             <Form.Control
                               as="select"
@@ -553,7 +575,7 @@ export default class EditorTab extends React.Component {
                               ))}
                             </Form.Control>
                           </Col>
-                        </Row>
+                        </Row> */}
 
                         <Row style={{ padding: 4, width: "100%", margin: 0 }}>
                           <Col style={{ padding: 0 }}>
@@ -570,7 +592,7 @@ export default class EditorTab extends React.Component {
 
           <Row
             style={{
-              padding: 0,
+              padding: 4,
               margin: 0,
             }}
           >
@@ -585,7 +607,7 @@ export default class EditorTab extends React.Component {
           </Row>
           <Row
             style={{
-              padding: 0,
+              padding: 4,
               margin: 0,
             }}
           >
@@ -600,7 +622,7 @@ export default class EditorTab extends React.Component {
           </Row>
           <Row
             style={{
-              padding: 0,
+              padding: 4,
               margin: 0,
             }}
           >

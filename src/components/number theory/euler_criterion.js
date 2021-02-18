@@ -3,17 +3,17 @@ import { Grid } from "@agney/react-loading";
 import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Terminal from "./terminal";
-import { fermat_mod } from "../algorithms/algorithms";
-import Constants from "../../../constants/constants";
+import { euler_criterion } from "./nt_algorithms";
+import Constants from "../../constants/constants";
 var res_string = [];
 
-export default function FermatMod() {
+export default function EulerCriterion() {
   const [error, setError] = useState([]);
-  const [submitting, setSubmitting] = useState(false);
+
   const [text, setText] = useState([]);
-  const [base, setBase] = useState(0);
-  const [mod, setMod] = useState(0);
-  const [exponent, setExponent] = useState(0);
+  const [a, setA] = useState(0);
+  const [n, setN] = useState(0);
+  //   const [exponent, setExponent] = useState(0);
 
   return (
     <div>
@@ -23,14 +23,14 @@ export default function FermatMod() {
           // left:"50px",
           // right:"50px",
           // padding: "30px",
-          margin: "10px auto",
+          margin: "auto",
 
           // marginLeft:"5%",
           // marginRight:"5%",
           backgroundColor: "white",
           borderRadius: 0,
           width: "1024px",
-          padding: 4,
+          padding: 8,
           // margin: 0,
         }}
       >
@@ -73,26 +73,26 @@ export default function FermatMod() {
                     }}
                   >
                     <Form style={{ width: "100%" }}>
-                      <div
+                      <Card
                         className="textStyleCode"
                         style={{
                           margin: 4,
                           paddingTop: 8,
                           paddingBottom: 8,
                           borderRadius: 4,
-                          backgroundColor: Constants.MONOKAI,
+                          backgroundColor: Constants.PRIMARY,
                           color: Constants.SECONDARY,
                           fontSize: 10,
                         }}
                       >
-                        Fermat's Mod
-                      </div>
+                        Euler Criterion
+                      </Card>
 
                       <Row style={{ padding: 4, width: "100%", margin: 0 }}>
                         <Col style={{ padding: 0 }}>
                           <Form.Control
                             type="text"
-                            placeholder="Base"
+                            placeholder="A"
                             style={{
                               fontSize: "small",
                               color: Constants.MONOKAI,
@@ -100,7 +100,7 @@ export default function FermatMod() {
                               border: `1px solid ${Constants.SECONDARY}`,
                             }}
                             onChange={(v) => {
-                              setBase(v.target.value);
+                              setA(v.target.value);
                             }}
                           />
                         </Col>
@@ -109,7 +109,7 @@ export default function FermatMod() {
                         <Col style={{ padding: 0 }}>
                           <Form.Control
                             type="text"
-                            placeholder="Exponent"
+                            placeholder="N"
                             style={{
                               fontSize: "small",
                               color: Constants.MONOKAI,
@@ -117,24 +117,7 @@ export default function FermatMod() {
                               border: `1px solid ${Constants.SECONDARY}`,
                             }}
                             onChange={(v) => {
-                              setExponent(v.target.value);
-                            }}
-                          />
-                        </Col>
-                      </Row>
-                      <Row style={{ padding: 4, width: "100%", margin: 0 }}>
-                        <Col style={{ padding: 0 }}>
-                          <Form.Control
-                            type="text"
-                            placeholder="Modulo"
-                            style={{
-                              fontSize: "small",
-                              color: Constants.MONOKAI,
-                              backgroundColor: "white",
-                              border: `1px solid ${Constants.SECONDARY}`,
-                            }}
-                            onChange={(v) => {
-                              setMod(v.target.value);
+                              setN(v.target.value);
                             }}
                           />
                         </Col>
@@ -152,14 +135,14 @@ export default function FermatMod() {
                               float: "left",
                               border: "none",
                               fontWeight: "500",
-                              color: Constants.CALCULATEBUTTONTEXTCOLOR,
+                              color: Constants.TERTIARY,
                               // boxShadow: "1px 3px 1px #9E9E9E",
                               backgroundColor: Constants.SECONDARY,
                             }}
                             onClick={(e) => {
                               e.preventDefault();
 
-                              fermat_mod(base, exponent, mod, res_string);
+                              euler_criterion(a, n, res_string);
                               setText(res_string);
                               res_string = [];
                               //   console.log(text);

@@ -3,18 +3,17 @@ import { Grid } from "@agney/react-loading";
 import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import Terminal from "./terminal";
-import { RHOfactorNumber } from "../algorithms/algorithms";
-import Constants from "../../../constants/constants";
-import Footer from "../../footer";
+import { fermat_mod } from "./nt_algorithms";
+import Constants from "../../constants/constants";
 var res_string = [];
 
-export default function PollardRho() {
+export default function FermatMod() {
   const [error, setError] = useState([]);
-
+  const [submitting, setSubmitting] = useState(false);
   const [text, setText] = useState([]);
-  const [a, setA] = useState(0);
-
-  //   const [exponent, setExponent] = useState(0);
+  const [base, setBase] = useState(0);
+  const [mod, setMod] = useState(0);
+  const [exponent, setExponent] = useState(0);
 
   return (
     <div>
@@ -24,14 +23,14 @@ export default function PollardRho() {
           // left:"50px",
           // right:"50px",
           // padding: "30px",
-          margin: "10px auto",
+          margin: "auto",
 
           // marginLeft:"5%",
           // marginRight:"5%",
           backgroundColor: "white",
           borderRadius: 0,
           width: "1024px",
-          padding: 4,
+          padding: 8,
           // margin: 0,
         }}
       >
@@ -74,20 +73,20 @@ export default function PollardRho() {
                     }}
                   >
                     <Form style={{ width: "100%" }}>
-                      <div
+                      <Card
                         className="textStyleCode"
                         style={{
                           margin: 4,
                           paddingTop: 8,
                           paddingBottom: 8,
                           borderRadius: 4,
-                          backgroundColor: Constants.MONOKAI,
+                          backgroundColor: Constants.PRIMARY,
                           color: Constants.SECONDARY,
                           fontSize: 10,
                         }}
                       >
-                        Pollard Rho method
-                      </div>
+                        Fermat's Mod
+                      </Card>
 
                       <Row style={{ padding: 4, width: "100%", margin: 0 }}>
                         <Col style={{ padding: 0 }}>
@@ -101,7 +100,41 @@ export default function PollardRho() {
                               border: `1px solid ${Constants.SECONDARY}`,
                             }}
                             onChange={(v) => {
-                              setA(v.target.value);
+                              setBase(v.target.value);
+                            }}
+                          />
+                        </Col>
+                      </Row>
+                      <Row style={{ padding: 4, width: "100%", margin: 0 }}>
+                        <Col style={{ padding: 0 }}>
+                          <Form.Control
+                            type="text"
+                            placeholder="Exponent"
+                            style={{
+                              fontSize: "small",
+                              color: Constants.MONOKAI,
+                              backgroundColor: "white",
+                              border: `1px solid ${Constants.SECONDARY}`,
+                            }}
+                            onChange={(v) => {
+                              setExponent(v.target.value);
+                            }}
+                          />
+                        </Col>
+                      </Row>
+                      <Row style={{ padding: 4, width: "100%", margin: 0 }}>
+                        <Col style={{ padding: 0 }}>
+                          <Form.Control
+                            type="text"
+                            placeholder="Modulo"
+                            style={{
+                              fontSize: "small",
+                              color: Constants.MONOKAI,
+                              backgroundColor: "white",
+                              border: `1px solid ${Constants.SECONDARY}`,
+                            }}
+                            onChange={(v) => {
+                              setMod(v.target.value);
                             }}
                           />
                         </Col>
@@ -126,7 +159,7 @@ export default function PollardRho() {
                             onClick={(e) => {
                               e.preventDefault();
 
-                              RHOfactorNumber(a, res_string);
+                              fermat_mod(base, exponent, mod, res_string);
                               setText(res_string);
                               res_string = [];
                               //   console.log(text);

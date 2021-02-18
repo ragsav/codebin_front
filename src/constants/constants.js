@@ -5,7 +5,9 @@ module.exports = Object.freeze({
 
   WEBSITE: "Code>Bin",
   PUBLICCODES: "Public>Codes",
+  PASTE: "Generate>Pastes",
   ENCRYPTDECRYPTHEADING: "Encrypt/Decrypt",
+  LINEARALGEBRA: "Linear Algebra",
   UPLOADTEXT: "Upload file",
   GENERATELINK: "Generate>Link",
   NUMBERTHEORY: "Number>Theory",
@@ -45,9 +47,10 @@ module.exports = Object.freeze({
   ],
 
   TERTIARY: "#fff",
-  PRIMARY: "#e8f5ff",
-  SECONDARY: "#64a9de",
-  MONOKAI: "#272822",
+  PRIMARY: "#ead9ff",
+  SECONDARY: "#5c4e6e",
+  MONOKAI: "#5c4e6e",
+  HEADING: "#fff",
   MONOKAILIGHT: "#a3a3a3",
   NTLIST: [
     {
@@ -112,6 +115,24 @@ module.exports = Object.freeze({
     {
       name: "Encrypt/Decrypt",
       key: "encrypt_decrypt",
+    },
+    {
+      name: "Linear Algebra",
+      key: "linear_algebra",
+    },
+  ],
+  LALIST: [
+    {
+      name: "Number Theory",
+      key: "nt",
+    },
+    {
+      name: "Encrypt/Decrypt",
+      key: "encrypt_decrypt",
+    },
+    {
+      name: "Linear Algebra",
+      key: "linear_algebra",
     },
   ],
 });
