@@ -1,13 +1,18 @@
 module.exports = Object.freeze({
   HOST: "http://localhost:3000/",
-  TAPLINK: "https://copybinback.herokuapp.com/api/public/tapLink/",
-  OPENLINK: "https://copybinback.herokuapp.com/api/public/openLink/",
+  // HOST: "https://copybin-5de5c.web.app/",
+  SERVERHOST: "https://copybinback.herokuapp.com",
+
   WEBSITE: "Code>Bin",
   PUBLICCODES: "Public>Codes",
+  ENCRYPTDECRYPTHEADING: "Encrypt/Decrypt",
+  UPLOADTEXT: "Upload file",
   GENERATELINK: "Generate>Link",
   NUMBERTHEORY: "Number>Theory",
+  MOREPRODUCTS: "More>Products",
   DEFAULTTHEME: "monokai",
   DEFAULTMODE: "javascript",
+
   THEMES: [
     "monokai",
     "github",
@@ -38,9 +43,75 @@ module.exports = Object.freeze({
     "typescript",
     "css",
   ],
-  CALCULATEBUTTONBG: "#51b82a",
-  CALCULATEBUTTONTEXTCOLOR: "#fff",
-  APPBG: "#d8ffc9",
-  HEADINGCOLOR: "#04e000",
+
+  TERTIARY: "#fff",
+  PRIMARY: "#e8f5ff",
+  SECONDARY: "#64a9de",
   MONOKAI: "#272822",
+  MONOKAILIGHT: "#a3a3a3",
+  NTLIST: [
+    {
+      name: "Prime factors",
+      key: "prime_factors",
+    },
+    {
+      name: "Exponential Mod",
+      key: "exponential_mod",
+    },
+
+    {
+      name: "Jacobi Symbol",
+      key: "jacobi_symbol",
+    },
+    {
+      name: "Euler Criterion",
+      key: "euler_criterion",
+    },
+    {
+      name: "Euler Psuedoprime",
+      key: "euler_psuedoprime",
+    },
+    {
+      name: "Jacobi-Euler Psuedoprime",
+      key: "jacobi_euler_psuedoprime",
+    },
+    {
+      name: "Fermat's little theorum",
+      key: "fermat_little_theorum",
+    },
+    {
+      name: "Fermats mod",
+      key: "fermat_mod",
+    },
+    {
+      name: "Fermat's Psuedoprime",
+      key: "fermat_psuedoprime",
+    },
+    {
+      name: "Euler's Totient",
+      key: "euler_totient",
+    },
+    {
+      name: "Euler Fermat Theorum",
+      key: "euler_fermat_theorum",
+    },
+    {
+      name: "Pollard Rho",
+      key: "pollard_rho",
+    },
+    {
+      name: "Fermat's Factorization",
+      key: "fermat_factorization",
+    },
+  ],
+  PRODUCTS: [
+    {
+      name: "Number Theory",
+      key: "nt",
+    },
+    {
+      name: "Encrypt/Decrypt",
+      key: "encrypt_decrypt",
+    },
+  ],
 });

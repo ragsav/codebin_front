@@ -7,6 +7,7 @@ import EditorTab from "./components/EditorTab";
 // import LinkViewer from "./components/unused/LinkViewer";
 import CodeViewer from "./components/CodeViewer";
 import Constants from "./constants/constants";
+import EncryptDecrypt from "./components/encrypt_decrypt";
 import NumberTheoryTab from "./components/NumberTheoryTab";
 // import CodeViewerInt from "./components/CodeViewerInt";
 import ExponentialMod from "./components/number theory/functions/exponential_mod";
@@ -27,7 +28,7 @@ function App() {
   return (
     <div
       className="App"
-      style={{ overflow: "scroll", backgroundColor: Constants.APPBG }}
+      style={{ overflow: "scroll", backgroundColor: Constants.PRIMARY }}
     >
       <Container style={{ padding: 0, height: "100%" }} fluid>
         <Row style={{ padding: 0, margin: 0, width: "100%" }}>
@@ -44,7 +45,9 @@ function App() {
                 <Route exact path="/">
                   <EditorTab></EditorTab>
                 </Route>
-
+                <Route exact path="/encrypt_decrypt">
+                  <EncryptDecrypt></EncryptDecrypt>
+                </Route>
                 <Route exact path="/viewer/:tid">
                   <CodeViewer></CodeViewer>
                 </Route>

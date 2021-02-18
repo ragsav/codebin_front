@@ -36,7 +36,7 @@ function PostsList(props) {
         border: "none",
         borderRadius: 0,
         fontSize: "13px",
-        color: "#616161",
+        color: Constants.MONOKAI,
         fontWeight: "100",
         margin: 1,
       }}
@@ -47,22 +47,34 @@ function PostsList(props) {
         }}
       >
         <Col
-          sm={2}
+          xs={{ span: 12 }}
+          sm={{ span: 6 }}
+          md={{ span: 4 }}
+          lg={{ span: 2 }}
+          xl={{ span: 2 }}
           style={{
-            padding: 4,
+            padding: "5px",
             margin: 0,
-            
-            textAlign: "center",
+            textAlign: "start",
           }}
         >
-          <a href={`http://localhost:3000/viewer/${post._id}`} style={{textDecoration:"none"}} target="_blank">
+          <a
+            href={`${Constants.HOST}viewer/${post._id}`}
+            style={{ textDecoration: "none" }}
+            target="_blank"
+          >
             {post.title}
           </a>
         </Col>
         <Col
-          sm={6}
+          className="d-none d-sm-block"
+          sm={{ span: 6 }}
+          md={{ span: 4 }}
+          lg={{ span: 6 }}
+          xl={{ span: 6 }}
           style={{
-            padding: 4,
+            padding: "5px",
+
             margin: 0,
             textAlign: "end",
           }}
@@ -70,9 +82,13 @@ function PostsList(props) {
           {toDate(post.updatedAt)}
         </Col>
         <Col
-          sm={2}
+          className="d-none d-md-block"
+          md={{ span: 2 }}
+          lg={{ span: 2 }}
+          xl={{ span: 2 }}
           style={{
-            padding: 4,
+            padding: "5px",
+
             margin: 0,
             textAlign: "end",
           }}
@@ -80,9 +96,13 @@ function PostsList(props) {
           {post.isPassword ? "True" : "False"}
         </Col>
         <Col
-          sm={2}
+          className="d-none d-md-block"
+          md={{ span: 2 }}
+          lg={{ span: 2 }}
+          xl={{ span: 2 }}
           style={{
-            padding: 4,
+            padding: "5px",
+
             margin: 0,
             textAlign: "end",
           }}
@@ -92,7 +112,7 @@ function PostsList(props) {
       </Row>
       <Row
         style={{
-          backgroundColor: "#ededed",
+          backgroundColor: Constants.MONOKAILIGHT,
           //   width: "100%",
           height: "1px",
           padding: "0% 1% 0% 1%",
@@ -134,7 +154,7 @@ export default class PostTab extends React.Component {
     axios({
       method: "get",
       headers: { "Content-Type": "application/json" },
-      url: "https://copybinback.herokuapp.com/api/public/getLatestPosts/",
+      url: Constants.SERVERHOST + "/api/public/getLatestPosts/",
     })
       .then(function (response) {
         console.log(response.data);
@@ -169,6 +189,8 @@ export default class PostTab extends React.Component {
       <div
         style={{
           padding: 0,
+          paddingTop:50,
+          paddingBottom:50,
           margin: 0,
         }}
       >
@@ -185,18 +207,14 @@ export default class PostTab extends React.Component {
                 padding: "1%",
                 fontSize: "13px",
                 fontWeight: "500",
-                color: Constants.HEADINGCOLOR,
+                color: Constants.SECONDARY,
                 margin: 4,
               }}
             >
               <Row style={{ padding: 0, margin: 0 }}>
-                <Col
-                  
-                  style={{ padding: 0, margin: 0, textAlign: "start" }}
-                >
+                <Col style={{ padding: 0, margin: 0, textAlign: "start" }}>
                   {Constants.PUBLICCODES}
                 </Col>
-                
               </Row>
             </Card>
           </Row>
@@ -207,27 +225,33 @@ export default class PostTab extends React.Component {
               padding: 0,
               fontSize: "14px",
               fontWeight: "600",
-              color:Constants.CALCULATEBUTTONBG
+              color: Constants.MONOKAI,
             }}
           >
             <Col
-              sm={2}
+              xs={{ span: 12 }}
+              sm={{ span: 6 }}
+              md={{ span: 4 }}
+              lg={{ span: 2 }}
+              xl={{ span: 2 }}
               style={{
                 padding: "5px",
-
-                
                 margin: 0,
-                textAlign: "center",
+                textAlign: "start",
               }}
             >
               Title
             </Col>
             <Col
-              sm={6}
+              className="d-none d-sm-block"
+              
+              sm={{ span: 6 }}
+              md={{ span: 4 }}
+              lg={{ span: 6 }}
+              xl={{ span: 6 }}
               style={{
                 padding: "5px",
 
-                
                 margin: 0,
                 textAlign: "end",
               }}
@@ -235,11 +259,14 @@ export default class PostTab extends React.Component {
               Last updated
             </Col>
             <Col
-              sm={2}
+              className="d-none d-md-block"
+              
+              md={{ span: 2 }}
+              lg={{ span: 2 }}
+              xl={{ span: 2 }}
               style={{
                 padding: "5px",
 
-                
                 margin: 0,
                 textAlign: "end",
               }}
@@ -247,11 +274,14 @@ export default class PostTab extends React.Component {
               Password protected
             </Col>
             <Col
-              sm={2}
+              className="d-none d-md-block"
+              
+              md={{ span: 2 }}
+              lg={{ span: 2 }}
+              xl={{ span: 2 }}
               style={{
                 padding: "5px",
 
-                
                 margin: 0,
                 textAlign: "end",
               }}
@@ -261,7 +291,7 @@ export default class PostTab extends React.Component {
           </Row>
           <Row
             style={{
-              backgroundColor: Constants.CALCULATEBUTTONBG,
+              backgroundColor: Constants.SECONDARY,
               //   width: "100%",
               height: "1px",
               padding: "0% 1% 0% 1%",

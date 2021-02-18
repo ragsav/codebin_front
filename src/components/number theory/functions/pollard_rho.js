@@ -82,7 +82,7 @@ export default function PollardRho() {
                           paddingBottom: 8,
                           borderRadius: 4,
                           backgroundColor: Constants.MONOKAI,
-                          color: Constants.HEADINGCOLOR,
+                          color: Constants.SECONDARY,
                           fontSize: 10,
                         }}
                       >
@@ -96,9 +96,9 @@ export default function PollardRho() {
                             placeholder="Base"
                             style={{
                               fontSize: "small",
-                              color: "#272822",
+                              color: Constants.MONOKAI,
                               backgroundColor: "white",
-                              border: `1px solid ${Constants.CALCULATEBUTTONBG}`,
+                              border: `1px solid ${Constants.SECONDARY}`,
                             }}
                             onChange={(v) => {
                               setA(v.target.value);
@@ -121,7 +121,7 @@ export default function PollardRho() {
                               fontWeight: "500",
                               color: Constants.CALCULATEBUTTONTEXTCOLOR,
                               // boxShadow: "1px 3px 1px #9E9E9E",
-                              backgroundColor: Constants.CALCULATEBUTTONBG,
+                              backgroundColor: Constants.SECONDARY,
                             }}
                             onClick={(e) => {
                               e.preventDefault();

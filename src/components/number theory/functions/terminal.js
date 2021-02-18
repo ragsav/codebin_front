@@ -30,7 +30,7 @@ export default function Terminal(props) {
                 padding: 8,
                 height: props.height,
                 width: "100%",
-                backgroundColor: "#272822",
+                backgroundColor: Constants.MONOKAI,
                 borderRadius: 4,
                 border: "1px solid #272822",
               }}

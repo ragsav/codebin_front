@@ -3,13 +3,16 @@ import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
 import { Grid } from "@agney/react-loading";
 import AceEditor from "react-ace";
 import Footer from "./footer";
+import Products from "./products";
 import PostTab from "./PostTab";
 import "ace-builds/src-min-noconflict/ext-searchbox";
 import "ace-builds/src-min-noconflict/ext-language_tools";
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/theme-github";
 import Constants from "../constants/constants";
-
+import ReCAPTCHA from "react-google-recaptcha";
+import FileHandler from "./encrypt_decrypt";
+import Captcha from "captcha-image";
 
 
 const axios = require("axios");
@@ -28,9 +31,25 @@ Constants.THEMES.forEach((theme) => require(`ace-builds/src-noconflict/theme-${t
 // const id = useIpfs(ipfs, "id");
 // ["id", "agentVersion"].map((key) => console.log(id[key]));
 // }
+const captchaImage = new Captcha(
+  "35px Arial",
+  "center",
+  "middle",
+  300,
+  150,
+  "#eee",
+  "#111",
+  6
+).createImage();
+
+function createMarkup(source) {
+  return { __html: source };
+}
 export default class EditorTab extends React.Component {
   constructor(props) {
     super(props);
+    this.canvasRef = React.createRef();
+    
     this.state = {
       // ipfs: null,
       text: "",
@@ -76,6 +95,33 @@ export default class EditorTab extends React.Component {
     // this.componentCleanup();
   }
   componentDidMount() {
+    // var word="hello"
+    // const canvas = this.canvasRef.current;
+    // const context = canvas.getContext("2d");
+    // // for(var i = 0; i < word.length; i++) {
+    // //   context.transform(
+    // //     Math.random(),
+    // //     Math.random(),
+    // //     Math.random(),
+    // //     Math.random(),
+    // //     Math.random(),
+    // //     Math.random()
+    // //   );
+    // // }
+    // context.transform(
+    //   1 - Math.random(),
+    //   Math.random(),
+    //   Math.random(),
+    //   1 + Math.random(),
+    //   Math.random(),
+    //   Math.random()
+    // );
+    // // context.setTransform(1,0, 0, 1, 0, 0);
+    // context.font = "30px Arial";
+    // context.fillText(word, 10, 50);
+    //Our first draw
+    // context.fillStyle = "#000000";
+    // context.fillRect(0, 0, context.canvas.width, context.canvas.height);
     // window.addEventListener("beforeunload", this.componentCleanup);
   }
   onEditableChanged = (e) => {
@@ -170,7 +216,7 @@ export default class EditorTab extends React.Component {
       axios({
         method: "post",
         headers: { "Content-Type": "application/json" },
-        url: "https://copybinback.herokuapp.com/api/public/generateLink",
+        url: Constants.SERVERHOST + "/api/public/generateLink",
         data: postObject,
       })
         .then(function (response) {
@@ -233,7 +279,11 @@ export default class EditorTab extends React.Component {
                 <Container fluid style={{ padding: 4, margin: 0 }}>
                   <Row style={{ padding: 0, margin: 0 }}>
                     <Col
-                      sm={9}
+                      xs={{ span: 12 }}
+                      sm={{ span: 12 }}
+                      md={{ span: 12 }}
+                      lg={{ span: 9 }}
+                      xl={{ span: 9 }}
                       style={{
                         padding: 4,
                         margin: 0,
@@ -247,7 +297,7 @@ export default class EditorTab extends React.Component {
                           height: "550px",
                           width: "100%",
                           borderRadius: 4,
-                          border: "1px solid #272822",
+                          border: `1px solid ${Constants.MONOKAI}`,
                         }}
                         placeholder="Your text here"
                         mode={this.state.textEditorMode}
@@ -264,7 +314,11 @@ export default class EditorTab extends React.Component {
                       />
                     </Col>
                     <Col
-                      sm={3}
+                      xs={{ span: 12 }}
+                      sm={{ span: 12 }}
+                      md={{ span: 12 }}
+                      lg={{ span: 3 }}
+                      xl={{ span: 3 }}
                       style={{
                         padding: 0,
                         margin: 0,
@@ -281,7 +335,7 @@ export default class EditorTab extends React.Component {
                               style={{
                                 fontSize: "small",
                                 float: "left",
-                                color: "#272822",
+                                color: Constants.MONOKAI,
                                 fontWeight: "600",
                               }}
                             />
@@ -294,13 +348,13 @@ export default class EditorTab extends React.Component {
                               placeholder="Title"
                               style={{
                                 fontSize: "small",
-                                color: "#272822",
+                                color: Constants.MONOKAI,
                                 backgroundColor: this.hasError("title")
                                   ? "rgb(255, 236, 235)"
                                   : "white",
                                 border: this.hasError("title")
                                   ? "1px solid red"
-                                  : `1px solid ${Constants.CALCULATEBUTTONBG}`,
+                                  : `1px solid ${Constants.SECONDARY}`,
                               }}
                               onChange={this.onTitleChanged}
                             />
@@ -312,7 +366,7 @@ export default class EditorTab extends React.Component {
                               as="select"
                               style={{
                                 fontSize: "small",
-                                border: `1px solid ${Constants.CALCULATEBUTTONBG}`,
+                                border: `1px solid ${Constants.SECONDARY}`,
                                 color: "rgb(153, 153, 153)",
                               }}
                               onChange={this.onExpiryChanged}
@@ -332,8 +386,8 @@ export default class EditorTab extends React.Component {
                               placeholder="Enter reads to burn"
                               style={{
                                 fontSize: "small",
-                                border: `1px solid ${Constants.CALCULATEBUTTONBG}`,
-                                color: "#272822",
+                                border: `1px solid ${Constants.SECONDARY}`,
+                                color: Constants.MONOKAI,
                               }}
                             />
                           </Col>
@@ -347,7 +401,7 @@ export default class EditorTab extends React.Component {
                               style={{
                                 fontSize: "small",
                                 float: "left",
-                                color: "#272822",
+                                color: Constants.MONOKAI,
                                 fontWeight: "600",
                               }}
                             />
@@ -363,7 +417,7 @@ export default class EditorTab extends React.Component {
                               style={{
                                 fontSize: "small",
                                 float: "left",
-                                color: "#272822",
+                                color: Constants.MONOKAI,
                                 fontWeight: "600",
                               }}
                             />
@@ -380,13 +434,13 @@ export default class EditorTab extends React.Component {
                                 style={{
                                   fontSize: "small",
                                   float: "right",
-                                  color: "#272822",
+                                  color: Constants.MONOKAI,
                                   backgroundColor: this.hasError("title")
                                     ? "rgb(255, 236, 235)"
                                     : "white",
                                   border: this.hasError("title")
                                     ? "1px solid red"
-                                    : `2px solid ${Constants.CALCULATEBUTTONBG}`,
+                                    : `2px solid ${Constants.SECONDARY}`,
                                 }}
                               />
                             ) : (
@@ -413,9 +467,9 @@ export default class EditorTab extends React.Component {
                                 float: "left",
                                 border: "none",
                                 fontWeight: "500",
-                                color: Constants.CALCULATEBUTTONTEXTCOLOR,
+                                color: Constants.TERTIARY,
                                 // boxShadow: "1px 3px 1px #9E9E9E",
-                                backgroundColor: Constants.CALCULATEBUTTONBG,
+                                backgroundColor: Constants.SECONDARY,
                               }}
                               onClick={this.handleAppServerSubmit}
                             >
@@ -447,12 +501,12 @@ export default class EditorTab extends React.Component {
                                   border:
                                     this.state.link === ""
                                       ? "1px solid white"
-                                      : `2px solid ${Constants.CALCULATEBUTTONBG}`,
+                                      : `2px solid ${Constants.SECONDARY}`,
                                   boxShadow:
                                     this.state.link === ""
                                       ? "null"
                                       : "0 0 10px rgb(191, 212, 227)",
-                                  backgroundColor: Constants.APPBG,
+                                  backgroundColor: Constants.PRIMARY,
                                 }}
                                 as="textarea"
                                 rows={4}
@@ -468,8 +522,8 @@ export default class EditorTab extends React.Component {
                               as="select"
                               style={{
                                 fontSize: "small",
-                                border: `1px solid ${Constants.CALCULATEBUTTONBG}`,
-                                color: "#272822",
+                                border: `1px solid ${Constants.SECONDARY}`,
+                                color: Constants.MONOKAI,
                               }}
                               onChange={this.setTextEditorMode}
                             >
@@ -487,8 +541,8 @@ export default class EditorTab extends React.Component {
                               as="select"
                               style={{
                                 fontSize: "small",
-                                border: `1px solid ${Constants.CALCULATEBUTTONBG}`,
-                                color: "#272822",
+                                border: `1px solid ${Constants.SECONDARY}`,
+                                color: Constants.MONOKAI,
                               }}
                               onChange={this.setTextEditorTheme}
                             >
@@ -503,20 +557,7 @@ export default class EditorTab extends React.Component {
 
                         <Row style={{ padding: 4, width: "100%", margin: 0 }}>
                           <Col style={{ padding: 0 }}>
-                            <a
-                              className="textStyleCode"
-                              href={Constants.HOST + "nt"}
-                              style={{
-                                textDecoration: "none",
-
-                                fontSize: 12,
-                                color: Constants.CALCULATEBUTTONBG,
-
-                                fontWeight: "400",
-                              }}
-                            >
-                              {Constants.NUMBERTHEORY}
-                            </a>
+                            <div />
                           </Col>
                         </Row>
                       </Form>
@@ -526,6 +567,7 @@ export default class EditorTab extends React.Component {
               </Card>
             </Col>
           </Row>
+
           <Row
             style={{
               padding: 0,
@@ -549,7 +591,22 @@ export default class EditorTab extends React.Component {
           >
             <Col
               style={{
-                padding: 0,
+                padding: 4,
+                margin: 0,
+              }}
+            >
+              <Products></Products>
+            </Col>
+          </Row>
+          <Row
+            style={{
+              padding: 0,
+              margin: 0,
+            }}
+          >
+            <Col
+              style={{
+                padding: 4,
                 margin: 0,
               }}
             >

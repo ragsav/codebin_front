@@ -5,61 +5,7 @@ import Constants from "../constants/constants";
 import Footer from "./footer";
 
 const axios = require("axios");
-const companyList = [
-  {
-    name: "Prime factors",
-    key: "prime_factors",
-  },
-  {
-    name: "Exponential Mod",
-    key: "exponential_mod",
-  },
 
-  {
-    name: "Jacobi Symbol",
-    key: "jacobi_symbol",
-  },
-  {
-    name: "Euler Criterion",
-    key: "euler_criterion",
-  },
-  {
-    name: "Euler Psuedoprime",
-    key: "euler_psuedoprime",
-  },
-  {
-    name: "Jacobi-Euler Psuedoprime",
-    key: "jacobi_euler_psuedoprime",
-  },
-  {
-    name: "Fermat's little theorum",
-    key: "fermat_little_theorum",
-  },
-  {
-    name: "Fermats mod",
-    key: "fermat_mod",
-  },
-  {
-    name: "Fermat's Psuedoprime",
-    key: "fermat_psuedoprime",
-  },
-  {
-    name: "Euler's Totient",
-    key: "euler_totient",
-  },
-  {
-    name: "Euler Fermat Theorum",
-    key: "euler_fermat_theorum",
-  },
-  {
-    name: "Pollard Rho",
-    key: "pollard_rho",
-  },
-  {
-    name: "Fermat's Factorization",
-    key: "fermat_factorization",
-  },
-];
 export default class NumberThoeryTab extends React.Component {
   constructor(props) {
     super(props);
@@ -118,14 +64,14 @@ export default class NumberThoeryTab extends React.Component {
                   className="textStyleCode"
                   style={{
                     width: "100%",
-                    backgroundColor: "#272822",
+                    backgroundColor: Constants.MONOKAI,
 
                     border: "none",
                     borderRadius: 4,
                     padding: "1%",
                     fontSize: "13px",
                     fontWeight: "500",
-                    color: "#04e000",
+                    color: Constants.SECONDARY,
                     margin: 4,
                   }}
                 >
@@ -144,12 +90,12 @@ export default class NumberThoeryTab extends React.Component {
                   marginTop: 5,
                 }}
               >
-                {companyList.map((co) => (
+                {Constants.NTLIST.map((co) => (
                   <Col
                     style={{
                       padding: 0,
-                      paddingTop:       4,
-                      paddingBottom:4,
+                      paddingTop: 4,
+                      paddingBottom: 4,
                       margin: 0,
                     }}
                     xs={{ span: 12 }}
@@ -163,7 +109,7 @@ export default class NumberThoeryTab extends React.Component {
                         height: "100%",
                         padding: 4,
                         margin: 4,
-                        backgroundColor: "#51b82a",
+                        backgroundColor: Constants.PRIMARY,
                       }}
                     >
                       <a
@@ -172,7 +118,7 @@ export default class NumberThoeryTab extends React.Component {
                         // className="textStyleCode"
                         style={{
                           textDecoration: "none",
-                          color: "white",
+                          color:    Constants.MONOKAI,
                           fontSize: "14px",
                           fontWeight: "600",
                         }}

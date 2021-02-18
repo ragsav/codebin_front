@@ -371,7 +371,7 @@ export default class CodeViewerInt extends React.Component {
                                   border: "none",
                                   fontWeight: "500",
                                   color: "#04e000",
-                                  backgroundColor: "#272822",
+                                  backgroundColor: Constants.MONOKAI,
                                 }}
                                 onClick={this.handleGetText}
                               >
@@ -406,7 +406,7 @@ export default class CodeViewerInt extends React.Component {
                                   border: "none",
                                   fontWeight: "500",
                                   color: "#04e000",
-                                  backgroundColor: "#272822",
+                                  backgroundColor: Constants.MONOKAI,
                                 }}
                                 onClick={this.handleSubmit}
                               >

@@ -53,12 +53,9 @@ export default class CodeViewer extends React.Component {
     axios({
       method: "get",
       headers: { "Content-Type": "application/json" },
-      url:
-        Constants.TAPLINK +
-        currentUrlToken,
+      url: Constants.SERVERHOST + "/api/public/tapLink/" + currentUrlToken,
     })
       .then(function (response) {
-        
         if (response.data.message === "please enter password") {
           self.setState({
             isPassword: true,
@@ -112,7 +109,7 @@ export default class CodeViewer extends React.Component {
     axios({
       method: "post",
       headers: { "Content-Type": "application/json" },
-      url: Constants.OPENLINK,
+      url: Constants.SERVERHOST + "/api/public/openLink/",
       data: postObject,
     })
       .then(function (response) {
@@ -167,7 +164,7 @@ export default class CodeViewer extends React.Component {
     axios({
       method: "post",
       headers: { "Content-Type": "application/json" },
-      url: "https://copybinback.herokuapp.com/api/public/updateLink",
+      url: Constants.SERVERHOST + "/api/public/updateLink",
       data: postObject,
     })
       .then(function (response) {
@@ -203,21 +200,20 @@ export default class CodeViewer extends React.Component {
             // left:"50px",
             // right:"50px",
             // padding: "30px",
-            margin: "auto",
+            margin: "10px auto",
 
             // marginLeft:"5%",
             // marginRight:"5%",
             backgroundColor: "white",
             borderRadius: 0,
-            maxWidth: "80%",
-            minWidth: "450px",
-            padding: 0,
+            width: "1024px",
+            padding: 4,
             // margin: 0,
           }}
         >
           <Row
             style={{
-              padding: "2% 0% 2% 0%",
+              padding: "0",
               margin: "0% 0% 0% 0%",
             }}
           >
@@ -235,7 +231,11 @@ export default class CodeViewer extends React.Component {
                 <Container fluid style={{ padding: 4, margin: 0 }}>
                   <Row style={{ padding: 0, margin: 0 }}>
                     <Col
-                      sm={9}
+                      xs={{ span: 12 }}
+                      sm={{ span: 12 }}
+                      md={{ span: 12 }}
+                      lg={{ span: 9 }}
+                      xl={{ span: 9 }}
                       style={{
                         padding: 4,
                         margin: 0,
@@ -254,12 +254,8 @@ export default class CodeViewer extends React.Component {
                         placeholder="Your text here"
                         mode={this.state.textEditorMode}
                         theme={this.state.textEditortheme}
-                       
-                        
-
                         value={this.state.editedText}
                         onChange={this.onTextChanged}
-                        
                         setOptions={{
                           useWorker: false,
                           enableBasicAutocompletion: false,
@@ -271,7 +267,11 @@ export default class CodeViewer extends React.Component {
                       />
                     </Col>
                     <Col
-                      sm={3}
+                      xs={{ span: 12 }}
+                      sm={{ span: 12 }}
+                      md={{ span: 12 }}
+                      lg={{ span: 3 }}
+                      xl={{ span: 3 }}
                       style={{
                         padding: 0,
                         margin: 0,
@@ -325,7 +325,7 @@ export default class CodeViewer extends React.Component {
                                   border: "none",
                                   fontWeight: "500",
                                   color: "#04e000",
-                                  backgroundColor: "#272822",
+                                  backgroundColor: Constants.MONOKAI,
                                 }}
                                 onClick={this.handleGetText}
                               >
@@ -360,7 +360,7 @@ export default class CodeViewer extends React.Component {
                                   border: "none",
                                   fontWeight: "500",
                                   color: "#04e000",
-                                  backgroundColor: "#272822",
+                                  backgroundColor: Constants.MONOKAI,
                                 }}
                                 onClick={this.handleSubmit}
                               >
