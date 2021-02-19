@@ -57,14 +57,14 @@ const MainNavBar = () => (
         <Col style={{ padding: 0, margin: 0 }}>
           <Nav style={{ float: "right" }}>
             <Nav.Link
-              href="#home"
+              href={Constants.HOST}
               style={{
                 float: "right",
                 color: Constants.TERTIARY,
                 marginRight: 20,
               }}
             >
-              About
+              Home
             </Nav.Link>
           </Nav>
         </Col>

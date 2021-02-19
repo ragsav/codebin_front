@@ -3,6 +3,7 @@ import MainNavBar from "./components/navBar";
 
 import './App.css';
 import { Row, Col, Container } from "react-bootstrap";
+import Home from "./components/home";
 import EditorTab from "./components/link_generator/EditorTab";
 // import LinkViewer from "./components/unused/LinkViewer";
 import CodeViewer from "./components/link_generator/CodeViewer";
@@ -25,6 +26,7 @@ import EulerTotient from "./components/number theory/euler_totient";
 import EulerFermatTheorum from "./components/number theory/euler_fermat_theory";
 import PollardRho from "./components/number theory/pollard_rho";
 import FermatFactorization from "./components/number theory/fermat_factorization";
+
 function App() {
   return (
     <div
@@ -50,6 +52,9 @@ function App() {
             <Router>
               <Switch>
                 <Route exact path="/">
+                  <Home></Home>
+                </Route>
+                <Route exact path="/link_generator">
                   <EditorTab></EditorTab>
                 </Route>
                 <Route exact path="/encrypt_decrypt">

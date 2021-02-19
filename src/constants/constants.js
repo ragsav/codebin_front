@@ -8,6 +8,8 @@ module.exports = Object.freeze({
   PASTE: "Generate>Pastes",
   ENCRYPTDECRYPTHEADING: "Encrypt/Decrypt",
   LINEARALGEBRA: "Linear Algebra",
+  HOME: "Sections",
+  ABOUT: "About",
   UPLOADTEXT: "Upload file",
   GENERATELINK: "Generate>Link",
   NUMBERTHEORY: "Number>Theory",
