@@ -102,7 +102,13 @@ export default class Home extends React.Component {
                           </a>
                           <ul>
                             {Constants.NTLIST.map((l) => (
-                              <li style={{ padding: 4, fontSize: 12 }}>
+                              <li
+                                style={{
+                                  padding: 4,
+                                  fontSize: 14,
+                                  fontWeight: 500,
+                                }}
+                              >
                                 <a href={Constants.HOST + "nt/" + l.key}>
                                   {l.name}
                                 </a>
@@ -111,11 +117,26 @@ export default class Home extends React.Component {
                           </ul>
                         </li>
                         <li style={{ padding: 4, fontSize: 16 }}>
-                          <a href="">
+                          <a href={Constants.HOST + "linear_algebra"}>
                             <strong>
                               LINEAR ALGEBRA (Step by step answer)
                             </strong>
                           </a>
+                          <ul>
+                            {Constants.LALIST.map((l) => (
+                              <li
+                                style={{
+                                  padding: 4,
+                                  fontSize: 14,
+                                  fontWeight: 500,
+                                }}
+                              >
+                                <a href={Constants.HOST + "nt/" + l.key}>
+                                  {l.name}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
                           {/* <ul>
                             {Constants.NTLIST.map((l) => (
                               <li style={{ padding: 4, fontSize: 12 }}>

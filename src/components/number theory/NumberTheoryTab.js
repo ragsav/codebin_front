@@ -82,7 +82,13 @@ export default class NumberThoeryTab extends React.Component {
                       margin: 4,
                     }}
                   >
-                    <Row style={{ padding: 0, margin: 0 }}>
+                    <Row
+                      style={{
+                        padding: 0,
+
+                        margin: 0,
+                      }}
+                    >
                       <Col
                         style={{ padding: 4, margin: 0, textAlign: "start" }}
                       >

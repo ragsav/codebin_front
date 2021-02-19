@@ -97,47 +97,16 @@ export default class LinearAlgebraTab extends React.Component {
                     padding: 0,
                     margin: 0,
                     marginTop: 5,
+                    textAlign:   "start",
                   }}
                 >
-                  {Constants.LALIST.map((co) => (
-                    <Col
-                      style={{
-                        padding: 0,
-                        paddingTop: 4,
-                        paddingBottom: 4,
-                        margin: 0,
-                      }}
-                      xs={{ span: 12 }}
-                      sm={{ span: 6 }}
-                      md={{ span: 4 }}
-                      lg={{ span: 4 }}
-                      xl={{ span: 3 }}
-                    >
-                      <Card
-                        style={{
-                          height: "100%",
-                          padding: 4,
-                          margin: 4,
-                          backgroundColor: Constants.PRIMARY,
-                        }}
-                      >
-                        <a
-                          href={Constants.HOST + "nt/" + co.key}
-                          target="_blank"
-                          // className="textStyleCode"
-                          style={{
-                            textDecoration: "none",
-                            color: Constants.MONOKAI,
-                            fontSize: "14px",
-                            fontWeight: "600",
-                          }}
-                        >
-                          {" "}
-                          {co.name}
-                        </a>
-                      </Card>
-                    </Col>
-                  ))}
+                  <ul>
+                    {Constants.LALIST.map((l) => (
+                      <li style={{ padding: 4, fontSize: 14, fontWeight: 500 }}>
+                        <a href={Constants.HOST + "nt/" + l.key}>{l.name}</a>
+                      </li>
+                    ))}
+                  </ul>
                 </Row>
               </Col>
             </Row>

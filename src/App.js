@@ -27,6 +27,12 @@ import EulerFermatTheorum from "./components/number theory/euler_fermat_theory";
 import PollardRho from "./components/number theory/pollard_rho";
 import FermatFactorization from "./components/number theory/fermat_factorization";
 
+
+
+import { Matrix } from "./components/linear algebra/matrix_input";
+import MatrixInverse from "./components/linear algebra/inverse";
+
+
 function App() {
   return (
     <div
@@ -107,6 +113,13 @@ function App() {
                 </Route>
                 <Route exact path="/nt">
                   <NumberTheoryTab></NumberTheoryTab>
+                </Route>
+
+                <Route exact path="/linear_algebra/matrix_input">
+                  <Matrix rows={4} columns={5}></Matrix>
+                </Route>
+                <Route exact path="/linear_algebra/matrix_inverse">
+                  <MatrixInverse rows={4} columns={5}></MatrixInverse>
                 </Route>
               </Switch>
 
