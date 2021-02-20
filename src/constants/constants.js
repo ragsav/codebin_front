@@ -111,8 +111,16 @@ module.exports = Object.freeze({
   ],
   PRODUCTS: [
     {
+      name: "Link Generator",
+      key: "link_generator",
+    },
+    {
       name: "Number Theory",
       key: "nt",
+    },
+    {
+      name: "Cryptography",
+      key: "cryptography",
     },
     {
       name: "Encrypt/Decrypt",
@@ -125,16 +133,8 @@ module.exports = Object.freeze({
   ],
   LALIST: [
     {
-      name: "Number Theory",
-      key: "nt",
-    },
-    {
-      name: "Encrypt/Decrypt",
-      key: "encrypt_decrypt",
-    },
-    {
-      name: "Linear Algebra",
-      key: "linear_algebra",
+      name: "Matrix Inverse",
+      key: "matrix_inverse",
     },
   ],
 });

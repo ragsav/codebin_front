@@ -97,13 +97,15 @@ export default class LinearAlgebraTab extends React.Component {
                     padding: 0,
                     margin: 0,
                     marginTop: 5,
-                    textAlign:   "start",
+                    textAlign: "start",
                   }}
                 >
                   <ul>
                     {Constants.LALIST.map((l) => (
                       <li style={{ padding: 4, fontSize: 14, fontWeight: 500 }}>
-                        <a href={Constants.HOST + "nt/" + l.key}>{l.name}</a>
+                        <a href={Constants.HOST + "linear_algebra/" + l.key}>
+                          {l.name}
+                        </a>
                       </li>
                     ))}
                   </ul>

@@ -131,7 +131,11 @@ export default class Home extends React.Component {
                                   fontWeight: 500,
                                 }}
                               >
-                                <a href={Constants.HOST + "nt/" + l.key}>
+                                <a
+                                  href={
+                                    Constants.HOST + "linear_algebra/" + l.key
+                                  }
+                                >
                                   {l.name}
                                 </a>
                               </li>
@@ -160,6 +164,18 @@ export default class Home extends React.Component {
                         <li style={{ padding: 4, fontSize: 16 }}>
                           <a href="">
                             <strong>ALGORITHMS (Visualisation)</strong>
+                          </a>
+                          {/* <ul>
+                            {Constants.NTLIST.map((l) => (
+                              <li style={{ padding: 4, fontSize: 12 }}>
+                                <a href="">{l.name}</a>
+                              </li>
+                            ))}
+                          </ul> */}
+                        </li>
+                        <li style={{ padding: 4, fontSize: 16 }}>
+                          <a href="">
+                            <strong>CRYPTOGRAPHY (Step by step answer)</strong>
                           </a>
                           {/* <ul>
                             {Constants.NTLIST.map((l) => (
@@ -218,7 +234,7 @@ export default class Home extends React.Component {
                             >
                               Code>bin
                             </a>{" "}
-                            is a non-profit education website aimed to make
+                            is a non-profit educational website aimed to make
                             learning more fun and intuitive.
                           </li>
                         </ul>

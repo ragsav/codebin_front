@@ -3,39 +3,21 @@ import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
 import { Grid } from "@agney/react-loading";
 import Constants from "../../constants/constants";
 import Footer from "../footer";
+import { useEffect, useState } from "react";
 import { Matrix } from "./matrix_input";
 import { mat_inv } from "./la_algorithms";
+import Terminal from "../terminal";
 const axios = require("axios");
+
 var res_string = [];
-export default class MatrixInverse extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: Array.from(Array(3), () => new Array(3).fill(0)),
-      answer: Array.from(Array(3), () => new Array(3).fill(0)),
-      errors: [],
-    };
+export default function MatrixInverse(){
+  
+  const [error, setError] = useState([]);
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.onDataChanged = this.onDataChanged.bind(this);
-  }
-  componentDidMount() {}
-
-  componentWillUnmount() {}
-
-  handleSubmit = (event) => {
-    var self = this;
-    event.preventDefault();
-  };
-
-  onDataChanged = (new_data) => {
-    this.setState({
-      data: new_data,
-    });
-    // console.log(new_data);
-  };
-
-  render() {
+  const [text, setText] = useState([]);
+  const [data, setData] = useState(Array.from(Array(3), () => new Array(3).fill(0)));
+   
+  
     return (
       <div>
         <Col
@@ -79,9 +61,9 @@ export default class MatrixInverse extends React.Component {
                       }}
                     >
                       <Matrix
-                        data={this.state.data}
+                        data={data}
                         width={300}
-                        onDataChanged={this.onDataChanged}
+                        onDataChanged={setData}
                       ></Matrix>
                     </Col>
                     <Col
@@ -107,24 +89,6 @@ export default class MatrixInverse extends React.Component {
                           Matrix Inverse
                         </Card>
 
-                        {/* <Row style={{ padding: 4, width: "100%", margin: 0 }}>
-                          <Col style={{ padding: 0 }}>
-                            <Form.Control
-                              type="text"
-                              placeholder="Base"
-                              style={{
-                                fontSize: "small",
-                                color: Constants.MONOKAI,
-                                backgroundColor: "white",
-                                border: `1px solid ${Constants.SECONDARY}`,
-                              }}
-                              onChange={(v) => {
-                                // setA(v.target.value);
-                              }}
-                            />
-                          </Col>
-                        </Row> */}
-
                         <Row style={{ padding: 4, width: "100%", margin: 0 }}>
                           <Col style={{ padding: 0 }}>
                             <Button
@@ -143,19 +107,14 @@ export default class MatrixInverse extends React.Component {
                               }}
                               onClick={(e) => {
                                 e.preventDefault();
-                                if (
-                                  this.state.data.length ===
-                                  this.state.data[0].length
-                                ) {
-                                  this.setState({
-                                    answer: mat_inv(this.state.data),
-                                  });
-                                  //   console.log(this.state.answer);
-                                } else {
-                                  alert("Matrix should be square");
-                                }
-                                // factor(a, res_string);
-                                // setText(res_string);
+
+                                var inv = mat_inv(data);
+                                data.map((row,x)=>{
+                                  row.map((col,y)=>{
+                                    res_string.push({col})
+                                  })
+                                })
+                                setText(res_string)
                                 res_string = [];
                                 //   console.log(text);
                               }}
@@ -182,50 +141,27 @@ export default class MatrixInverse extends React.Component {
             </Col>
           </Row>
 
-          <Row
-            style={{
-              padding: "0",
-              margin: "0% 0% 0% 0%",
-              marginTop: 40,
-            }}
-          >
-            <Col
+          {text.length===0?null:
+            <Row
               style={{
-                padding: 4,
-                margin: 0,
+                padding: "0",
+                margin: "0% 0% 0% 0%",
+                marginTop: 40,
               }}
             >
-              <Card
+              <Col
                 style={{
-                  height: "100%",
+                  padding: 4,
+                  margin: 0,
                 }}
               >
-                <Container fluid style={{ padding: 4, margin: 0 }}>
-                  <Row style={{ padding: 0, margin: 0 }}>
-                    <Col
-                      style={{
-                        padding: 0,
-                        paddingRight: 16,
-                        paddingLeft: 16,
-                        margin: 0,
-                        // width: "100%",
-
-                        height: "100%",
-                      }}
-                    >
-                      <Matrix
-                        data={this.state.answer}
-                        width={300}
-                        readonly
-                      ></Matrix>
-                    </Col>
-                  </Row>
-                </Container>
-              </Card>
-            </Col>
-          </Row>
+                <Terminal text={text} height="1024px"></Terminal>
+                
+              </Col>
+            </Row>
+          }
         </Col>
       </div>
     );
-  }
+  
 }

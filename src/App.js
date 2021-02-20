@@ -115,11 +115,9 @@ function App() {
                   <NumberTheoryTab></NumberTheoryTab>
                 </Route>
 
-                <Route exact path="/linear_algebra/matrix_input">
-                  <Matrix rows={4} columns={5}></Matrix>
-                </Route>
+                
                 <Route exact path="/linear_algebra/matrix_inverse">
-                  <MatrixInverse rows={4} columns={5}></MatrixInverse>
+                  <MatrixInverse ></MatrixInverse>
                 </Route>
               </Switch>
 
