@@ -13,7 +13,7 @@ module.exports = Object.freeze({
   UPLOADTEXT: "Upload file",
   GENERATELINK: "Generate>Link",
   NUMBERTHEORY: "Number>Theory",
-  MOREPRODUCTS: "More>Products",
+  MOREPRODUCTS: "More>Utilities",
   DEFAULTTHEME: "monokai",
   DEFAULTMODE: "javascript",
 
@@ -133,8 +133,24 @@ module.exports = Object.freeze({
   ],
   LALIST: [
     {
+      name: "Matrix Determinant",
+      key: "matrix_determinant",
+    },
+    {
       name: "Matrix Inverse",
       key: "matrix_inverse",
+    },
+    {
+      name: "Matrix Multiplication",
+      key: "matrix_multiplication",
+    },
+    {
+      name: "Matrix Eigen Vectors",
+      key: "matrix_eigen",
+    },
+    {
+      name: "Solving Simultaneous Linear Equations",
+      key: "mat_linear_system",
     },
   ],
 });

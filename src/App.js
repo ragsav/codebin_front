@@ -31,7 +31,10 @@ import FermatFactorization from "./components/number theory/fermat_factorization
 
 import { Matrix } from "./components/linear algebra/matrix_input";
 import MatrixInverse from "./components/linear algebra/inverse";
-
+import MatrixDet from "./components/linear algebra/determinant";
+import MatrixMul from "./components/linear algebra/multiplication";
+import MatrixEigen from "./components/linear algebra/eigen";
+import LinearSystem from "./components/linear algebra/linear_system";
 
 function App() {
   return (
@@ -115,9 +118,20 @@ function App() {
                   <NumberTheoryTab></NumberTheoryTab>
                 </Route>
 
-                
                 <Route exact path="/linear_algebra/matrix_inverse">
-                  <MatrixInverse ></MatrixInverse>
+                  <MatrixInverse></MatrixInverse>
+                </Route>
+                <Route exact path="/linear_algebra/matrix_determinant">
+                  <MatrixDet></MatrixDet>
+                </Route>
+                <Route exact path="/linear_algebra/matrix_multiplication">
+                  <MatrixMul></MatrixMul>
+                </Route>
+                <Route exact path="/linear_algebra/matrix_eigen">
+                  <MatrixEigen></MatrixEigen>
+                </Route>
+                <Route exact path="/linear_algebra/mat_linear_system">
+                  <LinearSystem></LinearSystem>
                 </Route>
               </Switch>
 

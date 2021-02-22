@@ -1,37 +1,39 @@
 import React from "react";
-import { Grid } from "@agney/react-loading";
 import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
-import { useEffect, useState } from "react";
-import Terminal from "./answer_display";
-import { fermat_mod } from "./nt_algorithms";
+import { Grid } from "@agney/react-loading";
 import Constants from "../../constants/constants";
+import Footer from "../footer";
+import { mat_linear_sys } from "./la_algorithms";
+import { useEffect, useState } from "react";
+import { Matrix } from "./matrix_input";
+
+import DisplayAnswer from "./answer_display";
+// import Terminal from "../terminal";
+const axios = require("axios");
+
 var res_string = [];
-
-export default function FermatMod() {
+export default function LinearSystem() {
   const [error, setError] = useState([]);
-  const [submitting, setSubmitting] = useState(false);
-  const [text, setText] = useState([]);
-  const [base, setBase] = useState(0);
-  const [mod, setMod] = useState(0);
-  const [exponent, setExponent] = useState(0);
 
+  const [text, setText] = useState([]);
+  const [data1, setData1] = useState([
+    [1, 2],
+    [3, 4],
+  ]);
+  const [data2, setData2] = useState([[1, 2]]);
+
+  useEffect(() => {
+    // console.log(data);
+  });
   return (
     <div>
       <Col
         style={{
-          // maxWidth:"100%",
-          // left:"50px",
-          // right:"50px",
-          // padding: "30px",
           margin: "auto",
-
-          // marginLeft:"5%",
-          // marginRight:"5%",
           backgroundColor: "white",
           borderRadius: 0,
           width: "1024px",
           padding: 8,
-          // margin: 0,
         }}
       >
         <Row
@@ -56,14 +58,29 @@ export default function FermatMod() {
                   <Col
                     sm={9}
                     style={{
-                      padding: 4,
+                      padding: 0,
+                      paddingRight: 16,
+                      paddingLeft: 16,
                       margin: 0,
                       // width: "100%",
 
                       height: "100%",
                     }}
                   >
-                    <Terminal text={text} height="440px"></Terminal>
+                    <Row style={{ margin: 0, padding: 0 }}>
+                      <Matrix
+                        data={data1}
+                        width={300}
+                        onDataChanged={setData1}
+                      ></Matrix>
+                    </Row>
+                    <Row style={{ margin: 0, padding: 0, marginTop: 20 }}>
+                      <Matrix
+                        data={data2}
+                        width={300}
+                        onDataChanged={setData2}
+                      ></Matrix>
+                    </Row>
                   </Col>
                   <Col
                     sm={3}
@@ -85,60 +102,8 @@ export default function FermatMod() {
                           fontSize: 10,
                         }}
                       >
-                        Fermat's Mod
+                        Linear system
                       </Card>
-
-                      <Row style={{ padding: 4, width: "100%", margin: 0 }}>
-                        <Col style={{ padding: 0 }}>
-                          <Form.Control
-                            type="text"
-                            placeholder="Base"
-                            style={{
-                              fontSize: "small",
-                              color: Constants.MONOKAI,
-                              backgroundColor: "white",
-                              border: `1px solid ${Constants.SECONDARY}`,
-                            }}
-                            onChange={(v) => {
-                              setBase(v.target.value);
-                            }}
-                          />
-                        </Col>
-                      </Row>
-                      <Row style={{ padding: 4, width: "100%", margin: 0 }}>
-                        <Col style={{ padding: 0 }}>
-                          <Form.Control
-                            type="text"
-                            placeholder="Exponent"
-                            style={{
-                              fontSize: "small",
-                              color: Constants.MONOKAI,
-                              backgroundColor: "white",
-                              border: `1px solid ${Constants.SECONDARY}`,
-                            }}
-                            onChange={(v) => {
-                              setExponent(v.target.value);
-                            }}
-                          />
-                        </Col>
-                      </Row>
-                      <Row style={{ padding: 4, width: "100%", margin: 0 }}>
-                        <Col style={{ padding: 0 }}>
-                          <Form.Control
-                            type="text"
-                            placeholder="Modulo"
-                            style={{
-                              fontSize: "small",
-                              color: Constants.MONOKAI,
-                              backgroundColor: "white",
-                              border: `1px solid ${Constants.SECONDARY}`,
-                            }}
-                            onChange={(v) => {
-                              setMod(v.target.value);
-                            }}
-                          />
-                        </Col>
-                      </Row>
 
                       <Row style={{ padding: 4, width: "100%", margin: 0 }}>
                         <Col style={{ padding: 0 }}>
@@ -152,14 +117,28 @@ export default function FermatMod() {
                               float: "left",
                               border: "none",
                               fontWeight: "500",
-                              color: Constants.CALCULATEBUTTONTEXTCOLOR,
+                              color: Constants.TERTIARY,
                               // boxShadow: "1px 3px 1px #9E9E9E",
                               backgroundColor: Constants.SECONDARY,
                             }}
                             onClick={(e) => {
                               e.preventDefault();
-
-                              fermat_mod(base, exponent, mod, res_string);
+                              // console.log("before chnage");
+                              // console.log(data);
+                              // var copy_data = data.slice();
+                              var copy_data1 = data1.map(function (arr) {
+                                return arr.slice();
+                              });
+                              var copy_data2 = data2.map(function (arr) {
+                                return arr.slice();
+                              });
+                              mat_linear_sys(
+                                copy_data1,
+                                copy_data2,
+                                res_string
+                              );
+                              // console.log("after chnage");
+                              // console.log(data);
                               setText(res_string);
                               res_string = [];
                               //   console.log(text);
@@ -187,21 +166,25 @@ export default function FermatMod() {
           </Col>
         </Row>
 
-        {/* <Row
-          style={{
-            padding: 0,
-            margin: 0,
-          }}
-        >
-          <Col
+        {text.length === 0 ? null : (
+          <Row
             style={{
-              padding: 0,
-              margin: 0,
+              padding: "0",
+              margin: "0% 0% 0% 0%",
+              marginTop: 40,
             }}
           >
-            <Footer></Footer>
-          </Col>
-        </Row> */}
+            <Col
+              style={{
+                padding: 4,
+                margin: 0,
+              }}
+            >
+              <DisplayAnswer comp={text}></DisplayAnswer>
+              {/* <Terminal text={text} height="1024px"></Terminal> */}
+            </Col>
+          </Row>
+        )}
       </Col>
     </div>
   );

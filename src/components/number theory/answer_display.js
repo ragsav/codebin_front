@@ -1,7 +1,7 @@
 import React from "react";
 import { Grid } from "@agney/react-loading";
 import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
-import Constants from "../constants/constants";
+import Constants from "../../constants/constants";
 import { useEffect, useState } from "react";
 
 export default function Terminal(props) {

@@ -74,7 +74,7 @@ export default class Home extends React.Component {
                   <Row style={{ padding: 0, margin: 0, marginTop: 20 }}>
                     <Col style={{ padding: 0, margin: 0, textAlign: "start" }}>
                       <ul>
-                        <li style={{ padding: 4, fontSize: 16 }}>
+                        <li key={"lg"} style={{ padding: 4, fontSize: 16 }}>
                           <a href={Constants.HOST + "link_generator"}>
                             <strong>LINK GENERATION</strong>
                           </a>
@@ -85,7 +85,7 @@ export default class Home extends React.Component {
                             </li>
                           </ul>
                         </li>
-                        <li style={{ padding: 4, fontSize: 16 }}>
+                        <li key={"ed"} style={{ padding: 4, fontSize: 16 }}>
                           <a href={Constants.HOST + "encrypt_decrypt"}>
                             <strong>ENCRYPT / DECRYPT</strong>
                           </a>
@@ -96,13 +96,19 @@ export default class Home extends React.Component {
                             </li>
                           </ul>
                         </li>
-                        <li style={{ padding: 4, fontSize: 16 }}>
+                        <li key={"nt"} style={{ padding: 4, fontSize: 16 }}>
                           <a href={Constants.HOST + "nt"}>
-                            <strong>NUMBER THEORY (Step by step answer)</strong>
+                            <strong>
+                              NUMBER THEORY (Step by step answer){" "}
+                              <span style={{ color: "red" }}>
+                                (More comming soon)
+                              </span>
+                            </strong>
                           </a>
                           <ul>
-                            {Constants.NTLIST.map((l) => (
+                            {Constants.NTLIST.map((l, x) => (
                               <li
+                                key={x}
                                 style={{
                                   padding: 4,
                                   fontSize: 14,
@@ -116,15 +122,19 @@ export default class Home extends React.Component {
                             ))}
                           </ul>
                         </li>
-                        <li style={{ padding: 4, fontSize: 16 }}>
+                        <li key={"la"} style={{ padding: 4, fontSize: 16 }}>
                           <a href={Constants.HOST + "linear_algebra"}>
                             <strong>
                               LINEAR ALGEBRA (Step by step answer)
+                              <span style={{ color: "red" }}>
+                                (More comming soon)
+                              </span>
                             </strong>
                           </a>
                           <ul>
-                            {Constants.LALIST.map((l) => (
+                            {Constants.LALIST.map((l, x) => (
                               <li
+                                key={x}
                                 style={{
                                   padding: 4,
                                   fontSize: 14,
@@ -149,9 +159,14 @@ export default class Home extends React.Component {
                             ))}
                           </ul> */}
                         </li>
-                        <li style={{ padding: 4, fontSize: 16 }}>
+                        <li key={"ds"} style={{ padding: 4, fontSize: 16 }}>
                           <a href="">
-                            <strong>DATA STRUCTURES (Visualisation)</strong>
+                            <strong>
+                              DATA STRUCTURES{" "}
+                              <span style={{ color: "red" }}>
+                                (Comming soon)
+                              </span>
+                            </strong>
                           </a>
                           {/* <ul>
                             {Constants.NTLIST.map((l) => (
@@ -161,9 +176,14 @@ export default class Home extends React.Component {
                             ))}
                           </ul> */}
                         </li>
-                        <li style={{ padding: 4, fontSize: 16 }}>
+                        <li key={"ag"} style={{ padding: 4, fontSize: 16 }}>
                           <a href="">
-                            <strong>ALGORITHMS (Visualisation)</strong>
+                            <strong>
+                              ALGORITHMS{" "}
+                              <span style={{ color: "red" }}>
+                                (Comming soon)
+                              </span>
+                            </strong>{" "}
                           </a>
                           {/* <ul>
                             {Constants.NTLIST.map((l) => (
@@ -173,9 +193,14 @@ export default class Home extends React.Component {
                             ))}
                           </ul> */}
                         </li>
-                        <li style={{ padding: 4, fontSize: 16 }}>
+                        <li key={"cg"} style={{ padding: 4, fontSize: 16 }}>
                           <a href="">
-                            <strong>CRYPTOGRAPHY (Step by step answer)</strong>
+                            <strong>
+                              CRYPTOGRAPHY (Step by step answer){" "}
+                              <span style={{ color: "red" }}>
+                                (Comming soon)
+                              </span>
+                            </strong>
                           </a>
                           {/* <ul>
                             {Constants.NTLIST.map((l) => (
@@ -232,10 +257,9 @@ export default class Home extends React.Component {
                                 fontWeight: 500,
                               }}
                             >
-                              Code>bin
+                              {Constants.WEBSITE}
                             </a>{" "}
-                            is a non-profit educational website aimed to make
-                            learning more fun and intuitive.
+                            is a non-profit educational website.
                           </li>
                         </ul>
                       </li>
@@ -243,7 +267,10 @@ export default class Home extends React.Component {
                         <strong>CREDITS</strong>
                       </li>
                       <li style={{ padding: 4, fontSize: 16 }}>
-                        <a href="">
+                        <a
+                          href="https://github.com/ragsav/copybin_front"
+                          target="_blank"
+                        >
                           <strong>SOURCE</strong>
                         </a>
                       </li>

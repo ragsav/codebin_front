@@ -59,7 +59,7 @@ export class Matrix extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log(this.props);
+    // console.log(this.props);
     this.state = {
       rows: this.props.data.length,
       columns: this.props.data[0].length,
@@ -91,6 +91,7 @@ export class Matrix extends React.Component {
       columns: columns,
     });
 
+    // console.log(this.state.columns);
     this.props.onDataChanged(columns);
     // console.log(this.state.columns);
   }
@@ -107,6 +108,7 @@ export class Matrix extends React.Component {
       columns: columns,
     });
     this.props.onDataChanged(columns);
+    console.log(this.state.columns);
   };
 
   addColumn = () => {
@@ -125,29 +127,35 @@ export class Matrix extends React.Component {
   };
 
   removeRow = () => {
-    this.state.columns.pop();
-    this.setState({
-      columns: this.state.columns,
-    });
-    this.props.onDataChanged(this.state.columns);
+    if (this.state.columns.length > 1) {
+      this.state.columns.pop();
+      this.setState({
+        columns: this.state.columns,
+      });
+      this.props.onDataChanged(this.state.columns);
+    }
+    
   };
 
   removeColumn = () => {
-    for (var i = 0; i < this.state.columns.length; i++) {
-      this.state.columns[i].pop();
+    if (this.state.columns[0].length > 1) {
+      for (var i = 0; i < this.state.columns.length; i++) {
+        this.state.columns[i].pop();
+      }
+      this.setState({
+        columns: this.state.columns,
+      });
+      this.props.onDataChanged(this.state.columns);
     }
-    this.setState({
-      columns: this.state.columns,
-    });
-    this.props.onDataChanged(this.state.columns);
+    
   };
 
   render() {
     var currentCell = 0;
 
-    var columns = this.state.columns.map(function (columnValues, x) {
+    var rows = this.state.columns.map(function (rowVal, x) {
       var y = 0;
-      var column = columnValues.map(function (value, y) {
+      var column = rowVal.map(function (value, y) {
         var cell = (
           <MatrixCell
             key={x + "-" + y}
@@ -158,16 +166,16 @@ export class Matrix extends React.Component {
             readonly={this.props.readonly}
           />
         );
-        currentCell++;
+        // currentCell++;
         return <Col style={{ padding: 0, margin: 0 }}>{cell}</Col>;
       }, this);
 
-      var col = (
+      var row = (
         <Row key={x} style={{ padding: 0, margin: 0 }}>
           {column}
         </Row>
       );
-      return col;
+      return row;
     }, this);
     return (
       <Container style={{ padding: 0 }}>
@@ -287,7 +295,7 @@ export class Matrix extends React.Component {
         )}
 
         <Row style={{ padding: 0, margin: 0 }}>
-          <Col style={{ padding: 0, margin: 0 }}>{columns}</Col>
+          <Col style={{ padding: 0, margin: 0 }}>{rows}</Col>
         </Row>
       </Container>
     );

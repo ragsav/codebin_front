@@ -2,7 +2,7 @@ import React from "react";
 import { Grid } from "@agney/react-loading";
 import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import Terminal from "../terminal";
+import Terminal from "./answer_display";
 import { euler_totient } from "./nt_algorithms";
 import Constants from "../../constants/constants";
 var res_string = [];

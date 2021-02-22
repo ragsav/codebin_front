@@ -1,58 +1,130 @@
+import React from "react";
+import { Grid } from "@agney/react-loading";
+import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
+import Constants from "../../constants/constants";
+import { useEffect, useState } from "react";
+
+const linear = require("./gauss_jordan");
 const math = require("mathjs");
 
-export function mat_inv(matrix) {
-  try  {
-        var inv = math.inv(math.matrix(matrix));
-        //   console.log(inv.valueOf());
-        return inv.valueOf();
-  }  catch  (e)  {
-        alert(e);;
+
+function convert_to_float(matrix){
+  var n = matrix.length;
+  for(var i=0;i<n;i++){
+    for(var j = 0;j<matrix[0].length;j++){
+      matrix[i][j]=parseFloat(matrix[i][j])
+    }
   }
-  
+  return matrix;
 }
 
-export function inverse(_A) {
-  var temp,
-    N = _A.length,
-    E = [];
+function display_matrix(label, matrix) {
+  // console.log("this is display matrix");
 
-  for (var i = 0; i < N; i++) E[i] = [];
+  // console.log(typeof matrix);
 
-  for (i = 0; i < N; i++)
-    for (var j = 0; j < N; j++) {
-      E[i][j] = 0;
-      if (i == j) E[i][j] = 1;
-    }
+  var rows = matrix.map(function (rowVal, x) {
+    var row = rowVal.map(function (value, y) {
+      // var cell = <p key={y + "-" + x}>{value}</p>;
+      // currentCell++;
+      return (
+        <Col
+       
+            key={y  +  "-"  +  x}
+ 
+                  style={{ padding: 4, margin: 0,}}
+        
+        >
+          {Math.round(value*1000)/1000}
+        </Col>
+      );
+    }, this);
 
-  for (var k = 0; k < N; k++) {
-    temp = _A[k][k];
+    row = (
+      <Row key={x} style={{ padding: 0, margin: 0 }}>
+        {row}
+      </Row>
+    );
+    return row;
+  }, this);
+  return (
+    <div
+      style={{
+        display: "inline-block",
+        borderLeft: "2px solid #333",
+        borderRight: "2px solid #333",
+        padding: "0 2px",
+        borderRadius: "4px",
+      }}
+    >
+      {rows}
+    </div>
+  );
+}
 
-    for (var j = 0; j < N; j++) {
-      _A[k][j] /= temp;
-      E[k][j] /= temp;
-    }
+function join_matrix(label, a, b) {
+  return (
+    <Row>
+      <Col>{label}</Col>
+      <Col>
+        <Row>
+          <Col>{display_matrix("", a)}</Col>
+          <Col>{display_matrix("", b)}</Col>
+        </Row>
+      </Col>
+    </Row>
+  );
+}
 
-    for (var i = k + 1; i < N; i++) {
-      temp = _A[i][k];
 
-      for (var j = 0; j < N; j++) {
-        _A[i][j] -= _A[k][j] * temp;
-        E[i][j] -= E[k][j] * temp;
-      }
-    }
+export function mat_inv(matrix, comp_list) {
+  try {
+    var inv = math.inv(math.matrix(convert_to_float((matrix))));
+    //   console.log(inv.valueOf());
+    comp_list.push(display_matrix("Ans = ", inv.valueOf()));
+    return inv.valueOf();
+  } catch (e) {
+    alert(e);
   }
+}
 
-  for (var k = N - 1; k > 0; k--) {
-    for (var i = k - 1; i >= 0; i--) {
-      temp = _A[i][k];
-
-      for (var j = 0; j < N; j++) {
-        _A[i][j] -= _A[k][j] * temp;
-        E[i][j] -= E[k][j] * temp;
-      }
-    }
+export function mat_det(matrix, comp_list) {
+  try {
+    var det = math.det(math.matrix(convert_to_float((matrix))));
+    comp_list.push(det);
+  } catch (e) {
+    alert(e);
   }
+}
 
-  for (var i = 0; i < N; i++) for (var j = 0; j < N; j++) _A[i][j] = E[i][j];
-  return _A;
+export function mat_mul(a, b, comp_list) {
+  try {
+    var mul = math.multiply(math.matrix(convert_to_float((a))), math.matrix(convert_to_float((b))));
+    console.log(mul.valueOf());
+    comp_list.push(display_matrix("Ans = ", mul.valueOf()));
+  } catch (e) {
+    alert(e);
+  }
+}
+
+export function mat_eigen(a, comp_list) {
+  try  {
+    
+    var eigen = math.eigs(math.matrix(convert_to_float(a)));
+    comp_list.push(display_matrix("Eigen vectors(as columns) = ",eigen.vectors._data))
+    // console.log(eigen.vectors._data);
+  }  catch  (e)  {
+    alert(e);
+  }
+}
+
+export function mat_linear_sys(a,b,comp_list){
+  try{
+    
+    var sol = math.lusolve(math.matrix(convert_to_float(a)), math.transpose(math.matrix(convert_to_float(b))));
+    
+    comp_list.push(display_matrix("",sol.valueOf()))
+  }catch(e){
+    alert(e)
+  }
 }

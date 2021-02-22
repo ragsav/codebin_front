@@ -6,7 +6,8 @@ import Footer from "../footer";
 import { useEffect, useState } from "react";
 import { Matrix } from "./matrix_input";
 import { mat_inv } from "./la_algorithms";
-import Terminal from "../terminal";
+import DisplayAnswer from "./answer_display";
+// import Terminal from "../terminal";
 const axios = require("axios");
 
 var res_string = [];
@@ -15,9 +16,14 @@ export default function MatrixInverse(){
   const [error, setError] = useState([]);
 
   const [text, setText] = useState([]);
-  const [data, setData] = useState(Array.from(Array(3), () => new Array(3).fill(0)));
+  const [data, setData] = useState([
+    [1, 2],
+    [3, 4],
+  ]);
    
-  
+  useEffect(()=>{
+    // console.log(data);
+  })
     return (
       <div>
         <Col
@@ -107,14 +113,18 @@ export default function MatrixInverse(){
                               }}
                               onClick={(e) => {
                                 e.preventDefault();
-
-                                var inv = mat_inv(data);
-                                data.map((row,x)=>{
-                                  row.map((col,y)=>{
-                                    res_string.push({col})
-                                  })
-                                })
-                                setText(res_string)
+                                // console.log("before chnage");
+                                // console.log(data);
+                                // var copy_data = data.slice();
+                                var copy_data = data.map(function (
+                                  arr
+                                ) {
+                                  return arr.slice();
+                                });
+                                mat_inv(copy_data, res_string);
+                                // console.log("after chnage");
+                                // console.log(data);
+                                setText(res_string);
                                 res_string = [];
                                 //   console.log(text);
                               }}
@@ -141,7 +151,7 @@ export default function MatrixInverse(){
             </Col>
           </Row>
 
-          {text.length===0?null:
+          {text.length === 0 ? null : (
             <Row
               style={{
                 padding: "0",
@@ -155,11 +165,11 @@ export default function MatrixInverse(){
                   margin: 0,
                 }}
               >
-                <Terminal text={text} height="1024px"></Terminal>
-                
+                <DisplayAnswer comp={text}></DisplayAnswer>
+                {/* <Terminal text={text} height="1024px"></Terminal> */}
               </Col>
             </Row>
-          }
+          )}
         </Col>
       </div>
     );
