@@ -1,6 +1,7 @@
 {
   "projects": {
-    
-    "copybin": "copybin-5de5c"
+    "copybin": "copybin-5de5c",
+    "codebin": "codebin4u",
+    "default": "codebin4u"
   }
 }
