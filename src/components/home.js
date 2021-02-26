@@ -101,7 +101,7 @@ export default class Home extends React.Component {
                             <strong>
                               NUMBER THEORY (Step by step answer){" "}
                               <span style={{ color: "red" }}>
-                                (More comming soon)
+                                (More coming soon)
                               </span>
                             </strong>
                           </a>
@@ -127,7 +127,7 @@ export default class Home extends React.Component {
                             <strong>
                               LINEAR ALGEBRA (Step by step answer)
                               <span style={{ color: "red" }}>
-                                (More comming soon)
+                                (More coming soon)
                               </span>
                             </strong>
                           </a>
@@ -164,7 +164,7 @@ export default class Home extends React.Component {
                             <strong>
                               DATA STRUCTURES{" "}
                               <span style={{ color: "red" }}>
-                                (Comming soon)
+                                (Coming soon)
                               </span>
                             </strong>
                           </a>
@@ -181,7 +181,7 @@ export default class Home extends React.Component {
                             <strong>
                               ALGORITHMS{" "}
                               <span style={{ color: "red" }}>
-                                (Comming soon)
+                                (Coming soon)
                               </span>
                             </strong>{" "}
                           </a>
@@ -198,7 +198,24 @@ export default class Home extends React.Component {
                             <strong>
                               CRYPTOGRAPHY (Step by step answer){" "}
                               <span style={{ color: "red" }}>
-                                (Comming soon)
+                                (Coming soon)
+                              </span>
+                            </strong>
+                          </a>
+                          {/* <ul>
+                            {Constants.NTLIST.map((l) => (
+                              <li style={{ padding: 4, fontSize: 12 }}>
+                                <a href="">{l.name}</a>
+                              </li>
+                            ))}
+                          </ul> */}
+                        </li>
+                        <li key={" "} style={{ padding: 4, fontSize: 16 }}>
+                          <a href="https://drive.google.com/drive/u/0/folders/1hUoc1g2cxJDXdBij_t3ojCWQoQzWJbpD">
+                            <strong>
+                              STUDY MATERIAL{" "}
+                              <span style={{ color: "red" }}>
+                                
                               </span>
                             </strong>
                           </a>
