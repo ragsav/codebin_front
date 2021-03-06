@@ -1,6 +1,6 @@
 const Constants = Object.freeze({
-  HOST: "http://localhost:3000/",
-  // HOST: "https://codebin4u.web.app/",
+  // HOST: "http://localhost:3000/",
+  HOST: "https://codebin4u.web.app/",
   // HOST: "https://copybin-5de5c.web.app/",
   SERVERHOST: "https://copybinback.herokuapp.com",
 
@@ -12,7 +12,7 @@ const Constants = Object.freeze({
   ABOUT: "About",
 
   NUMBERTHEORY: "Number>Theory",
-  MOREPRODUCTS: "More>Utilities",
+  MOREPRODUCTS: "More utilities",
   DEFAULTTHEME: "monokai",
   DEFAULTMODE: "javascript",
 
