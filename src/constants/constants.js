@@ -1,6 +1,6 @@
-module.exports = Object.freeze({
-  // HOST: "http://localhost:3000/",
-  HOST: "https://codebin4u.web.app/",
+const Constants = Object.freeze({
+  HOST: "http://localhost:3000/",
+  // HOST: "https://codebin4u.web.app/",
   // HOST: "https://copybin-5de5c.web.app/",
   SERVERHOST: "https://copybinback.herokuapp.com",
 
@@ -12,7 +12,7 @@ module.exports = Object.freeze({
   ABOUT: "About",
 
   NUMBERTHEORY: "Number>Theory",
-
+  MOREPRODUCTS: "More>Utilities",
   DEFAULTTHEME: "monokai",
   DEFAULTMODE: "javascript",
 
@@ -163,3 +163,5 @@ module.exports = Object.freeze({
     },
   ],
 });
+
+export default Constants;
