@@ -5,16 +5,15 @@ module.exports = Object.freeze({
   SERVERHOST: "https://copybinback.herokuapp.com",
 
   WEBSITE: "Code>Bin",
-  PUBLICCODES: "Public>Codes",
-  PASTE: "Generate>Pastes",
+  
   ENCRYPTDECRYPTHEADING: "Encrypt/Decrypt",
   LINEARALGEBRA: "Linear Algebra",
   HOME: "Sections",
   ABOUT: "About",
-  UPLOADTEXT: "Upload file",
-  GENERATELINK: "Generate>Link",
+  
+  
   NUMBERTHEORY: "Number>Theory",
-  MOREPRODUCTS: "More>Utilities",
+  
   DEFAULTTHEME: "monokai",
   DEFAULTMODE: "javascript",
 

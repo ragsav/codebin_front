@@ -1,11 +1,10 @@
 import React from "react";
-import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
-
+import { Card, Col, Container, Row } from "react-bootstrap";
+import Constants from "../constants/constants";
 import Footer from "./footer";
 
-import Constants from "../constants/constants";
 
-const axios = require("axios");
+
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -74,28 +73,6 @@ export default class Home extends React.Component {
                   <Row style={{ padding: 0, margin: 0, marginTop: 20 }}>
                     <Col style={{ padding: 0, margin: 0, textAlign: "start" }}>
                       <ul>
-                        <li key={"lg"} style={{ padding: 4, fontSize: 16 }}>
-                          <a href={Constants.HOST + "link_generator"}>
-                            <strong>LINK GENERATION</strong>
-                          </a>
-                          <ul>
-                            <li style={{ padding: 4, fontSize: 12 }}>
-                              Anonymously generate short lived links for your
-                              code or text
-                            </li>
-                          </ul>
-                        </li>
-                        <li key={"ed"} style={{ padding: 4, fontSize: 16 }}>
-                          <a href={Constants.HOST + "encrypt_decrypt"}>
-                            <strong>ENCRYPT / DECRYPT</strong>
-                          </a>
-                          <ul>
-                            <li style={{ padding: 4, fontSize: 12 }}>
-                              Encrypt/Decrypt any file or text with no server
-                              side uploading
-                            </li>
-                          </ul>
-                        </li>
                         <li key={"nt"} style={{ padding: 4, fontSize: 16 }}>
                           <a href={Constants.HOST + "nt"}>
                             <strong>
@@ -214,9 +191,7 @@ export default class Home extends React.Component {
                           <a href="https://drive.google.com/drive/u/0/folders/1hUoc1g2cxJDXdBij_t3ojCWQoQzWJbpD">
                             <strong>
                               STUDY MATERIAL{" "}
-                              <span style={{ color: "red" }}>
-                                
-                              </span>
+                              <span style={{ color: "red" }}></span>
                             </strong>
                           </a>
                           {/* <ul>
