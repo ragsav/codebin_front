@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import Constants from "../constants/constants";
 import Footer from "./footer";
+import Products from "./products";
 
 
 
@@ -273,6 +274,21 @@ export default class Home extends React.Component {
             </Col>
           </Row>
 
+          <Row
+            style={{
+              padding: 4,
+              margin: 0,
+            }}
+          >
+            <Col
+              style={{
+                padding: 4,
+                margin: 0,
+              }}
+            >
+              <Products></Products>
+            </Col>
+          </Row>
           <Row
             style={{
               padding: 4,

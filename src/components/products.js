@@ -1,13 +1,17 @@
 import {
+  Alert,
+  Form,
+  Button,
   Card,
-
-  Col, Row
+  Row,
+  Col,
+  Container,
 } from "react-bootstrap";
 import Constants from "../constants/constants";
 export default function Products(props) {
   return (
     <div style={{ width: "100%" }}>
-      <Card style={{ padding: 0, margin: 0   }}>
+      <Card style={{ padding: 0, margin: 0 }}>
         <Row
           style={{
             padding: "0%",
@@ -76,8 +80,8 @@ export default function Products(props) {
                     }}
                   >
                     <a
-                      href={Constants.HOST + co.key}
-                      target="_blank"
+                      href={co.key}
+                      // target="_blank"
                       // className="textStyleCode"
                       style={{
                         textDecoration: "none",
