@@ -5,15 +5,14 @@ module.exports = Object.freeze({
   SERVERHOST: "https://copybinback.herokuapp.com",
 
   WEBSITE: "Code>Bin",
-  
+
   ENCRYPTDECRYPTHEADING: "Encrypt/Decrypt",
   LINEARALGEBRA: "Linear Algebra",
   HOME: "Sections",
   ABOUT: "About",
-  
-  
+
   NUMBERTHEORY: "Number>Theory",
-  
+
   DEFAULTTHEME: "monokai",
   DEFAULTMODE: "javascript",
 
@@ -151,6 +150,16 @@ module.exports = Object.freeze({
     {
       name: "Solving Simultaneous Linear Equations",
       key: "mat_linear_system",
+    },
+  ],
+  PRODUCTS: [
+    {
+      name: "Link generator",
+      key: "https://copybin4u.web.app/",
+    },
+    {
+      name: "Encrypt/Decrypt file",
+      key: "https://copybin4u.web.app/encrypt_decrypt",
     },
   ],
 });
