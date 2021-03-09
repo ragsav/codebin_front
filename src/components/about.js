@@ -9,21 +9,11 @@ import {
 } from "react-bootstrap";
 import Constants from "../constants/constants";
 import React from "react";
-import ReactMarkdown from "react-markdown";
-import gfm from "remark-gfm";
+
 import aboutPath from "../about.md";
 import Footer from "./footer";
 import MarkdownView from "react-showdown";
-const markdown = `
-# Welcome to React Showdown :+1:
- 
-To get started, edit the markdown in \`example/src/App.tsx\`.
- 
-| Column 1 | Column 2 |
-|----------|----------|
-| A1       | B1       |
-| A2       | B2       |
-`;
+
 
 export default class About extends React.Component {
   constructor(props) {
