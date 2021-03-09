@@ -64,35 +64,7 @@ export default class About extends React.Component {
                       margin: 0,
                     }}
                   >
-                    <Row style={{ padding: 0, margin: 0 }}>
-                      <Card
-                        className="textStyleCode"
-                        style={{
-                          width: "100%",
-                          backgroundColor: Constants.PRIMARY,
-
-                          // border: "none",
-                          borderRadius: 4,
-                          padding: 4,
-                          fontSize: "13px",
-                          fontWeight: "500",
-                          color: Constants.SECONDARY,
-                          margin: 4,
-                        }}
-                      >
-                        <Row style={{ padding: 0, margin: 0 }}>
-                          <Col
-                            style={{
-                              padding: 4,
-                              margin: 0,
-                              textAlign: "start",
-                            }}
-                          >
-                            {Constants.ABOUT}
-                          </Col>
-                        </Row>
-                      </Card>
-                    </Row>
+                    
                     <Row
                       style={{
                         padding: 0,
@@ -107,6 +79,7 @@ export default class About extends React.Component {
                       /> */}
                       <Col>
                         <MarkdownView
+                          style={{ marginTop: 40 }}
                           markdown={this.state.terms}
                           options={{ tables: true, emoji: true }}
                         />
