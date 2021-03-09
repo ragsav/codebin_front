@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Terminal from "./answer_display";
 import { fermat_factorization } from "./nt_algorithms";
 import Constants from "../../constants/constants";
+import Footer from "../footer";
 // import Footer from "../../footer";
 var res_string = [];
 
@@ -20,17 +21,12 @@ export default function FermatFactorization() {
     <div>
       <Col
         style={{
-          // maxWidth:"100%",
-          // left:"50px",
-          // right:"50px",
-          // padding: "30px",
+         
           margin: "auto",
 
-          // marginLeft:"5%",
-          // marginRight:"5%",
           backgroundColor: "white",
           borderRadius: 0,
-          width: "1024px",
+          
           padding: 8,
           // margin: 0,
         }}
@@ -154,7 +150,7 @@ export default function FermatFactorization() {
           </Col>
         </Row>
 
-        {/* <Row
+        <Row
           style={{
             padding: 0,
             margin: 0,
@@ -168,7 +164,7 @@ export default function FermatFactorization() {
           >
             <Footer></Footer>
           </Col>
-        </Row> */}
+        </Row> 
       </Col>
     </div>
   );

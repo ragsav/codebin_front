@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Terminal from "./answer_display";
 import { euler_psuedoprime } from "./nt_algorithms";
 import Constants from "../../constants/constants";
+import Footer from "../footer";
 var res_string = [];
 
 export default function EulerPsuedoprime() {
@@ -19,19 +20,12 @@ export default function EulerPsuedoprime() {
     <div>
       <Col
         style={{
-          // maxWidth:"100%",
-          // left:"50px",
-          // right:"50px",
-          // padding: "30px",
           margin: "auto",
-
-          // marginLeft:"5%",
-          // marginRight:"5%",
           backgroundColor: "white",
           borderRadius: 0,
-          width: "1024px",
+
           padding: 8,
-          // margin: 0,
+  
         }}
       >
         <Row
@@ -170,7 +164,7 @@ export default function EulerPsuedoprime() {
           </Col>
         </Row>
 
-        {/* <Row
+        <Row
           style={{
             padding: 0,
             margin: 0,
@@ -184,7 +178,7 @@ export default function EulerPsuedoprime() {
           >
             <Footer></Footer>
           </Col>
-        </Row> */}
+        </Row> 
       </Col>
     </div>
   );

@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { Matrix } from "./matrix_input";
 import { mat_mul } from "./la_algorithms";
 import DisplayAnswer from "./answer_display";
+// import Footer from "../footer";
 // import Terminal from "../terminal";
 const axios = require("axios");
 
@@ -34,7 +35,7 @@ export default function MatrixMul() {
           margin: "auto",
           backgroundColor: "white",
           borderRadius: 0,
-          width: "1024px",
+
           padding: 8,
         }}
       >
@@ -183,6 +184,21 @@ export default function MatrixMul() {
             </Col>
           </Row>
         )}
+        <Row
+          style={{
+            padding: 0,
+            margin: 0,
+          }}
+        >
+          <Col
+            style={{
+              padding: 0,
+              margin: 0,
+            }}
+          >
+            <Footer></Footer>
+          </Col>
+        </Row>
       </Col>
     </div>
   );

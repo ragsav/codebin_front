@@ -32,17 +32,10 @@ export default class StudyMaterialTab extends React.Component {
       <div>
         <Col
           style={{
-            // maxWidth:"100%",
-            // left:"50px",
-            // right:"50px",
-            // padding: "30px",
             margin: "auto",
-
-            // marginLeft:"5%",
-            // marginRight:"5%",
             backgroundColor: "white",
             borderRadius: 0,
-            width: "1024px",
+          
             padding: 4,
             // margin: 0,
           }}

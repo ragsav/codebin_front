@@ -4,8 +4,9 @@ import MainNavBar from "./components/navBar";
 import './App.css';
 import { Row, Col, Container } from "react-bootstrap";
 import Home from "./components/home";
-
+import About from "./components/about";
 import Constants from "./constants/constants";
+import GithubCorner from "react-github-corner";
 // import EncryptDecrypt from "./components/encrypt decrypt/encrypt_decrypt";
 import NumberTheoryTab from "./components/number theory/NumberTheoryTab";
 import LinearAlgebraTab from "./components/linear algebra/linear_algebra";
@@ -36,15 +37,18 @@ import LinearSystem from "./components/linear algebra/linear_system";
 
 function App() {
   return (
-    <div
-      className="App"
-      style={{
-        overflow: "scroll",
-        backgroundColor: Constants.PRIMARY,
-        padding: 10,
-      }}
-    >
-      <Container style={{ padding: 0, height: "100%" }} fluid>
+    <div className="App">
+      <GithubCorner
+        href="https://github.com/ragsav/codebin_frontend"
+        target="_blank"
+        direction="left"
+        bannerColor="#fff"
+        octoColor={Constants.SECONDARY}
+      />
+      <Container
+        style={{ padding: 0, height: "100%", width: Constants.WIDTH }}
+        fluid
+      >
         <Row
           style={{ padding: 0, margin: 0, width: "100%", maxHeight: "100%" }}
         >
@@ -61,11 +65,14 @@ function App() {
                 <Route exact path="/">
                   <Home></Home>
                 </Route>
-                
+                <Route exact path="/about">
+                  <About></About>
+                </Route>
+
                 <Route exact path="/linear_algebra">
                   <LinearAlgebraTab></LinearAlgebraTab>
                 </Route>
-                
+
                 <Route exact path="/nt/prime_factors">
                   <PrimeFactors></PrimeFactors>
                 </Route>

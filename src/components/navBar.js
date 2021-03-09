@@ -18,27 +18,16 @@ const MainNavBar = () => (
       style={{
         backgroundColor: Constants.TERTIARY,
         margin: "auto",
-
-        // marginLeft:"5%",
-        // marginRight:"5%",
-        // backgroundColor: "white",
-        borderRadius: 2,
+        borderRadius: 0,
         padding: 12,
-        width: "1024px",
       }}
     >
       <Navbar
         sticky="top"
         style={{
           backgroundColor: Constants.MONOKAI,
-          // justifyContent: "center",
-          // margin: "auto",
-
-          // // marginLeft:"5%",
-          // // marginRight:"5%",
-          // // backgroundColor: "white",
           borderRadius: 4,
-          // width: "1024px",
+         
         }}
       >
         <Row style={{ padding: 4, width: "100%", margin: 0 }}>
@@ -58,14 +47,14 @@ const MainNavBar = () => (
           <Col style={{ padding: 0, margin: 0 }}>
             <Nav style={{ float: "right" }}>
               <Nav.Link
-                href={Constants.HOST}
+                href={Constants.HOST+"about"}
                 style={{
                   float: "right",
                   color: Constants.TERTIARY,
                   marginRight: 20,
                 }}
               >
-                Home
+                About
               </Nav.Link>
             </Nav>
           </Col>

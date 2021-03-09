@@ -31,7 +31,7 @@ export default function MatrixInverse(){
             margin: "auto",
             backgroundColor: "white",
             borderRadius: 0,
-            width: "1024px",
+
             padding: 8,
           }}
         >
@@ -116,9 +116,7 @@ export default function MatrixInverse(){
                                 // console.log("before chnage");
                                 // console.log(data);
                                 // var copy_data = data.slice();
-                                var copy_data = data.map(function (
-                                  arr
-                                ) {
+                                var copy_data = data.map(function (arr) {
                                   return arr.slice();
                                 });
                                 mat_inv(copy_data, res_string);
@@ -170,6 +168,21 @@ export default function MatrixInverse(){
               </Col>
             </Row>
           )}
+          <Row
+            style={{
+              padding: 0,
+              margin: 0,
+            }}
+          >
+            <Col
+              style={{
+                padding: 0,
+                margin: 0,
+              }}
+            >
+              <Footer></Footer>
+            </Col>
+          </Row>
         </Col>
       </div>
     );
