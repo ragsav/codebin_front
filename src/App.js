@@ -44,6 +44,8 @@ import SelectionSort from "./components/algorithms/selectionSort";
 import MergeSort from "./components/algorithms/mergeSort";
 import QuickSort from "./components/algorithms/quickSort";
 import HeapSort from "./components/algorithms/heapSort";
+import StudyTab from "./components/studyMaterial/study_tab";
+import SubjectPage from "./components/studyMaterial/subject_page";
 
 function App() {
   return (
@@ -76,6 +78,9 @@ function App() {
                   <About></About>
                 </Route>
 
+                <Route exact path="/nt">
+                  <NumberTheoryTab></NumberTheoryTab>
+                </Route>
                 <Route exact path="/linear_algebra">
                   <LinearAlgebraTab></LinearAlgebraTab>
                 </Route>
@@ -84,6 +89,9 @@ function App() {
                 </Route>
                 <Route exact path="/alg">
                   <AlgorithmsTab></AlgorithmsTab>
+                </Route>
+                <Route exact path="/study">
+                  <StudyTab></StudyTab>
                 </Route>
 
                 <Route exact path="/nt/prime_factors">
@@ -125,9 +133,6 @@ function App() {
                 <Route exact path="/nt/fermat_factorization">
                   <FermatFactorization></FermatFactorization>
                 </Route>
-                <Route exact path="/nt">
-                  <NumberTheoryTab></NumberTheoryTab>
-                </Route>
 
                 <Route exact path="/linear_algebra/matrix_inverse">
                   <MatrixInverse></MatrixInverse>
@@ -162,6 +167,9 @@ function App() {
                 </Route>
                 <Route exact path="/alg/sorting/heapsort">
                   <HeapSort></HeapSort>
+                </Route>
+                <Route exact path="/study/dbms">
+                  <SubjectPage></SubjectPage>
                 </Route>
               </Switch>
 

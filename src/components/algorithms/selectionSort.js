@@ -41,7 +41,6 @@ function selection_sort(arr) {
     }
   }
 
-  console.log(res_data);
   return res_data;
 }
 
@@ -57,6 +56,7 @@ export default class SelectionSort extends React.Component {
     this.setPlaying = this.setPlaying.bind(this);
     this.setSpeed = this.setSpeed.bind(this);
     this.reload = this.reload.bind(this);
+    this.setCustomArray = this.setCustomArray.bind(this);
   }
   componentDidMount() {}
 
@@ -74,6 +74,17 @@ export default class SelectionSort extends React.Component {
     window.location.reload();
   };
 
+  setCustomArray = (s) => {
+    var string_array = s.split(",");
+    var arr = [];
+    string_array.forEach((e) => {
+      arr.push(parseInt(e));
+    });
+    this.setState({
+      array: arr,
+    });
+  };
+
   render() {
     return (
       <Container
@@ -88,10 +99,11 @@ export default class SelectionSort extends React.Component {
       >
         <Row style={{ margin: 0, padding: 0 }}>
           <RendererBar
-            title={"Bubble sort"}
+            title={"Selection sort"}
             reload={this.reload}
             setPlaying={this.setPlaying}
             setSpeed={this.setSpeed}
+            setArray={this.setCustomArray}
           ></RendererBar>
         </Row>
         <Row style={{ margin: 0, padding: 4 }}></Row>
@@ -101,6 +113,7 @@ export default class SelectionSort extends React.Component {
               id="renderer"
               array={this.state.array}
               playing={this.state.playing}
+              speed={this.state.speed}
               res_data={JSON.parse(
                 JSON.stringify(selection_sort([...this.state.array]))
               )}

@@ -1,12 +1,11 @@
 import React from "react";
 import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
-import { Grid } from "@agney/react-loading";
 import Constants from "../../constants/constants";
 import Footer from "../../components/footer";
 
 const axios = require("axios");
 
-export default class StudyMaterialTab extends React.Component {
+export default class StudyTab extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -35,9 +34,7 @@ export default class StudyMaterialTab extends React.Component {
             margin: "auto",
             backgroundColor: "white",
             borderRadius: 0,
-          
             padding: 4,
-            // margin: 0,
           }}
         >
           <Card
@@ -85,7 +82,7 @@ export default class StudyMaterialTab extends React.Component {
                       <Col
                         style={{ padding: 4, margin: 0, textAlign: "start" }}
                       >
-                        {Constants.NUMBERTHEORY}
+                        {Constants.STUDY}
                       </Col>
                     </Row>
                   </Card>
@@ -100,9 +97,11 @@ export default class StudyMaterialTab extends React.Component {
                   }}
                 >
                   <ul>
-                    {Constants.NTLIST.map((l) => (
+                    {Constants.SUBJECTS.map((l) => (
                       <li style={{ padding: 4, fontSize: 14, fontWeight: 500 }}>
-                        <a href={Constants.HOST + "nt/" + l.key}>{l.name}</a>
+                        <a href={Constants.HOST + "study/" + l.key}>{l.name}</a>
+
+                        <ul></ul>
                       </li>
                     ))}
                   </ul>
@@ -110,21 +109,6 @@ export default class StudyMaterialTab extends React.Component {
               </Col>
             </Row>
           </Card>
-          <Row
-            style={{
-              padding: 0,
-              margin: 0,
-            }}
-          >
-            <Col
-              style={{
-                padding: 0,
-                margin: 0,
-              }}
-            >
-              <Footer></Footer>
-            </Col>
-          </Row>
         </Col>
       </div>
     );

@@ -73,17 +73,40 @@ export default class HeapSort extends React.Component {
     this.state = {
       array: randomArray(),
       playing: false,
+      speed: 0,
       animations: [],
     };
+    this.setPlaying = this.setPlaying.bind(this);
+    this.setSpeed = this.setSpeed.bind(this);
+    this.reload = this.reload.bind(this);
+    this.setCustomArray = this.setCustomArray.bind(this);
   }
   componentDidMount() {}
 
-  setPlaying = () => {
+  setPlaying = (val) => {
     this.setState({
-      playing: !this.state.playing,
+      playing: val,
     });
   };
+  setSpeed = (speed) => {
+    this.setState({
+      speed: speed,
+    });
+  };
+  reload = () => {
+    window.location.reload();
+  };
 
+  setCustomArray = (s) => {
+    var string_array = s.split(",");
+    var arr = [];
+    string_array.forEach((e) => {
+      arr.push(parseInt(e));
+    });
+    this.setState({
+      array: arr,
+    });
+  };
   render() {
     return (
       <Container
@@ -102,6 +125,7 @@ export default class HeapSort extends React.Component {
             reload={this.reload}
             setPlaying={this.setPlaying}
             setSpeed={this.setSpeed}
+            setArray={this.setCustomArray}
           ></RendererBar>
         </Row>
         <Row style={{ margin: 0, padding: 4 }}></Row>
@@ -111,6 +135,7 @@ export default class HeapSort extends React.Component {
               id="renderer"
               array={this.state.array}
               playing={this.state.playing}
+              speed={this.state.speed}
               res_data={JSON.parse(
                 JSON.stringify(
                   heap_sort([...this.state.array], this.state.array.length, [])

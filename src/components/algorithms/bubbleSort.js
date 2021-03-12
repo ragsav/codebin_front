@@ -7,6 +7,7 @@ import Footer from "../footer";
 
 import Array1DRenderer from "../core/renderers/Array1DRenderer";
 import RendererBar from "../core/renderer_bar";
+import CustomArray from "../core/custom_input_array";
 
 function randomArray() {
   return Array.from({ length: 20 }, () => Math.floor(Math.random() * 400));
@@ -53,6 +54,7 @@ export default class BubbleSort extends React.Component {
     this.setPlaying = this.setPlaying.bind(this);
     this.setSpeed = this.setSpeed.bind(this);
     this.reload = this.reload.bind(this);
+    this.setCustomArray = this.setCustomArray.bind(this);
   }
   componentDidMount() {}
 
@@ -68,7 +70,18 @@ export default class BubbleSort extends React.Component {
   };
   reload = ()  =>  {
     window.location.reload();
-  };;
+  };
+
+  setCustomArray=(s)=>{
+    var string_array = s.split(",");
+    var arr=[]
+    string_array.forEach((e)=>{
+      arr.push(parseInt(e));
+    })
+    this.setState({
+      array:arr
+    });
+  }
 
   render() {
     return (
@@ -83,10 +96,15 @@ export default class BubbleSort extends React.Component {
         }}
       >
         <Row style={{ margin: 0, padding: 0 }}>
-          <RendererBar title={"Bubble sort"} reload={this.reload} setPlaying={this.setPlaying} setSpeed = {this.setSpeed}></RendererBar>
-          
+          <RendererBar
+            title={"Bubble sort"}
+            reload={this.reload}
+            setPlaying={this.setPlaying}
+            setSpeed={this.setSpeed}
+            setArray = {this.setCustomArray}
+          ></RendererBar>
         </Row>
-        <Row style={{ margin: 0, padding: 4 }}></Row>
+
         <Row style={{ margin: 0, padding: 4 }}>
           <Col style={{ margin: 0, padding: 0 }}>
             <Array1DRenderer

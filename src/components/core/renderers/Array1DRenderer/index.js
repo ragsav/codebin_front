@@ -28,7 +28,6 @@ class Array1DRenderer extends Renderer {
   }
 
   componentDidUpdate(prevState, prevProps) {
-    console.log(this.props);
     if (this.props.playing === true) {
       this.animate(this.props.speed);
     }
@@ -38,7 +37,6 @@ class Array1DRenderer extends Renderer {
     var nums = this.nums.current.children;
 
     var res_data = this.props.res_data;
-    console.log(res_data);
 
     var timeouts = [];
     for (var i = 0; i < res_data.length; i++) {

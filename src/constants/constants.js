@@ -1,6 +1,6 @@
 const Constants = Object.freeze({
-  // HOST: "http://localhost:3000/",
-  HOST: "https://codebin4u.web.app/",
+  HOST: "http://localhost:3000/",
+  // HOST: "https://codebin4u.web.app/",
   // HOST: "https://copybin-5de5c.web.app/",
   SERVERHOST: "https://copybinback.herokuapp.com",
 
@@ -15,6 +15,7 @@ const Constants = Object.freeze({
   NUMBERTHEORY: "Number>Theory",
   DATASTRUCTURE: "Data>Structrues",
   ALGORITHM: "Algorithms",
+  STUDY:   "Study>material",
   MOREPRODUCTS: "More utilities",
   DEFAULTTHEME: "monokai",
   DEFAULTMODE: "javascript",
@@ -223,6 +224,17 @@ const Constants = Object.freeze({
       name: "Encrypt/Decrypt file",
       key: "https://copybin4u.web.app/encrypt_decrypt",
     },
+  ],
+
+  SUBJECTS: [
+    { name: "Data Structres (DS)", key: "ds" },
+    { name: "Algorithms", key: "alg" },
+    { name: "Database Management systems (DBMS)", key: "dbms" },
+    { name: "Object Oriented Programming (OOPs)", key: "oop" },
+    { name: "Digital Circuits and Microprocessors (DCMP)", key: "dcmp" },
+    { name: "Network Theory (NT)", key: "network" },
+    { name: "Introduction to Web Programming (IWP)", key: "iwp" },
+    { name: "Advanced Web Programming (AWP)", key: "awp" },
   ],
 });
 
