@@ -1,6 +1,6 @@
 const Constants = Object.freeze({
-  HOST: "http://localhost:3000/",
-  // HOST: "https://codebin4u.web.app/",
+  // HOST: "http://localhost:3000/",
+  HOST: "https://codebin4u.web.app/",
   // HOST: "https://copybin-5de5c.web.app/",
   SERVERHOST: "https://copybinback.herokuapp.com",
 
@@ -57,9 +57,9 @@ const Constants = Object.freeze({
   HEADING: "#fff",
   MONOKAILIGHT: "#a3a3a3",
   ARRAYCOLOR: "#76D053",
-  ARRAYCOMPARECOLOR:     "yellow",
-  ARRAYSWAPCOLOR:     "red",
-  ARRAYOKCOLOR:     "blue",
+  ARRAYCOMPARECOLOR: "yellow",
+  ARRAYSWAPCOLOR: "red",
+  ARRAYOKCOLOR: "blue",
   WIDTH: "940px",
   NTLIST: [
     {
