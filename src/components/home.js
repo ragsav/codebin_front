@@ -137,14 +137,30 @@ export default class Home extends React.Component {
                           </ul> */}
                         </li>
                         <li key={"ds"} style={{ padding: 4, fontSize: 16 }}>
-                          <a href="">
+                          <a href={Constants.HOST + "ds"}>
                             <strong>
                               DATA STRUCTURES{" "}
                               <span style={{ color: "red" }}>
-                                (Coming soon)
+                                (More coming soon)
                               </span>
                             </strong>
                           </a>
+                          <ul>
+                            {Constants.DSLIST.map((l, x) => (
+                              <li
+                                key={x}
+                                style={{
+                                  padding: 4,
+                                  fontSize: 14,
+                                  fontWeight: 500,
+                                }}
+                              >
+                                <a href={Constants.HOST + "ds/" + l.key}>
+                                  {l.name}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
                           {/* <ul>
                             {Constants.NTLIST.map((l) => (
                               <li style={{ padding: 4, fontSize: 12 }}>
@@ -154,21 +170,59 @@ export default class Home extends React.Component {
                           </ul> */}
                         </li>
                         <li key={"ag"} style={{ padding: 4, fontSize: 16 }}>
-                          <a href="">
+                          <a href={Constants.HOST + "alg"}>
                             <strong>
                               ALGORITHMS{" "}
                               <span style={{ color: "red" }}>
-                                (Coming soon)
+                                (More coming soon)
                               </span>
                             </strong>{" "}
                           </a>
-                          {/* <ul>
-                            {Constants.NTLIST.map((l) => (
-                              <li style={{ padding: 4, fontSize: 12 }}>
-                                <a href="">{l.name}</a>
+                          <ul>
+                            {Constants.ALGLIST.map((l) => (
+                              <li
+                                key={l.key}
+                                style={{
+                                  padding: 4,
+                                  fontSize: 14,
+                                  fontWeight: 500,
+                                }}
+                              >
+                                <a href={Constants.HOST + "alg/" + l.key}>
+                                  {l.name}
+                                </a>
+                                {l.algorithms ? (
+                                  <ul>
+                                    {l.algorithms.map((a) => (
+                                      <li
+                                        key={a.key}
+                                        style={{
+                                          padding: 4,
+                                          fontSize: 14,
+                                          fontWeight: 500,
+                                        }}
+                                      >
+                                        <a
+                                          href={
+                                            Constants.HOST +
+                                            "alg/" +
+                                            l.key +
+                                            "/" +
+                                            a.key
+                                          }
+                                        >
+                                          {a.name}
+                                        </a>
+
+                                        <ul></ul>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                ) : null}
+                                <ul></ul>
                               </li>
                             ))}
-                          </ul> */}
+                          </ul>
                         </li>
                         <li key={"cg"} style={{ padding: 4, fontSize: 16 }}>
                           <a href="">
@@ -205,25 +259,8 @@ export default class Home extends React.Component {
                       </ul>
                     </Col>
                   </Row>
-                  
                 </Container>
               </Card>
-            </Col>
-          </Row>
-
-          <Row
-            style={{
-              padding: 4,
-              margin: 0,
-            }}
-          >
-            <Col
-              style={{
-                padding: 4,
-                margin: 0,
-              }}
-            >
-              <Footer></Footer>
             </Col>
           </Row>
         </Col>

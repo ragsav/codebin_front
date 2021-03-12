@@ -32,14 +32,12 @@ export default class LinearAlgebraTab extends React.Component {
       <div>
         <Col
           style={{
-       
             margin: "auto",
 
             backgroundColor: "white",
             borderRadius: 0,
-           
+
             padding: 4,
-            
           }}
         >
           <Card
@@ -108,21 +106,6 @@ export default class LinearAlgebraTab extends React.Component {
               </Col>
             </Row>
           </Card>
-          <Row
-            style={{
-              padding: 0,
-              margin: 0,
-            }}
-          >
-            <Col
-              style={{
-                padding: 0,
-                margin: 0,
-              }}
-            >
-              <Footer></Footer>
-            </Col>
-          </Row>
         </Col>
       </div>
     );

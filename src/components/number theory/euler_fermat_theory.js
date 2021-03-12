@@ -163,22 +163,6 @@ export default function EulerFermatTheorum() {
             </Card>
           </Col>
         </Row>
-
-        <Row
-          style={{
-            padding: 0,
-            margin: 0,
-          }}
-        >
-          <Col
-            style={{
-              padding: 0,
-              margin: 0,
-            }}
-          >
-            <Footer></Footer>
-          </Col>
-        </Row> 
       </Col>
     </div>
   );

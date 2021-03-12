@@ -1,0 +1,25 @@
+
+
+.renderer {
+  position: relative;
+  flex: 1;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+
+  &:first-child {
+    border-top: none;
+  }
+
+  .title {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color:"white";
+    color: "green";
+    padding: 4px 6px;
+    font-size: "12";
+  }
+}

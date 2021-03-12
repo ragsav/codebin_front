@@ -1,17 +1,20 @@
 const Constants = Object.freeze({
-  // HOST: "http://localhost:3000/",
-  HOST: "https://codebin4u.web.app/",
+  HOST: "http://localhost:3000/",
+  // HOST: "https://codebin4u.web.app/",
   // HOST: "https://copybin-5de5c.web.app/",
   SERVERHOST: "https://copybinback.herokuapp.com",
 
   WEBSITE: "Code>Bin",
 
   ENCRYPTDECRYPTHEADING: "Encrypt/Decrypt",
-  LINEARALGEBRA: "Linear Algebra",
+  LINEARALGEBRA: "Linear>Algebra",
+
   HOME: "Sections",
   ABOUT: "About",
 
   NUMBERTHEORY: "Number>Theory",
+  DATASTRUCTURE: "Data>Structrues",
+  ALGORITHM: "Algorithms",
   MOREPRODUCTS: "More utilities",
   DEFAULTTHEME: "monokai",
   DEFAULTMODE: "javascript",
@@ -53,6 +56,10 @@ const Constants = Object.freeze({
   MONOKAI: "#5c4e6e",
   HEADING: "#fff",
   MONOKAILIGHT: "#a3a3a3",
+  ARRAYCOLOR: "#76D053",
+  ARRAYCOMPARECOLOR:     "yellow",
+  ARRAYSWAPCOLOR:     "red",
+  ARRAYOKCOLOR:     "blue",
   WIDTH: "940px",
   NTLIST: [
     {
@@ -151,6 +158,58 @@ const Constants = Object.freeze({
     {
       name: "Solving Simultaneous Linear Equations",
       key: "mat_linear_system",
+    },
+  ],
+  DSLIST: [
+    {
+      name: "Stack",
+      key: "matrix_determinant",
+    },
+    {
+      name: "Queue",
+      key: "matrix_determinant",
+    },
+    {
+      name: "Linked List",
+      key: "matrix_determinant",
+    },
+    {
+      name: "Map",
+      key: "matrix_determinant",
+    },
+    {
+      name: "Tree",
+      key: "matrix_determinant",
+    },
+  ],
+
+  ALGLIST: [
+    {
+      name: "Sorting",
+      key: "sorting",
+      algorithms: [
+        { name: "Bubble Sort", key: "bubble" },
+        { name: "Selection Sort", key: "selection" },
+        { name: "Insertion Sort", key: "insertion" },
+        { name: "Quick Sort", key: "quick" },
+        { name: "Merge Sort", key: "merge" },
+      ],
+    },
+    {
+      name: "Greedy",
+      key: "greedy",
+    },
+    {
+      name: "Dynamic programing",
+      key: "dp",
+    },
+    {
+      name: "Shortest path",
+      key: "shortest_path",
+    },
+    {
+      name: "Recursion",
+      key: "recursion",
     },
   ],
   PRODUCTS: [

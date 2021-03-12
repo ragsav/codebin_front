@@ -15,15 +15,21 @@ export default function Footer(props) {
     <div
       style={{
         width: "100%",
-        borderRadius: 4,
-        height: "200px",
+
         color: "white",
-        padding: 10,
-        marginTop: 80,
-        backgroundColor: Constants.SECONDARY,
+        padding: 12,
+        marginTop: 0,
+        backgroundColor: Constants.TERTIARY,
       }}
     >
-      <Row style={{ padding: 4, margin: 0 }}>
+      <Row
+        style={{
+          padding: 4,
+          margin: 0,
+          backgroundColor: Constants.SECONDARY,
+          borderRadius: 4,
+        }}
+      >
         <Col
           className="textStyleCode d-none d-lg-block"
           style={{

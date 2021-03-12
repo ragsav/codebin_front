@@ -1,0 +1,43 @@
+
+
+
+
+
+
+.array_2d {
+  flex-shrink: 0;
+  display: table;
+  border-collapse: collapse;
+
+  .row {
+    display: table-row;
+    height: 28px;
+
+    .col {
+      display: table-cell;
+      text-align: center;
+      min-width: 28px;
+      background-color: "black";
+      border: 1px solid "white";
+      padding: 0 4px;
+
+      .value {
+        font-size: 12px;
+      }
+
+      &.selected {
+        background-color: "red";
+      }
+
+      &.patched {
+        background-color: "green";
+      }
+
+      &.index {
+        background: none;
+        border: none;
+        color: "white";
+      }
+    }
+  }
+}

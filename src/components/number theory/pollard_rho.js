@@ -20,7 +20,6 @@ export default function PollardRho() {
     <div>
       <Col
         style={{
-          
           margin: "auto",
 
           backgroundColor: "white",
@@ -144,23 +143,6 @@ export default function PollardRho() {
                 </Row>
               </Container>
             </Card>
-          </Col>
-        </Row>
-        
-
-        <Row
-          style={{
-            padding: 0,
-            margin: 0,
-          }}
-        >
-          <Col
-            style={{
-              padding: 0,
-              margin: 0,
-            }}
-          >
-            <Footer></Footer>
           </Col>
         </Row>
       </Col>

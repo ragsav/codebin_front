@@ -25,7 +25,6 @@ export default function EulerPsuedoprime() {
           borderRadius: 0,
 
           padding: 8,
-  
         }}
       >
         <Row
@@ -163,22 +162,6 @@ export default function EulerPsuedoprime() {
             </Card>
           </Col>
         </Row>
-
-        <Row
-          style={{
-            padding: 0,
-            margin: 0,
-          }}
-        >
-          <Col
-            style={{
-              padding: 0,
-              margin: 0,
-            }}
-          >
-            <Footer></Footer>
-          </Col>
-        </Row> 
       </Col>
     </div>
   );

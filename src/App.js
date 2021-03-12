@@ -3,6 +3,7 @@ import MainNavBar from "./components/navBar";
 
 import './App.css';
 import { Row, Col, Container } from "react-bootstrap";
+import Footer from "./components/footer";
 import Home from "./components/home";
 import About from "./components/about";
 import Constants from "./constants/constants";
@@ -34,6 +35,12 @@ import MatrixDet from "./components/linear algebra/determinant";
 import MatrixMul from "./components/linear algebra/multiplication";
 import MatrixEigen from "./components/linear algebra/eigen";
 import LinearSystem from "./components/linear algebra/linear_system";
+import DataStructureTab from "./components/data structures/DataStructureTab";
+import AlgorithmsTab from "./components/algorithms/AlgorithmsTab";
+
+import BubbleSort from "./components/algorithms/bubbleSort";
+import InsertionSort from "./components/algorithms/insertionSort";
+import SelectionSort from "./components/algorithms/selectionSort";
 
 function App() {
   return (
@@ -46,7 +53,7 @@ function App() {
         octoColor={Constants.SECONDARY}
       />
       <Container
-        style={{ padding: 0, height: "100%", width: Constants.WIDTH }}
+        style={{ padding: 0, width: Constants.WIDTH }}
         fluid
       >
         <Row
@@ -71,6 +78,12 @@ function App() {
 
                 <Route exact path="/linear_algebra">
                   <LinearAlgebraTab></LinearAlgebraTab>
+                </Route>
+                <Route exact path="/ds">
+                  <DataStructureTab></DataStructureTab>
+                </Route>
+                <Route exact path="/alg">
+                  <AlgorithmsTab></AlgorithmsTab>
                 </Route>
 
                 <Route exact path="/nt/prime_factors">
@@ -131,12 +144,43 @@ function App() {
                 <Route exact path="/linear_algebra/mat_linear_system">
                   <LinearSystem></LinearSystem>
                 </Route>
+
+                <Route exact path="/alg/sorting/bubble">
+                  <BubbleSort></BubbleSort>
+                </Route>
+                <Route exact path="/alg/sorting/selection">
+                  <SelectionSort></SelectionSort>
+                </Route>
+                <Route exact path="/alg/sorting/insertion">
+                  <InsertionSort></InsertionSort>
+                </Route>
+                <Route exact path="/alg/sorting/quick">
+                  <BubbleSort></BubbleSort>
+                </Route>
+                <Route exact path="/alg/sorting/merge">
+                  <BubbleSort></BubbleSort>
+                </Route>
               </Switch>
 
               {/* <Col sm={2} style={{ padding: 0 }}>
               <OptionsContainer tabCallback={this.setTab} />
             </Col> */}
             </Router>
+          </Col>
+        </Row>
+        <Row
+          style={{
+            padding: 0,
+            margin: 0,
+          }}
+        >
+          <Col
+            style={{
+              padding: 0,
+              margin: 0,
+            }}
+          >
+            <Footer></Footer>
           </Col>
         </Row>
       </Container>

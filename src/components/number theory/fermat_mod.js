@@ -20,11 +20,10 @@ export default function FermatMod() {
     <div>
       <Col
         style={{
-          
           margin: "auto",
           backgroundColor: "white",
           borderRadius: 0,
-        
+
           padding: 8,
           // margin: 0,
         }}
@@ -179,22 +178,6 @@ export default function FermatMod() {
                 </Row>
               </Container>
             </Card>
-          </Col>
-        </Row>
-
-        <Row
-          style={{
-            padding: 0,
-            margin: 0,
-          }}
-        >
-          <Col
-            style={{
-              padding: 0,
-              margin: 0,
-            }}
-          >
-            <Footer></Footer>
           </Col>
         </Row>
       </Col>

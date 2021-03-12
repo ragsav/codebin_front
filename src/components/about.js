@@ -64,7 +64,6 @@ export default class About extends React.Component {
                       margin: 0,
                     }}
                   >
-                    
                     <Row
                       style={{
                         padding: 0,
@@ -88,21 +87,6 @@ export default class About extends React.Component {
                   </Col>
                 </Row>
               </Card>
-            </Col>
-          </Row>
-          <Row
-            style={{
-              padding: 4,
-              margin: 0,
-            }}
-          >
-            <Col
-              style={{
-                padding: 4,
-                margin: 0,
-              }}
-            >
-              <Footer></Footer>
             </Col>
           </Row>
         </Col>
