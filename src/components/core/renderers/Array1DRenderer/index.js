@@ -30,7 +30,7 @@ class Array1DRenderer extends Renderer {
   componentDidUpdate(prevState, prevProps) {
     console.log(this.props);
     if (this.props.playing === true) {
-      this.animate(2);
+      this.animate(this.props.speed);
     }
   }
   animate = (speed) => {

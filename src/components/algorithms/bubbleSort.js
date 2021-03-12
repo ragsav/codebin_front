@@ -6,6 +6,7 @@ import Constants from "../../constants/constants";
 import Footer from "../footer";
 
 import Array1DRenderer from "../core/renderers/Array1DRenderer";
+import RendererBar from "../core/renderer_bar";
 
 function randomArray() {
   return Array.from({ length: 20 }, () => Math.floor(Math.random() * 400));
@@ -46,16 +47,28 @@ export default class BubbleSort extends React.Component {
     this.state = {
       array: randomArray(),
       playing: false,
+      speed: 0,
       animations: [],
     };
+    this.setPlaying = this.setPlaying.bind(this);
+    this.setSpeed = this.setSpeed.bind(this);
+    this.reload = this.reload.bind(this);
   }
   componentDidMount() {}
 
-  setPlaying = () => {
+  setPlaying = (val) => {
     this.setState({
-      playing: !this.state.playing,
+      playing: val,
     });
   };
+  setSpeed = (speed) => {
+    this.setState({
+      speed: speed,
+    });
+  };
+  reload = ()  =>  {
+    window.location.reload();
+  };;
 
   render() {
     return (
@@ -70,71 +83,8 @@ export default class BubbleSort extends React.Component {
         }}
       >
         <Row style={{ margin: 0, padding: 0 }}>
-          <Card
-            style={{
-              margin: 4,
-              width: "100%",
-              borderRadius: 4,
-              backgroundColor: Constants.PRIMARY,
-              color: Constants.SECONDARY,
-              fontSize: 10,
-            }}
-          >
-            <Row style={{ margin: 0, padding: 0 }}>
-              <Button
-                className="textStyleCode"
-                style={{
-                  fontSize: "13px",
-                  float: "right",
-                  border: "none",
-                  fontWeight: "500",
-                  paddingLeft: 20,
-                  paddingRight: 20,
-                  margin: 4,
-                  color: Constants.SECONDARY,
-                  // boxShadow: "1px 3px 1px #9E9E9E",
-                  backgroundColor: Constants.PRIMARY,
-                }}
-              >
-                Bubble Sort
-              </Button>
-              <Button
-                style={{
-                  fontSize: "13px",
-                  float: "right",
-                  border: "none",
-                  fontWeight: "500",
-                  margin: 4,
-                  color: Constants.TERTIARY,
-                  // boxShadow: "1px 3px 1px #9E9E9E",
-                  backgroundColor: Constants.SECONDARY,
-                }}
-                onClick={(e) => {
-                  window.location.reload();
-                }}
-              >
-                Generate Random Array
-              </Button>
-
-              <Button
-                style={{
-                  fontSize: "13px",
-                  float: "right",
-                  border: "none",
-                  margin: 4,
-                  fontWeight: "500",
-                  color: Constants.TERTIARY,
-                  // boxShadow: "1px 3px 1px #9E9E9E",
-                  backgroundColor: Constants.SECONDARY,
-                }}
-                onClick={(e) => {
-                  this.setPlaying(true);
-                }}
-              >
-                Sort
-              </Button>
-            </Row>
-          </Card>
+          <RendererBar title={"Bubble sort"} reload={this.reload} setPlaying={this.setPlaying} setSpeed = {this.setSpeed}></RendererBar>
+          
         </Row>
         <Row style={{ margin: 0, padding: 4 }}></Row>
         <Row style={{ margin: 0, padding: 4 }}>
@@ -143,6 +93,7 @@ export default class BubbleSort extends React.Component {
               id="renderer"
               array={this.state.array}
               playing={this.state.playing}
+              speed={this.state.speed}
               res_data={JSON.parse(
                 JSON.stringify(bubble_Sort([...this.state.array]))
               )}

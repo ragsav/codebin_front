@@ -43,6 +43,7 @@ import InsertionSort from "./components/algorithms/insertionSort";
 import SelectionSort from "./components/algorithms/selectionSort";
 import MergeSort from "./components/algorithms/mergeSort";
 import QuickSort from "./components/algorithms/quickSort";
+import HeapSort from "./components/algorithms/heapSort";
 
 function App() {
   return (
@@ -158,6 +159,9 @@ function App() {
                 </Route>
                 <Route exact path="/alg/sorting/merge">
                   <MergeSort></MergeSort>
+                </Route>
+                <Route exact path="/alg/sorting/heapsort">
+                  <HeapSort></HeapSort>
                 </Route>
               </Switch>
 

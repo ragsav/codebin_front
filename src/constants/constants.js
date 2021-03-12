@@ -1,6 +1,6 @@
 const Constants = Object.freeze({
-  // HOST: "http://localhost:3000/",
-  HOST: "https://codebin4u.web.app/",
+  HOST: "http://localhost:3000/",
+  // HOST: "https://codebin4u.web.app/",
   // HOST: "https://copybin-5de5c.web.app/",
   SERVERHOST: "https://copybinback.herokuapp.com",
 
@@ -185,7 +185,7 @@ const Constants = Object.freeze({
 
   ALGLIST: [
     {
-      name: "Sorting",
+      name: "Sorting Algorithms",
       key: "sorting",
       algorithms: [
         { name: "Bubble Sort", key: "bubble" },
@@ -193,8 +193,10 @@ const Constants = Object.freeze({
         { name: "Insertion Sort", key: "insertion" },
         { name: "Quick Sort", key: "quick" },
         { name: "Merge Sort", key: "merge" },
+        { name: "Heap Sort", key: "heapsort" },
       ],
     },
+
     {
       name: "Greedy",
       key: "greedy",

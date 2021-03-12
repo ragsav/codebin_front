@@ -10,68 +10,78 @@ import Array1DRenderer from "../core/renderers/Array1DRenderer";
 function randomArray() {
   return Array.from({ length: 20 }, () => Math.floor(Math.random() * 400));
 }
-function selection_sort(arr) {
-  var res_data = [];
+function heapify(arr, n, i, res_data) {
+  var largest = i;
+  var l = 2 * i + 1;
+  var r = 2 * i + 2;
 
-  let n = arr.length;
-
-  for (let i = 0; i < n; i++) {
-    // Finding the smallest number in the subarray
-    let min = i;
-    for (let j = i + 1; j < n; j++) {
-      var res = {};
-      res.compare = [min, j];
-      res.replace = [];
-      res.swap = [];
-      res_data.push(res);
-      if (arr[j] < arr[min]) {
-        min = j;
-      }
-    }
-    if (min != i) {
-      // Swapping the elements
-      var res = {};
-      res.compare = [min, i];
-      res.replace = [];
-      res.swap = [min, i];
-      let tmp = arr[i];
-      arr[i] = arr[min];
-      arr[min] = tmp;
-      res_data.push(res);
-    }
+  if (l < n && arr[l] > arr[largest]) {
+    largest = l;
+    var res = {};
+    res.compare = [l, largest];
+    res.swap = [];
+    res.replace = [];
+    res_data.push(res);
   }
 
-  console.log(res_data);
+  if (r < n && arr[r] > arr[largest]) {
+    largest = r;
+    var res = {};
+    res.compare = [l, largest];
+    res.swap = [];
+    res.replace = [];
+    res_data.push(res);
+  }
+
+  if (largest != i) {
+    var res = {};
+    res.compare = [l, largest];
+    res.swap = [i, largest];
+    res.replace = [];
+    res_data.push(res);
+
+    var t = arr[i];
+    arr[i] = arr[largest];
+    arr[largest] = t;
+    heapify(arr, n, largest, res_data);
+  }
+}
+
+function heap_sort(arr, n, res_data) {
+  for (var i = n / 2 - 1; i >= 0; i--) {
+    heapify(arr, n, i, res_data);
+  }
+
+  for (var i = n - 1; i > 0; i--) {
+    var res = {};
+    res.compare = [0, i];
+    res.swap = [0, i];
+    res.replace = [];
+    res_data.push(res);
+
+    var t = arr[i];
+    arr[i] = arr[0];
+    arr[0] = t;
+    heapify(arr, i, 0, res_data);
+  }
   return res_data;
 }
 
-export default class SelectionSort extends React.Component {
+export default class HeapSort extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       array: randomArray(),
       playing: false,
-      speed: 0,
       animations: [],
     };
-    this.setPlaying = this.setPlaying.bind(this);
-    this.setSpeed = this.setSpeed.bind(this);
-    this.reload = this.reload.bind(this);
   }
   componentDidMount() {}
 
-  setPlaying = (val) => {
+  setPlaying = () => {
     this.setState({
-      playing: val,
+      playing: !this.state.playing,
     });
-  };
-  setSpeed = (speed) => {
-    this.setState({
-      speed: speed,
-    });
-  };
-  reload = () => {
-    window.location.reload();
   };
 
   render() {
@@ -88,7 +98,7 @@ export default class SelectionSort extends React.Component {
       >
         <Row style={{ margin: 0, padding: 0 }}>
           <RendererBar
-            title={"Bubble sort"}
+            title={"Heap sort"}
             reload={this.reload}
             setPlaying={this.setPlaying}
             setSpeed={this.setSpeed}
@@ -102,7 +112,9 @@ export default class SelectionSort extends React.Component {
               array={this.state.array}
               playing={this.state.playing}
               res_data={JSON.parse(
-                JSON.stringify(selection_sort([...this.state.array]))
+                JSON.stringify(
+                  heap_sort([...this.state.array], this.state.array.length, [])
+                )
               )}
             ></Array1DRenderer>
           </Col>
