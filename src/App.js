@@ -41,6 +41,8 @@ import AlgorithmsTab from "./components/algorithms/AlgorithmsTab";
 import BubbleSort from "./components/algorithms/bubbleSort";
 import InsertionSort from "./components/algorithms/insertionSort";
 import SelectionSort from "./components/algorithms/selectionSort";
+import MergeSort from "./components/algorithms/mergeSort";
+import QuickSort from "./components/algorithms/quickSort";
 
 function App() {
   return (
@@ -52,10 +54,7 @@ function App() {
         bannerColor="#fff"
         octoColor={Constants.SECONDARY}
       />
-      <Container
-        style={{ padding: 0, width: Constants.WIDTH }}
-        fluid
-      >
+      <Container style={{ padding: 0, width: Constants.WIDTH }} fluid>
         <Row
           style={{ padding: 0, margin: 0, width: "100%", maxHeight: "100%" }}
         >
@@ -155,10 +154,10 @@ function App() {
                   <InsertionSort></InsertionSort>
                 </Route>
                 <Route exact path="/alg/sorting/quick">
-                  <BubbleSort></BubbleSort>
+                  <QuickSort></QuickSort>
                 </Route>
                 <Route exact path="/alg/sorting/merge">
-                  <BubbleSort></BubbleSort>
+                  <MergeSort></MergeSort>
                 </Route>
               </Switch>
 
