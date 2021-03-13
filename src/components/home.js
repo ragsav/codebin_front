@@ -1,7 +1,6 @@
 import React from "react";
 import { Card, Col, Container, Row } from "react-bootstrap";
 import Constants from "../constants/constants";
-import Footer from "./footer";
 
 
 

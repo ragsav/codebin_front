@@ -1,51 +1,59 @@
-
-import MainNavBar from "./components/navBar";
-
-import './App.css';
+import "./App.css";
 import { Row, Col, Container } from "react-bootstrap";
-import Footer from "./components/footer";
-import Home from "./components/home";
-import About from "./components/about";
-import Constants from "./constants/constants";
 import GithubCorner from "react-github-corner";
-// import EncryptDecrypt from "./components/encrypt decrypt/encrypt_decrypt";
-import NumberTheoryTab from "./components/number theory/NumberTheoryTab";
-import LinearAlgebraTab from "./components/linear algebra/linear_algebra";
-// import CodeViewerInt from "./components/CodeViewerInt";
-import ExponentialMod from "./components/number theory/exponential_mod";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import JacobiSymbol from "./components/number theory/jacobi_symbol";
-import EulerPsuedoprime from "./components/number theory/euler_psuedoprime";
-import JacobiEulerPsuedoprime from "./components/number theory/euler_jacobi_psuedoprime";
-import FermatLittleTheorum from "./components/number theory/fermat_little_theorum";
-import PrimeFactors from "./components/number theory/factors";
-import FermatPsuedoprime from "./components/number theory/fermat_psuedoprime";
-import FermatMod from "./components/number theory/fermat_mod";
-import EulerCriterion from "./components/number theory/euler_criterion";
-import EulerTotient from "./components/number theory/euler_totient";
-import EulerFermatTheorum from "./components/number theory/euler_fermat_theory";
-import PollardRho from "./components/number theory/pollard_rho";
-import FermatFactorization from "./components/number theory/fermat_factorization";
+
+//common imports
+import MainNavBar from "./components/common/navBar";
+import Footer from "./components/common/footer";
+import Home from "./components/home";
+import About from "./components/common/about";
+import Constants from "./constants/constants";
 
 
+//number theory imports
+import NumberTheoryTab from "./components/sections/number_theory/home";
+import ExponentialMod from "./components/sections/number_theory/exponential_mod";
+import JacobiSymbol from "./components/sections/number_theory/jacobi_symbol";
+import EulerPsuedoprime from "./components/sections/number_theory/euler_psuedoprime";
+import JacobiEulerPsuedoprime from "./components/sections/number_theory/euler_jacobi_psuedoprime";
+import FermatLittleTheorum from "./components/sections/number_theory/fermat_little_theorum";
+import PrimeFactors from "./components/sections/number_theory/factors";
+import FermatPsuedoprime from "./components/sections/number_theory/fermat_psuedoprime";
+import FermatMod from "./components/sections/number_theory/fermat_mod";
+import EulerCriterion from "./components/sections/number_theory/euler_criterion";
+import EulerTotient from "./components/sections/number_theory/euler_totient";
+import EulerFermatTheorum from "./components/sections/number_theory/euler_fermat_theory";
+import PollardRho from "./components/sections/number_theory/pollard_rho";
+import FermatFactorization from "./components/sections/number_theory/fermat_factorization";
 
-// import { Matrix } from "./components/linear algebra/matrix_input";
-import MatrixInverse from "./components/linear algebra/inverse";
-import MatrixDet from "./components/linear algebra/determinant";
-import MatrixMul from "./components/linear algebra/multiplication";
-import MatrixEigen from "./components/linear algebra/eigen";
-import LinearSystem from "./components/linear algebra/linear_system";
-import DataStructureTab from "./components/data structures/DataStructureTab";
-import AlgorithmsTab from "./components/algorithms/AlgorithmsTab";
 
-import BubbleSort from "./components/algorithms/bubbleSort";
-import InsertionSort from "./components/algorithms/insertionSort";
-import SelectionSort from "./components/algorithms/selectionSort";
-import MergeSort from "./components/algorithms/mergeSort";
-import QuickSort from "./components/algorithms/quickSort";
-import HeapSort from "./components/algorithms/heapSort";
-import StudyTab from "./components/studyMaterial/study_tab";
-import SubjectPage from "./components/studyMaterial/subject_page";
+//linear algebra imports
+import LinearAlgebraTab from "./components/sections/linear_algebra/home";
+import MatrixInverse from "./components/sections/linear_algebra/inverse";
+import MatrixDet from "./components/sections/linear_algebra/determinant";
+import MatrixMul from "./components/sections/linear_algebra/multiplication";
+import MatrixEigen from "./components/sections/linear_algebra/eigen";
+import LinearSystem from "./components/sections/linear_algebra/linear_system";
+
+
+//data strucutres imports
+import DataStructureTab from "./components/sections/data_structures/home";
+
+
+//algorithms imports
+import AlgorithmsTab from "./components/sections/algorithms/home";
+import BubbleSort from "./components/sections/algorithms/sorting/bubble-sort/bubble_sort";
+import InsertionSort from "./components/sections/algorithms/sorting/insertion-sort/insertion_sort";
+import SelectionSort from "./components/sections/algorithms/sorting/selection-sort/selection_sort";
+import MergeSort from "./components/sections/algorithms/sorting/merge-sort/merge_sort";
+import QuickSort from "./components/sections/algorithms/sorting/quick-sort/quick_sort";
+import HeapSort from "./components/sections/algorithms/sorting/heap-sort/heap_sort";
+
+
+//study materials imports
+import StudyTab from "./components/sections/studyMaterial/study_tab";
+import SubjectPage from "./components/sections/studyMaterial/subject_page";
 
 function App() {
   return (

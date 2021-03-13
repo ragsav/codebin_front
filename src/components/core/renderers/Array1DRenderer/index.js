@@ -1,9 +1,6 @@
 import React from "react";
 import Renderer from "../Renderer";
-import styles from "./Array1DRenderer.module.scss";
-import { classes } from "../../../../common/util";
 import { Col, Row, Button, Card } from "react-bootstrap";
-import { composition } from "mathjs";
 import Constants from "../../../../constants/constants";
 class Array1DRenderer extends Renderer {
   constructor(props) {

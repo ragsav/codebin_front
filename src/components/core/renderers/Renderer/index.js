@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./Renderer.module.scss";
 
-import { classes } from "../../../../common/util";
+import { classes } from "../../common/util";
 
 class Renderer extends React.Component {
   constructor(props) {
