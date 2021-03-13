@@ -54,6 +54,8 @@ import HeapSort from "./components/sections/algorithms/sorting/heap-sort/heap_so
 //study materials imports
 import StudyTab from "./components/sections/studyMaterial/study_tab";
 import SubjectPage from "./components/sections/studyMaterial/subject_page";
+import Stack from "./components/sections/data_structures/stack/stack_vis";
+import Queue from "./components/sections/data_structures/queue/queue_vis";
 
 function App() {
   return (
@@ -176,6 +178,14 @@ function App() {
                 <Route exact path="/alg/sorting/heapsort">
                   <HeapSort></HeapSort>
                 </Route>
+
+                <Route exact path="/ds/stack">
+                  <Stack></Stack>
+                </Route>
+                <Route exact path="/ds/queue">
+                  <Queue></Queue>
+                </Route>
+
                 <Route exact path="/study/dbms">
                   <SubjectPage></SubjectPage>
                 </Route>

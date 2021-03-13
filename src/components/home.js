@@ -73,7 +73,7 @@ export default class Home extends React.Component {
                     <Col style={{ padding: 0, margin: 0, textAlign: "start" }}>
                       <ul>
                         <li key={"nt"} style={{ padding: 4, fontSize: 16 }}>
-                          <a href={Constants.HOST + "nt"}>
+                          <a href={Constants.HOST + "nt/"}>
                             <strong>
                               NUMBER THEORY (Step by step answer){" "}
                               <span style={{ color: "red" }}>

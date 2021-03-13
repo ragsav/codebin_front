@@ -164,7 +164,7 @@ const Constants = Object.freeze({
   DSLIST: [
     {
       name: "Stack",
-      key: "matrix_determinant",
+      key: "stack",
     },
     {
       name: "Queue",

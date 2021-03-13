@@ -5,7 +5,8 @@ import readme from "./README.md";
 import ReadmeRenderer from "../../../../core/renderers/ReadmeRenderer/readmeRenderer";
 import RendererBar from "../../../../core/renderers/renderer_bar";
 import Array1DRenderer from "../../../../core/renderers/Array1DRenderer";
-
+import code from "./code.cpp";
+import CodeRenderer from "../../../../core/renderers/CodeRenderer/codeRenderer";
 function randomArray() {
   return Array.from({ length: 20 }, () => Math.floor(Math.random() * 400));
 }
@@ -118,6 +119,9 @@ export default class SelectionSort extends React.Component {
               )}
             ></Array1DRenderer>
           </Col>
+        </Row>
+        <Row style={{ padding: 4, margin: 0 }}>
+          <CodeRenderer file={code}></CodeRenderer>
         </Row>
         <Row style={{ padding: 4, margin: 0, textAlign: "left" }}>
           <ReadmeRenderer file={readme}></ReadmeRenderer>

@@ -1,6 +1,8 @@
 import React from "react";
 import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
 import { Grid } from "@agney/react-loading";
+import readme from "./README.md";
+import ReadmeRenderer from "../../core/renderers/ReadmeRenderer/readmeRenderer";
 import Constants from "../../../constants/constants";
 
 const axios = require("axios");
@@ -103,6 +105,9 @@ export default class LinearAlgebraTab extends React.Component {
                   </ul>
                 </Row>
               </Col>
+            </Row>
+            <Row style={{ padding: 10, margin: 0, textAlign: "left" }}>
+              <ReadmeRenderer file={readme}></ReadmeRenderer>
             </Row>
           </Card>
         </Col>

@@ -1,40 +1,3 @@
-# JavaScript Algorithms and Data Structures
-
-
-
-Code>bin contains examples of many
-popular algorithms and data structures.
-
-
-
-
-
-## Data Structures
-
-A data structure is a particular way of organizing and storing data in a computer so that it can
-be accessed and modified efficiently. More precisely, a data structure is a collection of data
-values, the relationships among them, and the functions or operations that can be applied to
-the data.
-
-`B` - Beginner, `A` - Advanced
-
-* `B` [Linked List](readme_files/linked-list)
-* `B` [Doubly Linked List](src/data-structures/doubly-linked-list)
-* `B` [Queue](src/data-structures/queue)
-* `B` [Stack](src/data-structures/stack)
-* `B` [Hash Table](src/data-structures/hash-table)
-* `B` [Heap](src/data-structures/heap) - max and min heap versions
-* `B` [Priority Queue](src/data-structures/priority-queue)
-* `A` [Trie](src/data-structures/trie)
-* `A` [Tree](src/data-structures/tree)
-  * `A` [Binary Search Tree](src/data-structures/tree/binary-search-tree)
-  * `A` [AVL Tree](src/data-structures/tree/avl-tree)
-  * `A` [Red-Black Tree](src/data-structures/tree/red-black-tree)
-  * `A` [Segment Tree](src/data-structures/tree/segment-tree) - with min/max/sum range queries examples
-  * `A` [Fenwick Tree](src/data-structures/tree/fenwick-tree) (Binary Indexed Tree)
-* `A` [Graph](src/data-structures/graph) (both directed and undirected)
-* `A` [Disjoint Set](src/data-structures/disjoint-set)
-* `A` [Bloom Filter](src/data-structures/bloom-filter)
 
 ## Algorithms
 
@@ -210,41 +173,7 @@ a least-cost solution to the problem, in order to discard partial solutions with
 lowest-cost solution found so far. Normally BFS traversal in combination with DFS traversal of state-space
 tree is being used.
 
-## How to use this repository
 
-**Install all dependencies**
-```
-npm install
-```
-
-**Run ESLint**
-
-You may want to run it to check code quality.
-
-```
-npm run lint
-```
-
-**Run all tests**
-```
-npm test
-```
-
-**Run tests by name**
-```
-npm test -- 'LinkedList'
-```
-
-**Playground**
-
-You may play with data-structures and algorithms in `./src/playground/playground.js` file and write
-tests for it in `./src/playground/__test__/playground.test.js`.
-
-Then just simply run the following command to test if your playground code works as expected:
-
-```
-npm test -- 'playground'
-```
 
 ## Useful Information
 
@@ -273,20 +202,9 @@ Below is the list of some of the most used Big O notations and their performance
 | **O(2^N)**     | 1024                         | 1.26e+29                      | 1.07e+301                       |
 | **O(N!)**      | 3628800                      | 9.3e+157                      | 4.02e+2567                      |
 
-### Data Structure Operations Complexity
 
-| Data Structure          | Access    | Search    | Insertion | Deletion  | Comments  |
-| ----------------------- | :-------: | :-------: | :-------: | :-------: | :-------- |
-| **Array**               | 1         | n         | n         | n         |           |
-| **Stack**               | n         | n         | 1         | 1         |           |
-| **Queue**               | n         | n         | 1         | 1         |           |
-| **Linked List**         | n         | n         | 1         | n         |           |
-| **Hash Table**          | -         | n         | n         | n         | In case of perfect hash function costs would be O(1) |
-| **Binary Search Tree**  | n         | n         | n         | n         | In case of balanced tree costs would be O(log(n)) |
-| **B-Tree**              | log(n)    | log(n)    | log(n)    | log(n)    |           |
-| **Red-Black Tree**      | log(n)    | log(n)    | log(n)    | log(n)    |           |
-| **AVL Tree**            | log(n)    | log(n)    | log(n)    | log(n)    |           |
-| **Bloom Filter**        | -         | 1         | 1         | -         | False positives are possible while searching |
+
+
 
 ### Array Sorting Algorithms Complexity
 
@@ -302,8 +220,3 @@ Below is the list of some of the most used Big O notations and their performance
 | **Counting sort**     | n + r           | n + r               | n + r               | n + r     | Yes       | r - biggest number in array |
 | **Radix sort**        | n * k           | n * k               | n * k               | n + k     | Yes       | k - length of longest key |
 
-## Project Backers
-
-> You may support this project via ❤️️ [GitHub](https://github.com/sponsors/trekhleb) or ❤️️ [Patreon](https://www.patreon.com/trekhleb).
-
-[Folks who are backing this project](https://github.com/trekhleb/javascript-algorithms/blob/master/BACKERS.md) `∑ = 0`
