@@ -1,13 +1,9 @@
 import React from "react";
 
 import { Row, Col, Container } from "react-bootstrap";
-
+import GistRenderer from "../../../../core/renderers/GistRenderer/gistRenderer";
 import DynamicArrayRenderer from "../../../../core/renderers/DynamicArrayRenderer/dynamicArrayRenderer";
 import RendererBar from "../../../../core/renderers/renderer_bar";
-import readme from "./README.md";
-import code from "./code.cpp";
-import ReadmeRenderer from "../../../../core/renderers/ReadmeRenderer/readmeRenderer";
-import CodeRenderer from "../../../../core/renderers/CodeRenderer/codeRenderer";
 import { useState, useEffect } from "react";
 
 function randomArray() {
@@ -153,12 +149,10 @@ export default function MergeSort() {
           ) : null}
         </Col>
       </Row>
-      <Row style={{ padding: 4, margin: 0 }}>
-        <CodeRenderer file={code}></CodeRenderer>
-      </Row>
-      <Row style={{ padding: 4, margin: 0, textAlign: "left" }}>
-        <ReadmeRenderer file={readme}></ReadmeRenderer>
-      </Row>
+      <GistRenderer
+        id="17deca13676ed438cbc21d6458180867"
+        code={true}
+      ></GistRenderer>
     </Container>
   );
 }

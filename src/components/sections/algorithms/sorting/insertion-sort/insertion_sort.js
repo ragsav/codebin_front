@@ -1,15 +1,9 @@
 import React from "react";
-
-import { Row, Col, Container } from "react-bootstrap";
-import readme from "./README.md";
+import { Row, Col, Container, Card } from "react-bootstrap";
 import DynamicArrayRenderer from "../../../../core/renderers/DynamicArrayRenderer/dynamicArrayRenderer";
-
 import RendererBar from "../../../../core/renderers/renderer_bar";
-
-import { useState, useEffect } from "react";
-import ReadmeRenderer from "../../../../core/renderers/ReadmeRenderer/readmeRenderer";
-import code from "./code.cpp";
-import CodeRenderer from "../../../../core/renderers/CodeRenderer/codeRenderer";
+import GistRenderer from "../../../../core/renderers/GistRenderer/gistRenderer";
+import { useState } from "react";
 
 function randomArray() {
   return Array.from({ length: 20 }, () => Math.floor(Math.random() * 400));
@@ -38,7 +32,7 @@ function insertion_sort(arr) {
         JSON.parse(JSON.stringify(setRes([], [j, j + 1], [], arr.slice(0), [])))
       );
       res_data.push(
-        JSON.parse(JSON.stringify(setRes([j,  j  +  1], [], [], arr.slice(0), [])))
+        JSON.parse(JSON.stringify(setRes([j, j + 1], [], [], arr.slice(0), [])))
       );
       arr[j + 1] = arr[j];
       res_data.push(
@@ -47,23 +41,21 @@ function insertion_sort(arr) {
       j--;
     }
     res_data.push(
-      JSON.parse(JSON.stringify(setRes([j  +  1,  i], [], [], arr.slice(0), [])))
+      JSON.parse(JSON.stringify(setRes([j + 1, i], [], [], arr.slice(0), [])))
     );
     arr[j + 1] = current;
     res_data.push(
       JSON.parse(JSON.stringify(setRes([], [], [j + 1, i], arr.slice(0), [])))
     );
   }
-  
+
   return res_data;
 }
 
 export default function InsertionSort() {
   const [speed, setSpeed] = useState(2);
   const [array, setArray] = useState(randomArray());
-  const [arrayState, setArrayState] = useState(
-    setRes([], [], [], array, [])
-  );
+  const [arrayState, setArrayState] = useState(setRes([], [], [], array, []));
 
   function reload() {
     window.location.reload();
@@ -127,12 +119,10 @@ export default function InsertionSort() {
           ) : null}
         </Col>
       </Row>
-      <Row style={{ padding: 4, margin: 0 }}>
-        <CodeRenderer file={code}></CodeRenderer>
-      </Row>
-      <Row style={{ padding: 4, margin: 0, textAlign: "left" }}>
-        <ReadmeRenderer file={readme}></ReadmeRenderer>
-      </Row>
+      <GistRenderer
+        id="25bedcd0336890ebe8ac187e0e9ddd9c"
+        code={true}
+      ></GistRenderer>
     </Container>
   );
 }

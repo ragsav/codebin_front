@@ -1,9 +1,7 @@
 import React from "react";
 import { Card, Row, Col} from "react-bootstrap";
 import Constants from "../../../constants/constants";
-import readme from "./README.md";
-import ReadmeRenderer from "../../core/renderers/ReadmeRenderer/readmeRenderer";
-
+import GistRenderer from "../../core/renderers/GistRenderer/gistRenderer";
 
 export default function AlgorithmsTab(){
   
@@ -82,13 +80,16 @@ export default function AlgorithmsTab(){
                 >
                   <ul>
                     {Constants.ALGLIST.map((l) => (
-                      <li style={{ padding: 4, fontSize: 14, fontWeight: 500 }} key={l.key}>
+                      <li
+                        style={{ padding: 4, fontSize: 14, fontWeight: 500 }}
+                        key={l.key}
+                      >
                         <a href={Constants.HOST + "alg/" + l.key}>{l.name}</a>
                         {l.algorithms ? (
                           <ul>
                             {l.algorithms.map((a) => (
                               <li
-                              key={a.key}
+                                key={a.key}
                                 style={{
                                   padding: 4,
                                   fontSize: 14,
@@ -119,9 +120,13 @@ export default function AlgorithmsTab(){
                 </Row>
               </Col>
             </Row>
-            <Row style={{ padding: 10, margin: 0, textAlign: "left" }}>
-              <ReadmeRenderer file={readme}></ReadmeRenderer>
-            </Row>
+            <GistRenderer
+         
+                  id="abfec5b1ea120cdf4291d1a55a8941dc"
+     
+                      code={false}
+            
+            ></GistRenderer>
           </Card>
         </Col>
       </div>

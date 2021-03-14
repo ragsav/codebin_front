@@ -54,8 +54,8 @@ import HeapSort from "./components/sections/algorithms/sorting/heap-sort/heap_so
 //study materials imports
 import StudyTab from "./components/sections/studyMaterial/study_tab";
 import SubjectPage from "./components/sections/studyMaterial/subject_page";
-import Stack from "./components/sections/data_structures/stack/stack_vis";
-import Queue from "./components/sections/data_structures/queue/queue_vis";
+import Stack from "./components/sections/data_structures/stack/stack";
+import Queue from "./components/sections/data_structures/queue/queue";
 import BinarySearch from "./components/sections/algorithms/search/binary-search/binary_search";
 import LinearSearch from "./components/sections/algorithms/search/linear-search/linear_search";
 
@@ -162,22 +162,22 @@ function App() {
                   <LinearSystem></LinearSystem>
                 </Route>
 
-                <Route exact path="/alg/sorting/bubble">
+                <Route exact path="/alg/sorting/bubble_sort">
                   <BubbleSort></BubbleSort>
                 </Route>
-                <Route exact path="/alg/sorting/selection">
+                <Route exact path="/alg/sorting/selection_sort">
                   <SelectionSort></SelectionSort>
                 </Route>
-                <Route exact path="/alg/sorting/insertion">
+                <Route exact path="/alg/sorting/insertion_sort">
                   <InsertionSort></InsertionSort>
                 </Route>
-                <Route exact path="/alg/sorting/quick">
+                <Route exact path="/alg/sorting/quick_sort">
                   <QuickSort></QuickSort>
                 </Route>
-                <Route exact path="/alg/sorting/merge">
+                <Route exact path="/alg/sorting/merge_sort">
                   <MergeSort></MergeSort>
                 </Route>
-                <Route exact path="/alg/sorting/heapsort">
+                <Route exact path="/alg/sorting/heap_sort">
                   <HeapSort></HeapSort>
                 </Route>
                 <Route exact path="/alg/searching/binary_search">

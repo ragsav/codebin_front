@@ -32,7 +32,7 @@ const MainNavBar = () => (
         <Row style={{ padding: 4, width: "100%", margin: 0 }}>
           <Col style={{ padding: 0, margin: 0 }}>
             <Navbar.Brand
-              href="#home"
+              href={Constants.HOST}
               style={{ fontSize: "20px", float: "left" }}
             >
               <div

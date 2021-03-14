@@ -1,15 +1,9 @@
 import React from "react";
-
-import {Row, Col, Container } from "react-bootstrap";
-
-
+import { Row, Col, Container, Card } from "react-bootstrap";
 import DynamicArrayRenderer from "../../../../core/renderers/DynamicArrayRenderer/dynamicArrayRenderer"
 import RendererBar from "../../../../core/renderers/renderer_bar";
-import readme from "./README.md";
-import code from "./code.cpp";
-import ReadmeRenderer from "../../../../core/renderers/ReadmeRenderer/readmeRenderer";
-import CodeRenderer from "../../../../core/renderers/CodeRenderer/codeRenderer";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import GistRenderer from "../../../../core/renderers/GistRenderer/gistRenderer";
 
 
 function randomArray() {
@@ -136,12 +130,10 @@ export default function BubbleSort() {
           ) : null}
         </Col>
       </Row>
-      <Row style={{ padding: 4, margin: 0 }}>
-        <CodeRenderer file={code}></CodeRenderer>
-      </Row>
-      <Row style={{ padding: 4, margin: 0, textAlign: "left" }}>
-        <ReadmeRenderer file={readme}></ReadmeRenderer>
-      </Row>
+      <GistRenderer
+        id="a8fedc55621e182626ef3fd27db6cbf3"
+        code={true}
+      ></GistRenderer>
     </Container>
   );
 }

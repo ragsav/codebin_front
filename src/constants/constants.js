@@ -1,9 +1,9 @@
 const Constants = Object.freeze({
-  // HOST: "http://localhost:3000/",
-  HOST: "https://codebin4u.web.app/",
+  HOST: "http://localhost:3000/",
+  // HOST: "https://codebin4u.web.app/",
   // HOST: "https://copybin-5de5c.web.app/",
   SERVERHOST: "https://copybinback.herokuapp.com",
-
+  GISTHOST:   "ragsav/",
   WEBSITE: "Code>Bin",
 
   ENCRYPTDECRYPTHEADING: "Encrypt/Decrypt",
@@ -170,18 +170,6 @@ const Constants = Object.freeze({
       name: "Queue",
       key: "queue",
     },
-    {
-      name: "Linked List",
-      key: "matrix_determinant",
-    },
-    {
-      name: "Map",
-      key: "matrix_determinant",
-    },
-    {
-      name: "Tree",
-      key: "matrix_determinant",
-    },
   ],
 
   ALGLIST: [
@@ -189,12 +177,12 @@ const Constants = Object.freeze({
       name: "Sorting Algorithms",
       key: "sorting",
       algorithms: [
-        { name: "Bubble Sort", key: "bubble" },
-        { name: "Selection Sort", key: "selection" },
-        { name: "Insertion Sort", key: "insertion" },
-        { name: "Quick Sort", key: "quick" },
-        { name: "Merge Sort", key: "merge" },
-        { name: "Heap Sort", key: "heapsort" },
+        { name: "Bubble Sort", key: "bubble_sort" },
+        { name: "Selection Sort", key: "selection_sort" },
+        { name: "Insertion Sort", key: "insertion_sort" },
+        { name: "Quick Sort", key: "quick_sort" },
+        { name: "Merge Sort", key: "merge_sort" },
+        { name: "Heap Sort", key: "heap_sort" },
       ],
     },
 

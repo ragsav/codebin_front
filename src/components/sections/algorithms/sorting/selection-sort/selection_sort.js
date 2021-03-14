@@ -4,11 +4,8 @@ import { Row, Col, Container } from "react-bootstrap";
 
 import DynamicArrayRenderer from "../../../../core/renderers/DynamicArrayRenderer/dynamicArrayRenderer";
 import RendererBar from "../../../../core/renderers/renderer_bar";
-import readme from "./README.md";
-import code from "./code.cpp";
-import ReadmeRenderer from "../../../../core/renderers/ReadmeRenderer/readmeRenderer";
-import CodeRenderer from "../../../../core/renderers/CodeRenderer/codeRenderer";
-import { useState, useEffect } from "react";
+import GistRenderer from "../../../../core/renderers/GistRenderer/gistRenderer";
+import { useState } from "react";
 
 function randomArray() {
   return Array.from({ length: 20 }, () => Math.floor(Math.random() * 400));
@@ -124,12 +121,10 @@ export default function SelectionSort() {
           ) : null}
         </Col>
       </Row>
-      <Row style={{ padding: 4, margin: 0 }}>
-        <CodeRenderer file={code}></CodeRenderer>
-      </Row>
-      <Row style={{ padding: 4, margin: 0, textAlign: "left" }}>
-        <ReadmeRenderer file={readme}></ReadmeRenderer>
-      </Row>
+      <GistRenderer
+        id="a9722c4b16f27aa93143590b0390ef3b"
+        code={true}
+      ></GistRenderer>
     </Container>
   );
 }

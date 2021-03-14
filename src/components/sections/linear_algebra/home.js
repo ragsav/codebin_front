@@ -1,11 +1,9 @@
 import React from "react";
-import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
-import { Grid } from "@agney/react-loading";
-import readme from "./README.md";
-import ReadmeRenderer from "../../core/renderers/ReadmeRenderer/readmeRenderer";
+import { Card, Row, Col } from "react-bootstrap";
 import Constants from "../../../constants/constants";
+import GistRenderer from "../../core/renderers/GistRenderer/gistRenderer";
 
-const axios = require("axios");
+
 
 export default function LinearAlgebraTab (){
   
@@ -77,7 +75,10 @@ export default function LinearAlgebraTab (){
                 >
                   <ul>
                     {Constants.LALIST.map((l) => (
-                      <li style={{ padding: 4, fontSize: 14, fontWeight: 500 }} key={l.key}>
+                      <li
+                        style={{ padding: 4, fontSize: 14, fontWeight: 500 }}
+                        key={l.key}
+                      >
                         <a href={Constants.HOST + "linear_algebra/" + l.key}>
                           {l.name}
                         </a>
@@ -87,9 +88,13 @@ export default function LinearAlgebraTab (){
                 </Row>
               </Col>
             </Row>
-            <Row style={{ padding: 10, margin: 0, textAlign: "left" }}>
-              <ReadmeRenderer file={readme}></ReadmeRenderer>
-            </Row>
+            <GistRenderer
+         
+                  id="0a61373556a03cd52f212fdf4d507ae3"
+     
+                      code={false}
+            
+            ></GistRenderer>
           </Card>
         </Col>
       </div>

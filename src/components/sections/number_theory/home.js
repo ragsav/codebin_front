@@ -1,9 +1,7 @@
 import React from "react";
 import { Card, Row, Col } from "react-bootstrap";
 import Constants from "../../../constants/constants";
-import readme from "./README.md";
-import ReadmeRenderer from "../../core/renderers/ReadmeRenderer/readmeRenderer";
-const axios = require("axios");
+import GistRenderer from "../../core/renderers/GistRenderer/gistRenderer";
 
 export default function NumberThoeryTab() {
   
@@ -79,7 +77,10 @@ export default function NumberThoeryTab() {
                 >
                   <ul>
                     {Constants.NTLIST.map((l) => (
-                      <li style={{ padding: 4, fontSize: 14, fontWeight: 500 }} key={l.key}>
+                      <li
+                        style={{ padding: 4, fontSize: 14, fontWeight: 500 }}
+                        key={l.key}
+                      >
                         <a href={Constants.HOST + "nt/" + l.key}>{l.name}</a>
                       </li>
                     ))}
@@ -87,9 +88,13 @@ export default function NumberThoeryTab() {
                 </Row>
               </Col>
             </Row>
-            <Row style={{ padding: 10, margin: 0, textAlign: "left" }}>
-              <ReadmeRenderer file={readme}></ReadmeRenderer>
-            </Row>
+            <GistRenderer
+         
+                  id="0a61373556a03cd52f212fdf4d507ae3"
+     
+                      code={false}
+            
+            ></GistRenderer>
           </Card>
         </Col>
       </div>

@@ -1,15 +1,10 @@
 import React from "react";
 
 import { Row, Col, Container } from "react-bootstrap";
-import readme from "./README.md";
 import DynamicArrayRenderer from "../../../../core/renderers/DynamicArrayRenderer/dynamicArrayRenderer";
-
 import RendererBar from "../../../../core/renderers/renderer_bar";
-
+import GistRenderer from "../../../../core/renderers/GistRenderer/gistRenderer";
 import { useState, useEffect } from "react";
-import ReadmeRenderer from "../../../../core/renderers/ReadmeRenderer/readmeRenderer";
-import code from "./code.cpp";
-import CodeRenderer from "../../../../core/renderers/CodeRenderer/codeRenderer";
 
 function randomArray() {
   return Array.from({ length: 20 }, () => Math.floor(Math.random() * 400));
@@ -148,12 +143,10 @@ export default function HeapSort() {
           ) : null}
         </Col>
       </Row>
-      <Row style={{ padding: 4, margin: 0 }}>
-        <CodeRenderer file={code}></CodeRenderer>
-      </Row>
-      <Row style={{ padding: 4, margin: 0, textAlign: "left" }}>
-        <ReadmeRenderer file={readme}></ReadmeRenderer>
-      </Row>
+      <GistRenderer
+        id="2d8336d4f4a2a113a04a9b2f4b2bc540"
+        code={true}
+      ></GistRenderer>
     </Container>
   );
 }

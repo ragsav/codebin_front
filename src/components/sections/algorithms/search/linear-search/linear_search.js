@@ -1,14 +1,10 @@
 import React from "react";
 
 import { Row, Col, Container } from "react-bootstrap";
-
+import GistRenderer from "../../../../core/renderers/GistRenderer/gistRenderer";
 import DynamicArrayRenderer from "../../../../core/renderers/DynamicArrayRenderer/dynamicArrayRenderer";
 import RendererBar from "../../../../core/renderers/renderer_bar";
-import readme from "./README.md";
-import code from "./code.cpp";
-import ReadmeRenderer from "../../../../core/renderers/ReadmeRenderer/readmeRenderer";
-import CodeRenderer from "../../../../core/renderers/CodeRenderer/codeRenderer";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 function randomArray() {
   return Array.from({ length: 20 }, () => Math.floor(Math.random() * 400));
@@ -110,12 +106,10 @@ export default function LinearSearch() {
           ) : null}
         </Col>
       </Row>
-      <Row style={{ padding: 4, margin: 0 }}>
-        <CodeRenderer file={code}></CodeRenderer>
-      </Row>
-      <Row style={{ padding: 4, margin: 0, textAlign: "left" }}>
-        <ReadmeRenderer file={readme}></ReadmeRenderer>
-      </Row>
+      <GistRenderer
+        id="ec0d1413cbba6d941f91dd2aac3c13fe"
+        code={true}
+      ></GistRenderer>
     </Container>
   );
 }
