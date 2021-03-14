@@ -2,7 +2,6 @@ import React from "react";
 
 import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import Array1DRenderer from "../../../core/renderers/Array1DRenderer";
 import RendererBar from "../../../core/renderers/renderer_bar";
 import readme from "./README.md";
 import code from "./code.cpp";
@@ -36,10 +35,10 @@ function shiftArrayByOneToFront(array) {
   }
   array[array.length - 1] = -1;
 }
-function setRes(red, green, blue, array, label) {
+function setRes(red, yellow, blue, array, label) {
   var res = {};
   res.red = red;
-  res.green = green;
+  res.yellow = yellow;
   res.blue = blue;
   res.array = array.slice(0);
   res.label = label;
@@ -57,77 +56,60 @@ function stack(seq) {
       var num = parseInt(s[1]);
       if (arr[arr.length - 1] != -1) {
         res_data.push(
-          JSON.parse(
-            JSON.stringify(
-              setRes([0, arr.length - 1], [], [], arr.slice(0), [])
-            )
-          )
+          JSON.parse(JSON.stringify(setRes([0], [], [], arr.slice(0), [])))
         );
       } else {
         shiftArrayByOneToEnd(arr);
         res_data.push(
-          JSON.parse(
-            JSON.stringify(
-              setRes([], [1, arr.length - 1], [0, 0], arr.slice(0), [])
-            )
-          )
+          JSON.parse(JSON.stringify(setRes([], [0], [], arr.slice(0), [])))
         );
         arr[0] = num;
         res_data.push(
-          JSON.parse(
-            JSON.stringify(
-              setRes([], [0, arr.length - 1], [], arr.slice(0), [])
-            )
-          )
+          JSON.parse(JSON.stringify(setRes([], [], [0], arr.slice(0), [])))
         );
       }
     } else {
       if (arr[0] === -1) {
         res_data.push(
-          JSON.parse(
-            JSON.stringify(
-              setRes([0, arr.length - 1], [], [], arr.slice(0), [])
-            )
-          )
+          JSON.parse(JSON.stringify(setRes([0], [], [], arr.slice(0), [])))
         );
       } else {
         res_data.push(
-          JSON.parse(
-            JSON.stringify(
-              setRes([], [1, arr.length - 1], [0, 0], arr.slice(0), [])
-            )
-          )
+          JSON.parse(JSON.stringify(setRes([], [0], [], arr.slice(0), [])))
         );
         shiftArrayByOneToFront(arr);
         res_data.push(
-          JSON.parse(
-            JSON.stringify(
-              setRes([], [0, arr.length - 1], [], arr.slice(0), [])
-            )
-          )
+          JSON.parse(JSON.stringify(setRes([], [], [0], arr.slice(0), [])))
         );
       }
     }
   }
   console.log(res_data);
+  res_data.push(
+    JSON.parse(JSON.stringify(setRes([], [], [], arr.slice(0), [])))
+  );
   return res_data;
 }
 
 export default function Stack() {
   const [speed, setSpeed] = useState(2);
   const [seq, setSeq] = useState(randomSeq());
-  const [arrayState, setArrayState] = useState({
-    red: [],
-    green: [0, 19],
-    blue: [],
-    array: Array.from({ length: 20 }, () => -1),
-    label: [],
-  });
+  const [arrayState, setArrayState] = useState(
+    setRes(
+      [],
+      [],
+      [],
+      Array.from({ length: 20 }, () => -1),
+      []
+    )
+  );
 
   function reload() {
     window.location.reload();
   }
-
+function setRandomSeq() {
+  setSeq(randomSeq());
+}
   function setCustomInput(seq_string) {
     setSeq(seq_string.split(","));
   }
@@ -141,15 +123,6 @@ export default function Stack() {
         setArrayState(a);
       }, i * 1000 * speed);
     });
-  }
-  function shuffleArray() {
-    var arrCopy = arrayState.slice(0);
-    setArrayState(
-      arrCopy
-        .map((a) => ({ sort: Math.random(), value: a }))
-        .sort((a, b) => a.sort - b.sort)
-        .map((a) => a.value)
-    );
   }
 
   return (
@@ -170,6 +143,7 @@ export default function Stack() {
           setPlaying={runAnimation}
           setSpeed={setSpeed}
           setArray={setCustomInput}
+          setRandomArray={setRandomSeq()}
         ></RendererBar>
       </Row>
       <Row style={{ margin: 0, padding: 4 }}>

@@ -1,33 +1,16 @@
 import React from "react";
-import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
+import { Card, Row, Col} from "react-bootstrap";
 import Constants from "../../../constants/constants";
 import readme from "./README.md";
 import ReadmeRenderer from "../../core/renderers/ReadmeRenderer/readmeRenderer";
-const axios = require("axios");
 
-export default class AlgorithmsTab extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      errors: [],
-      terms: "",
-    };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  componentWillMount() {}
+export default function AlgorithmsTab(){
+  
+  
 
-  componentWillUnmount() {}
-
-  handleSubmit = (event) => {
-    var self = this;
-    event.preventDefault();
-  };
-
-  hasError(key) {
-    return this.state.errors.indexOf(key) !== -1;
-  }
-  render() {
+  
+  
     return (
       <div>
         <Col
@@ -99,12 +82,13 @@ export default class AlgorithmsTab extends React.Component {
                 >
                   <ul>
                     {Constants.ALGLIST.map((l) => (
-                      <li style={{ padding: 4, fontSize: 14, fontWeight: 500 }}>
+                      <li style={{ padding: 4, fontSize: 14, fontWeight: 500 }} key={l.key}>
                         <a href={Constants.HOST + "alg/" + l.key}>{l.name}</a>
                         {l.algorithms ? (
                           <ul>
                             {l.algorithms.map((a) => (
                               <li
+                              key={a.key}
                                 style={{
                                   padding: 4,
                                   fontSize: 14,
@@ -142,5 +126,5 @@ export default class AlgorithmsTab extends React.Component {
         </Col>
       </div>
     );
-  }
+  
 }

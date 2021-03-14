@@ -148,6 +148,7 @@ export default class RendererBar extends React.Component {
                     backgroundColor: Constants.SECONDARY,
                   }}
                   onClick={(e) => {
+                    console.log(this.state.customInput);
                     this.props.setArray(this.state.customInput);
                   }}
                 >

@@ -1,15 +1,14 @@
 import React from "react";
 
 import { Row, Col, Container } from "react-bootstrap";
-import readme from "./README.md";
+
 import DynamicArrayRenderer from "../../../../core/renderers/DynamicArrayRenderer/dynamicArrayRenderer";
-
 import RendererBar from "../../../../core/renderers/renderer_bar";
-
-import { useState, useEffect } from "react";
-import ReadmeRenderer from "../../../../core/renderers/ReadmeRenderer/readmeRenderer";
+import readme from "./README.md";
 import code from "./code.cpp";
+import ReadmeRenderer from "../../../../core/renderers/ReadmeRenderer/readmeRenderer";
 import CodeRenderer from "../../../../core/renderers/CodeRenderer/codeRenderer";
+import { useState, useEffect } from "react";
 
 function randomArray() {
   return Array.from({ length: 20 }, () => Math.floor(Math.random() * 400));
@@ -24,67 +23,27 @@ function setRes(red, yellow, blue, array, label) {
   res.label = label;
   return res;
 }
-function heapify(arr, n, i, res_data) {
-  var largest = i;
-  var l = 2 * i + 1;
-  var r = 2 * i + 2;
 
-  if (l < n && arr[l] > arr[largest]) {
-    largest = l;
-    res_data.push(
-      JSON.parse(JSON.stringify(setRes([], [l, largest], [], arr.slice(0), [])))
+function linear_search(arr, x_index, resData) {
+  for (var i = 0; i < arr.length; i++) {
+    resData.push(
+      JSON.parse(
+        JSON.stringify(setRes([i], [], [x_index], arr.slice(0), [x_index]))
+      )
     );
-  }
-
-  if (r < n && arr[r] > arr[largest]) {
-    largest = r;
-    res_data.push(
-      JSON.parse(JSON.stringify(setRes([], [r, largest], [], arr.slice(0), [])))
-    );
-  }
-
-  if (largest != i) {
-    res_data.push(
-      JSON.parse(JSON.stringify(setRes([i,  largest], [], [], arr.slice(0), [])))
-    );
-    var t = arr[i];
-    arr[i] = arr[largest];
-    arr[largest] = t;
-    res_data.push(
-      JSON.parse(JSON.stringify(setRes([], [], [i, largest], arr.slice(0), [])))
-    );
-    heapify(arr, n, largest, res_data);
+    if (arr[i] == arr[x_index]) {
+      resData.push(
+        JSON.parse(JSON.stringify(setRes([], [i], [], arr.slice(0), [x_index])))
+      );
+      break;
+    }
   }
 }
 
-function heap_sort(arr, n, res_data) {
-  for (var i = n / 2 - 1; i >= 0; i--) {
-    heapify(arr, n, i, res_data);
-  }
-
-  for (var i = n - 1; i > 0; i--) {
-    res_data.push(
-      JSON.parse(JSON.stringify(setRes([i, 0], [], [], arr.slice(0), [])))
-    );
-
-    var t = arr[i];
-    arr[i] = arr[0];
-    arr[0] = t;
-    res_data.push(
-      JSON.parse(JSON.stringify(setRes([], [], [i, 0], arr.slice(0), [])))
-    );
-    heapify(arr, i, 0, res_data);
-  }
-  
-  return res_data;
-}
-
-export default function HeapSort() {
+export default function LinearSearch() {
   const [speed, setSpeed] = useState(2);
   const [array, setArray] = useState(randomArray());
-  const [arrayState, setArrayState] = useState(
-    setRes([], [], [], array, [])
-  );
+  const [arrayState, setArrayState] = useState(setRes([], [], [], array, []));
 
   function reload() {
     window.location.reload();
@@ -93,8 +52,9 @@ export default function HeapSort() {
   function setCustomArray(arrString) {
     var arr = [];
     arrString.split(",").forEach((val) => {
-      arr.push(val);
+      arr.push(parseInt(val));
     });
+    console.log(arr);
     setArray(arr.slice(0));
     setArrayState(setRes([], [], [], array, []));
   }
@@ -104,7 +64,9 @@ export default function HeapSort() {
   }
 
   function runAnimation(val) {
-    var resData = heap_sort(array,    array.length,    []);
+    var resData = [];
+    var x_index = Math.round(Math.random() * array.length - 1);
+    linear_search(array, x_index, resData);
     resData.push(
       JSON.parse(JSON.stringify(setRes([], [], [], array.slice(0), [])))
     );
@@ -129,7 +91,7 @@ export default function HeapSort() {
     >
       <Row style={{ margin: 0, padding: 0 }}>
         <RendererBar
-          title={"Heap sort"}
+          title={"Linear Search"}
           reload={reload}
           setPlaying={runAnimation}
           setSpeed={setSpeed}

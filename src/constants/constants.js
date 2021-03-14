@@ -199,20 +199,12 @@ const Constants = Object.freeze({
     },
 
     {
-      name: "Greedy",
-      key: "greedy",
-    },
-    {
-      name: "Dynamic programing",
-      key: "dp",
-    },
-    {
-      name: "Shortest path",
-      key: "shortest_path",
-    },
-    {
-      name: "Recursion",
-      key: "recursion",
+      name: "Searching Algorithms",
+      key: "searching",
+      algorithms: [
+        { name: "Binary Search", key: "binary_search" },
+        { name: "Linear Search", key: "linear_search" },
+      ],
     },
   ],
   PRODUCTS: [

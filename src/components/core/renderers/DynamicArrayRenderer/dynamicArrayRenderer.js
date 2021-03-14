@@ -2,27 +2,14 @@ import React from "react";
 import Renderer from "../Renderer";
 import { Col, Row, Button, Card } from "react-bootstrap";
 import Constants from "../../../../constants/constants";
-class DynamicArrayRenderer extends Renderer {
-  constructor(props) {
-    super(props);
-    this.bar = React.createRef();
-    this.nums = React.createRef();
-    this.setBGColor = this.setBGColor.bind(this);
-  }
+export default function DynamicArrayRenderer(props) {
+  
 
-  componentDidMount() {
-    // console.log("renderer mounted");
-    // this.setArrayState();
-  }
+  
 
-  componentDidUpdate(prevState, prevProps) {
-    // console.log("renderer updated ");
-    // console.log(this.prevProps);
-  }
-
-  setBGColor = (i) => {
+  function setBGColor(i){
       
-    const { red, yellow, blue } = this.props.arrayState;
+    const { red, yellow, blue } = props.arrayState;
     
       if (red.indexOf(i) != -1) {
         return Constants.ARRAYSWAPCOLOR;
@@ -41,7 +28,7 @@ class DynamicArrayRenderer extends Renderer {
     return Constants.ARRAYCOLOR;
   };
 
-  render() {
+  
     return (
       <Card
         style={{
@@ -60,14 +47,14 @@ class DynamicArrayRenderer extends Renderer {
               alignContent: "center",
             }}
             id="bar"
-            ref={this.bar}
+            
           >
-            {this.props.arrayState.array.map((a, i) => (
+            {props.arrayState.array.map((a, i) => (
               <div
                 id={i}
                 key={i}
                 style={{
-                  backgroundColor: this.setBGColor(i),
+                  backgroundColor: setBGColor(i),
                   alignSelf: "baseline",
                   padding: 0,
                   height: a === -1 ? 0 : a,
@@ -77,15 +64,15 @@ class DynamicArrayRenderer extends Renderer {
               ></div>
             ))}
           </Row>
-          <Row style={{ padding: 4, margin: 0 }} id="nums" ref={this.nums}>
-            {this.props.arrayState.array.map((a, i) => (
+          <Row style={{ padding: 4, margin: 0 }} id="nums" >
+            {props.arrayState.array.map((a, i) => (
               <input
                 key={i + "2"}
                 readOnly
                 value={a}
                 style={{
                   alignSelf: "baseline",
-                  backgroundColor: this.setBGColor(i),
+                  backgroundColor: setBGColor(i),
                   padding: 4,
                   color: Constants.TERTIARY,
                   margin: 5,
@@ -99,7 +86,7 @@ class DynamicArrayRenderer extends Renderer {
         </div>
       </Card>
     );
-  }
+  
 }
 
-export default DynamicArrayRenderer;
+

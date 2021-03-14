@@ -1,15 +1,13 @@
 import React from "react";
 
-import { Form, Button, Card, Row, Col, Container } from "react-bootstrap";
+import { Card, Row, Col, Container } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import Array1DRenderer from "../../../core/renderers/Array1DRenderer";
 import RendererBar from "../../../core/renderers/renderer_bar";
 import readme from "./README.md";
 import code from "./code.cpp";
 import DynamicArrayRenderer from "../../../core/renderers/DynamicArrayRenderer/dynamicArrayRenderer";
 import ReadmeRenderer from "../../../core/renderers/ReadmeRenderer/readmeRenderer";
 import CodeRenderer from "../../../core/renderers/CodeRenderer/codeRenderer";
-import { forEach } from "mathjs";
 
 function randomArray() {
   return Array.from({ length: 20 }, () => Math.floor(Math.random() * 400));
@@ -36,10 +34,10 @@ function shiftArrayByOneToFront(array) {
   }
   array[array.length - 1] = -1;
 }
-function setRes(red, green, blue, array, label) {
+function setRes(red, yellow, blue, array, label) {
   var res = {};
   res.red = red;
-  res.green = green;
+  res.yellow = yellow;
   res.blue = blue;
   res.array = array.slice(0);
   res.label = label;
@@ -59,7 +57,7 @@ function queue(seq) {
         res_data.push(
           JSON.parse(
             JSON.stringify(
-              setRes([0, arr.length - 1], [], [], arr.slice(0), [])
+              setRes([0], [], [], arr.slice(0), [])
             )
           )
         );
@@ -68,7 +66,7 @@ function queue(seq) {
         res_data.push(
           JSON.parse(
             JSON.stringify(
-              setRes([], [1, arr.length - 1], [0, 0], arr.slice(0), [])
+              setRes([], [0], [], arr.slice(0), [])
             )
           )
         );
@@ -76,7 +74,7 @@ function queue(seq) {
         res_data.push(
           JSON.parse(
             JSON.stringify(
-              setRes([], [0, arr.length - 1], [], arr.slice(0), [])
+              setRes([], [], [0], arr.slice(0), [])
             )
           )
         );
@@ -86,7 +84,7 @@ function queue(seq) {
         res_data.push(
           JSON.parse(
             JSON.stringify(
-              setRes([0, arr.length - 1], [], [], arr.slice(0), [])
+              setRes([0], [], [], arr.slice(0), [])
             )
           )
         );
@@ -96,21 +94,23 @@ function queue(seq) {
             res_data.push(
               JSON.parse(
                 JSON.stringify(
-                  setRes([], [0, arr.length - 1], [], arr.slice(0), [])
+                  setRes([], [m], [], arr.slice(0), [])
                 )
               )
             );
             arr[m] = -1;
+            
+            res_data.push(
+              JSON.parse(
+                JSON.stringify(
+                  setRes([], [], [m], arr.slice(0), [])
+                )
+              )
+            );
             break;
           }
         }
-        res_data.push(
-          JSON.parse(
-            JSON.stringify(
-              setRes([], [0, arr.length - 1], [], arr.slice(0), [])
-            )
-          )
-        );
+        
       }
     }
   }
@@ -121,13 +121,15 @@ function queue(seq) {
 export default function Queue() {
   const [speed, setSpeed] = useState(2);
   const [seq, setSeq] = useState(randomSeq());
-  const [arrayState, setArrayState] = useState({
-    red: [],
-    green: [0, 19],
-    blue: [],
-    array: Array.from({ length: 20 }, () => -1),
-    label: [],
-  });
+  const [arrayState, setArrayState] = useState(
+    setRes(
+      [],
+      [],
+      [],
+      Array.from({ length: 20 }, () => -1),
+      []
+    )
+  );
 
   function reload() {
     window.location.reload();
@@ -147,16 +149,10 @@ export default function Queue() {
       }, i * 1000 * speed);
     });
   }
-  function shuffleArray() {
-    var arrCopy = arrayState.slice(0);
-    setArrayState(
-      arrCopy
-        .map((a) => ({ sort: Math.random(), value: a }))
-        .sort((a, b) => a.sort - b.sort)
-        .map((a) => a.value)
-    );
-  }
 
+  function setRandomSeq(){
+    setSeq(randomSeq())
+  }
   return (
     <Container
       style={{
@@ -175,6 +171,7 @@ export default function Queue() {
           setPlaying={runAnimation}
           setSpeed={setSpeed}
           setArray={setCustomInput}
+          setRandomArray={setRandomSeq()}
         ></RendererBar>
       </Row>
       <Row style={{ margin: 0, padding: 4 }}>

@@ -56,6 +56,8 @@ import StudyTab from "./components/sections/studyMaterial/study_tab";
 import SubjectPage from "./components/sections/studyMaterial/subject_page";
 import Stack from "./components/sections/data_structures/stack/stack_vis";
 import Queue from "./components/sections/data_structures/queue/queue_vis";
+import BinarySearch from "./components/sections/algorithms/search/binary-search/binary_search";
+import LinearSearch from "./components/sections/algorithms/search/linear-search/linear_search";
 
 function App() {
   return (
@@ -177,6 +179,12 @@ function App() {
                 </Route>
                 <Route exact path="/alg/sorting/heapsort">
                   <HeapSort></HeapSort>
+                </Route>
+                <Route exact path="/alg/searching/binary_search">
+                  <BinarySearch></BinarySearch>
+                </Route>
+                <Route exact path="/alg/searching/linear_search">
+                  <LinearSearch></LinearSearch>
                 </Route>
 
                 <Route exact path="/ds/stack">

@@ -80,9 +80,11 @@ export default function QuickSort() {
       arr.push(val);
     });
     setArray(arr.slice(0));
+    setArrayState(setRes([], [], [], array, []));
   }
   function setRandomArray() {
     setArray(randomArray());
+    setArrayState(setRes([], [], [], array, []));
   }
 
   function runAnimation(val) {

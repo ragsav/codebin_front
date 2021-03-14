@@ -4,28 +4,9 @@ import Constants from "../../../constants/constants";
 
 const axios = require("axios");
 
-export default class StudyTab extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      errors: [],
-    };
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  componentDidMount() {}
-
-  componentWillUnmount() {}
-
-  handleSubmit = (event) => {
-    var self = this;
-    event.preventDefault();
-  };
-
-  hasError(key) {
-    return this.state.errors.indexOf(key) !== -1;
-  }
-  render() {
+export default function StudyTab (){
+  
+  
     return (
       <div>
         <Col
@@ -97,7 +78,7 @@ export default class StudyTab extends React.Component {
                 >
                   <ul>
                     {Constants.SUBJECTS.map((l) => (
-                      <li style={{ padding: 4, fontSize: 14, fontWeight: 500 }}>
+                      <li style={{ padding: 4, fontSize: 14, fontWeight: 500 }} key={l.key}>
                         <a href={Constants.HOST + "study/" + l.key}>{l.name}</a>
 
                         <ul></ul>
@@ -111,5 +92,5 @@ export default class StudyTab extends React.Component {
         </Col>
       </div>
     );
-  }
+  
 }

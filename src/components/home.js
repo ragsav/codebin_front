@@ -6,18 +6,11 @@ import Constants from "../constants/constants";
 
 
 
-export default class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    
+export default function Home(){
+  
+  
 
-    this.state = {};
-  }
-
-  componentWillUnmount() {}
-  componentDidMount() {}
-
-  render() {
+  
     return (
       <div style={{}}>
         <Col
@@ -247,13 +240,6 @@ export default class Home extends React.Component {
                               <span style={{ color: "red" }}></span>
                             </strong>
                           </a>
-                          {/* <ul>
-                            {Constants.NTLIST.map((l) => (
-                              <li style={{ padding: 4, fontSize: 12 }}>
-                                <a href="">{l.name}</a>
-                              </li>
-                            ))}
-                          </ul> */}
                         </li>
                       </ul>
                     </Col>
@@ -265,5 +251,5 @@ export default class Home extends React.Component {
         </Col>
       </div>
     );
-  }
+  
 }

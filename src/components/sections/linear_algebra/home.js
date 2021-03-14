@@ -7,28 +7,9 @@ import Constants from "../../../constants/constants";
 
 const axios = require("axios");
 
-export default class LinearAlgebraTab extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      errors: [],
-    };
-
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-  componentDidMount() {}
-
-  componentWillUnmount() {}
-
-  handleSubmit = (event) => {
-    var self = this;
-    event.preventDefault();
-  };
-
-  hasError(key) {
-    return this.state.errors.indexOf(key) !== -1;
-  }
-  render() {
+export default function LinearAlgebraTab (){
+  
+  
     return (
       <div>
         <Col
@@ -96,7 +77,7 @@ export default class LinearAlgebraTab extends React.Component {
                 >
                   <ul>
                     {Constants.LALIST.map((l) => (
-                      <li style={{ padding: 4, fontSize: 14, fontWeight: 500 }}>
+                      <li style={{ padding: 4, fontSize: 14, fontWeight: 500 }} key={l.key}>
                         <a href={Constants.HOST + "linear_algebra/" + l.key}>
                           {l.name}
                         </a>
@@ -113,5 +94,5 @@ export default class LinearAlgebraTab extends React.Component {
         </Col>
       </div>
     );
-  }
+  
 }

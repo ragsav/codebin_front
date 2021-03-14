@@ -81,9 +81,11 @@ export default function BubbleSort() {
       arr.push(val);
     });
     setArray(arr.slice(0));
+    setArrayState(setRes([], [], [], array, []));
   }
   function setRandomArray() {
     setArray(randomArray());
+    setArrayState(setRes([], [], [], array, []));
   }
 
   function runAnimation(val) {
