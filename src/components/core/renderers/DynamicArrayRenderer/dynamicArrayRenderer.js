@@ -21,22 +21,24 @@ class DynamicArrayRenderer extends Renderer {
   }
 
   setBGColor = (i) => {
-    const { red, green, blue } = this.props.arrayState;
-    if (red.length != 0) {
-      if (i >= red[0] && i <= red[1]) {
+      
+    const { red, yellow, blue } = this.props.arrayState;
+    
+      if (red.indexOf(i) != -1) {
         return Constants.ARRAYSWAPCOLOR;
       }
-    }
-    if (green.length != 0) {
-      if (i >= green[0] && i <= green[1]) {
+    
+    if (blue.indexOf(i) != -1) {
+      
         return Constants.ARRAYOKCOLOR;
-      }
+      
     }
-    if (blue.length != 0) {
-      if (i >= blue[0] && i <= blue[1]) {
+    if (yellow.indexOf(i) != -1) {
+      
         return Constants.ARRAYCOMPARECOLOR;
-      }
+      
     }
+    return Constants.ARRAYCOLOR;
   };
 
   render() {

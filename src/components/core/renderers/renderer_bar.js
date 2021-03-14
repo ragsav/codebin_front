@@ -5,13 +5,6 @@ import { toast } from "react-toastify";
 import Constants from "../../../constants/constants";
 
 
-function randomArray() {
-  var s = "40";
-  for (var i = 1; i < 20; i++) {
-    s = s + "," + Math.floor(Math.random() * 400).toString();
-  }
-  return s;
-}
 
 export default class RendererBar extends React.Component {
   constructor(props) {
@@ -73,9 +66,10 @@ export default class RendererBar extends React.Component {
                     // this.props.reload();
                   }}
                 >
-                  Reload screen
+                  Restart
                 </Button>
                 <Button
+                  disabled={this.state.playing}
                   style={{
                     fontSize: "13px",
                     float: "right",
@@ -87,7 +81,7 @@ export default class RendererBar extends React.Component {
                     backgroundColor: Constants.SECONDARY,
                   }}
                   onClick={(e) => {
-                    this.props.setArray(randomArray());
+                    this.props.setRandomArray();
                     // this.props.reload();
                   }}
                 >
@@ -139,7 +133,7 @@ export default class RendererBar extends React.Component {
                     }
                   }}
                 >
-                  Sort
+                  Start
                 </Button>
                 <Button
                   disabled={this.state.playing}
