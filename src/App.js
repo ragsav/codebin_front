@@ -58,8 +58,8 @@ import SubjectPage from "./components/sections/studyMaterial/subject_page";
 import BinarySearch from "./components/sections/algorithms/search/binary-search/binary_search";
 import LinearSearch from "./components/sections/algorithms/search/linear-search/linear_search";
 
-import Stack from "./components/sections/data_structures/stack/stack";
-import Queue from "./components/sections/data_structures/queue/queue";
+import Stack from "./components/sections/data_structures/stack/stack_vis";
+import Queue from "./components/sections/data_structures/queue/queue_vis";
 
 function App() {
   return (
