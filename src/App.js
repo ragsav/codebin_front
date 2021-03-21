@@ -60,6 +60,7 @@ import LinearSearch from "./components/sections/algorithms/search/linear-search/
 
 import Stack from "./components/sections/data_structures/stack/stack_vis";
 import Queue from "./components/sections/data_structures/queue/queue_vis";
+import MyChart from "./components/sections/data_structures/array/array_vis";
 
 function App() {
   return (
@@ -198,6 +199,9 @@ function App() {
 
                 <Route exact path="/study/dbms">
                   <SubjectPage></SubjectPage>
+                </Route>
+                <Route exact path="/ds/array">
+                  <MyChart></MyChart>
                 </Route>
               </Switch>
 
